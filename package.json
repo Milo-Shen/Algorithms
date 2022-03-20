@@ -1,0 +1,28 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Milo-Shen/Algorithms.git"
+  },
+  "keywords": [
+    "javascript",
+    "rust",
+    "java",
+    "algorithms"
+  ],
+  "author": "milo-shen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Milo-Shen/Algorithms/issues"
+  },
+  "homepage": "https://github.com/Milo-Shen/Algorithms#readme",
+  "devDependencies": {
+    "prettier": "^2.6.0"
+  }
+}

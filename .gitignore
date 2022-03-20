@@ -707,3 +707,7 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,linux,webstorm,clion,intellij,xcode,java,c++,rust,node,python
+
+# Added by cargo
+
+/target
