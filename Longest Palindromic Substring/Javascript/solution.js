@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/200/
+// https://leetcode-cn.com/problems/longest-palindromic-substring/
+
 function solution_1(s) {
   const str_len = s.length;
   if (!s || str_len === 0) return;
@@ -34,3 +37,5 @@ function getPalindromeFrom(s, left, right) {
   }
   return s.substring(left + 1, right);
 }
+
+console.log(solution_1("abccccdd"));
