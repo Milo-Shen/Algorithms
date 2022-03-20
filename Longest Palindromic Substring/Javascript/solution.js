@@ -37,5 +37,3 @@ function getPalindromeFrom(s, left, right) {
   }
   return s.substring(left + 1, right);
 }
-
-console.log(solution_1("abccccdd"));
