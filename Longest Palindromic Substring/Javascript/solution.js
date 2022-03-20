@@ -28,7 +28,7 @@ function solution_1(s) {
 // 基于中心线枚举的算法
 function getPalindromeFrom(s, left, right) {
   const str_len = s.length;
-  while (left >= 0 && right <= str_len) {
+  while (left >= 0 && right < str_len) {
     if (s.charAt(left) !== s.charAt(right)) {
       break;
     }
