@@ -1,6 +1,6 @@
 mod solution_1;
 
 fn main() {
-    println!("Hello, world!");
-    solution_1::solution("a".to_string());
+    let result = solution_1::solution("abba".to_string());
+    println!("Longest Palindromic Substring = {}", result);
 }
