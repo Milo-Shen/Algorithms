@@ -1,4 +1,7 @@
 // 基于中心线枚举的方法
+
+// todo: 以下代码需要优化 rust 的写法，代码是正确的，但是效率不高
+// Your code ran too much time than we expected. Check your time complexity. Time limit exceeded usually caused by infinite loop if your time complexity is the best.
 pub fn solution(s: String) -> String {
     let mut longest = String::new();
     if s.is_empty() { return longest; }
