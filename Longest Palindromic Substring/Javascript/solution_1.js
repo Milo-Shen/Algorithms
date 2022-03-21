@@ -1,7 +1,8 @@
 // https://www.lintcode.com/problem/200/
 // https://leetcode-cn.com/problems/longest-palindromic-substring/
 
-function solution_1(s) {
+// 基于中心线枚举的方法
+function solution(s) {
   const str_len = s.length;
   if (!s || str_len === 0) return;
   let longest = '';

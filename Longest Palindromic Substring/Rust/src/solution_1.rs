@@ -1,3 +1,4 @@
+// 基于中心线枚举的方法
 pub fn solution(s: String) -> String {
     if s.is_empty() { panic!("string is illegal") }
     let mut longest = String::new();
