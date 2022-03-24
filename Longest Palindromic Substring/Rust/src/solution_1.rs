@@ -4,21 +4,26 @@
 // Your code ran too much time than we expected. Check your time complexity. Time limit exceeded usually caused by infinite loop if your time complexity is the best.
 pub fn solution(s: String) -> String {
     let mut longest = String::new();
+    let mut longest_len = 0;
     if s.is_empty() { return longest; }
 
     // odd case
     for (i, _) in s.chars().enumerate() {
         let odd_palindrome = get_palindrome_from(&s, i as i32, i as i32);
-        if longest.chars().count() < odd_palindrome.chars().count() {
+        let odd_palindrome_len = odd_palindrome.chars().count();
+        if longest_len < odd_palindrome_len {
             longest = odd_palindrome;
+            longest_len = odd_palindrome_len;
         }
     }
 
     // even case
     for (i, _) in s.chars().enumerate() {
         let even_palindrome = get_palindrome_from(&s, i as i32, (i + 1) as i32);
-        if longest.chars().count() < even_palindrome.chars().count() {
+        let even_palindrome_len = even_palindrome.chars().count();
+        if longest_len < even_palindrome_len {
             longest = even_palindrome;
+            longest_len = even_palindrome_len;
         }
     }
 
