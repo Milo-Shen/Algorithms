@@ -7,16 +7,14 @@ function solution(s) {
   if (!s || str_len === 0) return;
   let longest = '';
 
-  // odd case
   for (let i = 0; i < str_len; i++) {
+    // odd case
     const oddPalindrome = getPalindromeFrom(s, i, i);
     if (longest.length < oddPalindrome.length) {
       longest = oddPalindrome;
     }
-  }
 
-  // even case
-  for (let i = 0; i < str_len; i++) {
+    // even case
     const evenPalindrome = getPalindromeFrom(s, i, i + 1);
     if (longest.length < evenPalindrome.length) {
       longest = evenPalindrome;
