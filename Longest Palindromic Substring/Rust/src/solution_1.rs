@@ -9,17 +9,15 @@ pub fn solution(s: String) -> String {
 
     let s_arr: Vec<char> = s.chars().collect();
 
-    // odd case
     for (i, _) in s_arr.iter().enumerate() {
+        // odd case
         let (odd_palindrome, odd_palindrome_len) = get_palindrome_from(&s_arr, i as i32, i as i32);
         if longest_len < odd_palindrome_len {
             longest = odd_palindrome;
             longest_len = odd_palindrome_len;
         }
-    }
 
-    // even case
-    for (i, _) in s_arr.iter().enumerate() {
+        // even case
         let (even_palindrome, even_palindrome_len) = get_palindrome_from(&s_arr, i as i32, (i + 1) as i32);
         if longest_len < even_palindrome_len {
             longest = even_palindrome;
