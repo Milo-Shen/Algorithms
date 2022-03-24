@@ -7,9 +7,11 @@ pub fn solution(s: String) -> String {
     let mut longest_len = 0;
     if s.is_empty() { return longest; }
 
+    let s_arr: Vec<char> = s.chars().collect();
+
     // odd case
-    for (i, _) in s.chars().enumerate() {
-        let (odd_palindrome, odd_palindrome_len) = get_palindrome_from(&s, i as i32, i as i32);
+    for (i, _) in s_arr.iter().enumerate() {
+        let (odd_palindrome, odd_palindrome_len) = get_palindrome_from(&s_arr, i as i32, i as i32);
         if longest_len < odd_palindrome_len {
             longest = odd_palindrome;
             longest_len = odd_palindrome_len;
@@ -17,8 +19,8 @@ pub fn solution(s: String) -> String {
     }
 
     // even case
-    for (i, _) in s.chars().enumerate() {
-        let (even_palindrome, even_palindrome_len) = get_palindrome_from(&s, i as i32, (i + 1) as i32);
+    for (i, _) in s_arr.iter().enumerate() {
+        let (even_palindrome, even_palindrome_len) = get_palindrome_from(&s_arr, i as i32, (i + 1) as i32);
         if longest_len < even_palindrome_len {
             longest = even_palindrome;
             longest_len = even_palindrome_len;
@@ -28,8 +30,7 @@ pub fn solution(s: String) -> String {
     return longest;
 }
 
-fn get_palindrome_from(s: &String, mut left: i32, mut right: i32) -> (String, i32) {
-    let s_arr: Vec<char> = s.chars().collect();
+fn get_palindrome_from(s_arr: &Vec<char>, mut left: i32, mut right: i32) -> (String, i32) {
     let s_len = s_arr.len() as i32;
     while left >= 0 && right < s_len {
         if s_arr[left as usize] != s_arr[right as usize] {
@@ -39,5 +40,6 @@ fn get_palindrome_from(s: &String, mut left: i32, mut right: i32) -> (String, i3
         right = right + 1;
     }
     let length = right - left - 1;
-    (s.chars().skip((left + 1) as usize).take(length as usize).collect(), length)
+    let palindrome: String = (&s_arr[(left + 1) as usize..right as usize]).iter().collect();
+    (palindrome, length)
 }
