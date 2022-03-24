@@ -3,14 +3,14 @@ pub fn solution(source: String, target: String) -> i32 {
         return 0;
     }
 
-    let s_len = source.chars().count();
-    let t_len = target.chars().count();
+    let s_len = source.chars().count() as i32;
+    let t_len = target.chars().count() as i32;
 
     for i in 0..s_len - t_len + 1 {
         let mut is_match = true;
 
         for j in 0..t_len {
-            if source.chars().nth(i + j).unwrap() != target.chars().nth(j).unwrap() {
+            if source.chars().nth((i + j) as usize).unwrap() != target.chars().nth(j as usize).unwrap() {
                 is_match = false;
                 break;
             }
