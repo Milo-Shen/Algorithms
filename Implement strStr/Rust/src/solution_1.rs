@@ -3,14 +3,16 @@ pub fn solution(source: String, target: String) -> i32 {
         return 0;
     }
 
-    let s_len = source.chars().count() as i32;
-    let t_len = target.chars().count() as i32;
+    let s_arr: Vec<char> = source.chars().collect();
+    let t_arr: Vec<char> = target.chars().collect();
+    let s_len = s_arr.len() as i32;
+    let t_len = t_arr.len() as i32;
 
     for i in 0..s_len - t_len + 1 {
         let mut is_match = true;
 
         for j in 0..t_len {
-            if source.chars().nth((i + j) as usize).unwrap() != target.chars().nth(j as usize).unwrap() {
+            if s_arr[(i + j) as usize] != t_arr[j as usize] {
                 is_match = false;
                 break;
             }
