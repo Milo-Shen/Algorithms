@@ -4,7 +4,7 @@ pub fn solution(source: String, target: String) -> i32 {
     }
 
     // BASE
-    const BASE: u32 = 1000000;
+    const BASE: i32 = 1000000;
 
     // Chars to Array
     let s_arr: Vec<char> = source.chars().collect();
@@ -21,20 +21,20 @@ pub fn solution(source: String, target: String) -> i32 {
     // target code
     let mut target_code = 0;
     for i in 0..t_len {
-        target_code = (target_code * 31 + t_arr[i as usize] as u32) % BASE;
+        target_code = (target_code * 31 + t_arr[i as usize] as i32) % BASE;
     }
 
-    let mut hash_code = 0;
+    let mut hash_code: i32 = 0;
     for i in 0..s_len {
         // abc + d
-        hash_code = (hash_code * 31 + s_arr[i as usize] as u32) % BASE;
+        hash_code = (hash_code * 31 + s_arr[i as usize] as i32) % BASE;
         if i < t_len - 1 {
             continue;
         }
 
         // abcd - a
         if i >= t_len {
-            hash_code = hash_code - ((s_arr[(i - t_len) as usize] as u32 * power) % BASE);
+            hash_code = hash_code - ((s_arr[(i - t_len) as usize] as i32 * power) % BASE);
             if hash_code < 0 {
                 hash_code += BASE;
             }
