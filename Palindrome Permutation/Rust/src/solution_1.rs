@@ -1,5 +1,3 @@
-use std::fs::read;
-
 pub fn solution(s: String) -> bool {
     if s == "" {
         return true;
