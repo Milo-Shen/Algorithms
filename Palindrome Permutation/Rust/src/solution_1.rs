@@ -28,7 +28,7 @@ pub fn solution(s: String) -> bool {
 }
 
 fn is_valid(ch: &char) -> bool {
-    ch.is_digit(10) && ch.is_alphabetic()
+    ch.is_digit(10) || ch.is_alphabetic()
 }
 
 fn is_equal(a: &char, b: &char) -> bool {
