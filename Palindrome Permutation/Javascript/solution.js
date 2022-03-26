@@ -12,7 +12,7 @@ function solution(s) {
     while (left < right && !is_valid(s[right])) {
       right--;
     }
-    if (left < right && s.charAt(left).toLowerCase() !== s.charAt(right).toLowerCase()) {
+    if (left < right && !isEqual(s.charAt(left), s.charAt(right))) {
       return false;
     }
     left++;
@@ -24,4 +24,8 @@ function solution(s) {
 
 function is_valid(s) {
   return /[0-9a-z]/i.test(s);
+}
+
+function isEqual(a, b) {
+  return a.toLowerCase() === b.toLowerCase();
 }
