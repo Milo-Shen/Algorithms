@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/891/
+// https://leetcode-cn.com/problems/valid-palindrome-ii/
 
 function solution(s) {
   if (s === '') {
