@@ -18,7 +18,7 @@ function solution(nums, target) {
     } else if (sum < target) {
       left++;
     } else {
-      return [right_obj.index, left_obj.index];
+      return [left_obj.index, right_obj.index].sort();
     }
   }
 
