@@ -2,6 +2,9 @@
 // todo: why the below code work
 
 function solution(nums, target) {
+  let nums_len = nums.length;
+  if (nums_len === 0) return 0;
+
   nums = nums.sort((a, b) => a - b);
 
   let count = 0;
