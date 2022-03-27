@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/609
+// todo: why the below code work
+
 function solution(nums, target) {
   nums = nums.sort((a, b) => a - b);
 
