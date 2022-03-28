@@ -1,4 +1,4 @@
-function sortIntegers2(a) {
+function solution(a) {
   let arr_len = a.length;
   if (!a || !arr_len) {
     return;
@@ -41,3 +41,7 @@ function quick_sort(arr, start, end) {
   quick_sort(arr, start, right);
   quick_sort(arr, left, end);
 }
+
+let arr = [3,1,2];
+solution(arr);
+console.log(arr);
