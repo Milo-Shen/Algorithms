@@ -42,6 +42,6 @@ function quick_sort(arr, start, end) {
   quick_sort(arr, left, end);
 }
 
-let arr = [3,1,2];
+let arr = [3, 1, 2, 10, 1, 5, 6, -1, 9, 5];
 solution(arr);
 console.log(arr);

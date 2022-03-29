@@ -46,6 +46,6 @@ function merge(arr, start, end, temp) {
   }
 }
 
-let arr = [3, 1, 2];
+let arr = [3, 1, 2, 10, 1, 5, 6, -1, 9, 5];
 solution(arr);
 console.log(arr);
