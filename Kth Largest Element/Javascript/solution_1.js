@@ -46,4 +46,4 @@ function quick_select(nums, start, end, k) {
   return nums[right + 1];
 }
 
-console.log(solution(3, [9, 3, 2, 4, 8]));
+console.log(solution_number(3, [9, 3, 2, 4, 8]));
