@@ -1,4 +1,5 @@
-function solution(k, nums) {
+// todo: 需要处理 string 的情况
+function solution_string(k, nums) {
   let nums_len = nums.length;
   if (!nums || !nums_len) {
     return -1;
