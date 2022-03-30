@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/5
+
 pub fn solution(nums: Vec<i32>, k: i32) -> i32 {
     let nums_len = nums.len();
     if nums_len == 0 {
@@ -17,7 +18,7 @@ fn quick_sort(arr: &mut Vec<i32>, start: i32, end: i32, k: i32) -> i32 {
     let mut left = start;
     let mut right = end;
     let pivot = arr[((left + right) / 2) as usize];
-    
+
     while left <= right {
         while left <= right && arr[left as usize] > pivot {
             left = left + 1;
