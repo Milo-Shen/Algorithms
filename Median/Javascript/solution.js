@@ -1,3 +1,5 @@
+// https://www.lintcode.com/problem/80/
+
 function solution(nums) {
   let nums_len = nums.length;
   if (!nums || !nums_len) {
