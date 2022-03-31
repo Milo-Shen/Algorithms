@@ -1,3 +1,6 @@
+// https://leetcode-cn.com/problems/sort-colors/submissions/
+// https://www.lintcode.com/problem/148/description
+
 function solution(nums) {
   let left = 0;
   let right = nums.length - 1;
