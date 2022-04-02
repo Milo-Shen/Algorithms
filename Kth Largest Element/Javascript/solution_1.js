@@ -1,4 +1,6 @@
 // https://www.lintcode.com/problem/5
+// todo: 需要理解 quick select 的思想
+
 function solution_number(k, nums) {
   let nums_len = nums.length;
   if (!nums || !nums_len) {
