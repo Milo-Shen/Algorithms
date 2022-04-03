@@ -1,3 +1,6 @@
+// https://leetcode-cn.com/problems/binary-search/
+// https://www.lintcode.com/problem/457/
+
 function find_position(nums, target) {
   return binary_search(nums, 0, nums.length - 1, target);
 }
