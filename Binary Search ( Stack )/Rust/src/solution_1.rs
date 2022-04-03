@@ -1,5 +1,4 @@
-// https://leetcode-cn.com/problems/binary-search/
-// https://www.lintcode.com/problem/457/
+// https://www.lintcode.com/problem/14/
 
 // 第一次出现的位置
 pub fn binary_search(nums: Vec<i32>, target: i32) -> i32 {
