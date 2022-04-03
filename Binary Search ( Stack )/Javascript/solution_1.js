@@ -47,6 +47,7 @@ function binary_search(nums, target) {
   if (nums[start] === target) {
     return start;
   }
+
   if (nums[end] === target) {
     return end;
   }
