@@ -1,5 +1,6 @@
 // https://www.lintcode.com/problem/14/
 
+// 第一次出现的位置
 function binary_search(nums, target) {
   // 对数组进行空值检查
   let nums_len = nums.length;
