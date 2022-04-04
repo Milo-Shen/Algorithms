@@ -12,4 +12,4 @@ function solution(numbers, target) {
   return [-1, -1];
 }
 
-console.log(solution([1, 2, 3], 4));
+console.log(solution([1, 3, 9, 3], 6));
