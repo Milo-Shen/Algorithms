@@ -9,6 +9,7 @@ function three_sum(nums) {
 
   let result = [];
   nums = nums.sort((a, b) => a - b);
+  // len = nums_len - 2 是因为，要至少留出 2 个数的数组进行 two sum
   for (let i = 0, len = nums_len - 2; i < len; i++) {
     // 去重逻辑, 此处的 i > 0 不能省略
     if (i > 0 && nums[i] === nums[i - 1]) {
