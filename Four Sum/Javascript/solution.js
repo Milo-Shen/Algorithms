@@ -1,3 +1,6 @@
+// https://leetcode-cn.com/problems/4sum/submissions/
+// https://www.lintcode.com/problem/58/
+
 function four_sum(nums, target) {
   let nums_len = nums.length;
   if (!nums || nums_len < 4) {
