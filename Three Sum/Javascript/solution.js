@@ -3,7 +3,7 @@
 
 function three_sum(nums) {
   let nums_len = nums.length;
-  if (!nums || nums_len === 0) {
+  if (!nums || nums_len < 3) {
     return [];
   }
 
