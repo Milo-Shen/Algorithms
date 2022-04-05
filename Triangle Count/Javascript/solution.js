@@ -4,7 +4,7 @@
 function triangle_count(s) {
   let s_len = s.length;
   if (!s || s_len < 3) {
-    return -1;
+    return 0;
   }
 
   s = s.sort((a, b) => a - b);
