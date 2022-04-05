@@ -13,13 +13,13 @@ function four_sum(nums, target) {
   // len = nums_len - 3 是因为，要至少留出 3 个数的数组进行 three sum
   for (let i = 0, len = nums_len - 3; i < len; i++) {
     // 去重逻辑, 此处的 i > 0 不能省略
-    if (i !== 0 && nums[i] === nums[i - 1]) {
+    if (i > 0 && nums[i] === nums[i - 1]) {
       continue;
     }
 
     for (let j = i + 1, len = nums_len - 2; j < len; j++) {
       // 去重逻辑, 此处的 i > 0 不能省略
-      if (j !== i + 1 && nums[j] === nums[j - 1]) {
+      if (j > i + 1 && nums[j] === nums[j - 1]) {
         continue;
       }
 
