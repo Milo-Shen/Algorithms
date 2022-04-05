@@ -16,7 +16,7 @@ function four_sum(nums, target) {
 
     for (let j = i + 1, len = nums_len - 2; j < len; j++) {
       // 去重逻辑, 此处的 i > 0 不能省略
-      if (j !== i + i && nums[j] === nums[j - 1]) {
+      if (j !== i + 1 && nums[j] === nums[j - 1]) {
         continue;
       }
 
