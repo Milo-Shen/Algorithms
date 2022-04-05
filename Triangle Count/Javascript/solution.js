@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/382/
+// https://leetcode-cn.com/problems/valid-triangle-number/
+
 function triangle_count(s) {
   let s_len = s.length;
   if (!s || s_len < 3) {
