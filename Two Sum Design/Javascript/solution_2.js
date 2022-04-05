@@ -1,14 +1,21 @@
 class TwoSum {
   constructor() {
-    this.hash = [];
+    this.hash = {};
   }
 
   add(num) {
-    this.list.push(num);
-    let index = this.list.length - 1;
-    while (index > 0 && this.list[index - 1] > this.list[index]) {
-      this.swap(index);
+    this.hash[num] = (this.hash[num] || 0) + 1;
+  }
+
+  find(target) {
+    for (let cur_val in this.hash) {
+      let remain = target - cur_val;
+      let count = remain === cur_val ? 2 : 1;
+      if (this.hash[remain] >= count) {
+        return true;
+      }
     }
+    return false;
   }
 }
 
@@ -19,8 +26,5 @@ two_sum.add(10);
 two_sum.add(3);
 two_sum.add(3);
 
-let first_index_of = two_sum.first_index_of(3);
-let last_index_of = two_sum.last_index_of(3);
-console.log(`first_index_of = ${first_index_of}`, `last_index_of = ${last_index_of}`);
-let two_sum_pos = two_sum.find(13);
-console.log(`two_sum_pos = ${two_sum_pos}`);
+let answer = two_sum.find(6);
+console.log(`two sum = ${answer}`);
