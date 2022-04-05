@@ -17,7 +17,7 @@ class TwoSum {
     this.list[index] = temp;
   }
 
-  find_first(target) {
+  first_index_of(target) {
     let start = 0;
     let end = this.list.length - 1;
     while (start + 1 < end) {
@@ -42,7 +42,7 @@ class TwoSum {
     return -1;
   }
 
-  find_last(target) {
+  last_index_of(target) {
     let start = 0;
     let end = this.list.length - 1;
     while (start + 1 < end) {
@@ -65,6 +65,24 @@ class TwoSum {
     }
 
     return -1;
+  }
+
+  find(target) {
+    let left = 0;
+    let right = this.list.length - 1;
+    while (left < right) {
+      let sum = this.list[left] + this.list[right];
+
+      if (target > sum) {
+        left++;
+      } else if (target < sum) {
+        right--;
+      } else if (target === sum) {
+        return [left, right];
+      }
+    }
+
+    return [-1, -1];
   }
 }
 
@@ -75,6 +93,8 @@ two_sum.add(10);
 two_sum.add(3);
 two_sum.add(3);
 
-let index_first = two_sum.find_first(3);
-let index_last = two_sum.find_last(3);
-console.log(index_first, index_last);
+let first_index_of = two_sum.first_index_of(3);
+let last_index_of = two_sum.last_index_of(3);
+console.log(`first_index_of = ${first_index_of}`, `last_index_of = ${last_index_of}`);
+let two_sum_pos = two_sum.find(13);
+console.log(`two_sum_pos = ${two_sum_pos}`);
