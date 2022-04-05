@@ -11,7 +11,7 @@ class TwoSum {
     for (let cur_val in this.hash) {
       let remain = target - cur_val;
       let count = remain === cur_val ? 2 : 1;
-      if (this.hash[remain] >= count) {
+      if ((this.hash[remain] || 0) >= count) {
         return true;
       }
     }
