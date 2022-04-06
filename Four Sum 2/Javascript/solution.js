@@ -1,4 +1,6 @@
 // https://www.lintcode.com/problem/976/
+// https://leetcode-cn.com/problems/4sum-ii/
+
 function four_sum_count(A, B, C, D) {
   if (!A || !A.length) {
     return 0;
