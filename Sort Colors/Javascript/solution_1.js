@@ -1,7 +1,7 @@
 // https://leetcode-cn.com/problems/sort-colors/submissions/
 // https://www.lintcode.com/problem/148/description
 
-function solution(nums) {
+function solution_1(nums) {
   let left = 0;
   let right = nums.length - 1;
   let middle = 0;
@@ -27,5 +27,5 @@ function swap(nums, left, right) {
 }
 
 let nums = [1, 0, 1, 2];
-solution(nums);
+solution_1(nums);
 console.log(nums);

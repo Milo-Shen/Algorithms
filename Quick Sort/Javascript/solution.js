@@ -8,6 +8,7 @@ function solution(a) {
 }
 
 function quick_sort(arr, start, end) {
+  // start 是有可能大于 end 的，例子: start: 0, end: -1
   if (start >= end) {
     return;
   }
