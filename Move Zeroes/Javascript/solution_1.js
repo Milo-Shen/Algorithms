@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/539/description
+// https://leetcode-cn.com/problems/move-zeroes/
+
 function move_zeroes(nums) {
   let nums_len = nums.length;
   if (!nums || !nums_len) {
