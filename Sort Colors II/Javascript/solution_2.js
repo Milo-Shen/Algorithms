@@ -44,6 +44,8 @@ function partition_array(colors, start, end, color_start, color_end) {
     }
   }
 
+  // 此处 left right 在退出 while 循环后，left 和 right 肯定不是指向同一个位置,
+  // 所以 start...left 和 right...end 就是天然不重合的两个分区
   partition_array(colors, start, right, color_start, mid_color);
   // partition 和 quick sort 还是有区别的，这边需要是 mid + 1
   // mid + 1 的原因是需要把分区分成明确的 2 个分区
