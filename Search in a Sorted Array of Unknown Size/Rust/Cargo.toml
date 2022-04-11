@@ -1,0 +1,8 @@
+[package]
+name = "Search_in_a_Sorted_Array_of_Unknown_Size"
+version = "1.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
