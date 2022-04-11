@@ -17,6 +17,7 @@ function binary_search(nums, target) {
   // 通过 `while` 循环，将区间范围从 `n` 缩小到 `2` （只有 `start` 和 `end` 两个点）。
   // 在 `start` 和 `end` 中判断是否有解。
   // 而普通的 `start < end` 或者 `start <= end` 在寻找目标最后一次出现的位置的时候，可能出现死循环。
+  // 在寻找目标最后一次出现的位置的时候，可能死循环的反例是 [1, 1] 找最后一个 1
   while (start + 1 < end) {
     // 要点 2: start + (end - start) / 2
     // 这个做法是防止在 start = 2^31 - 1, end = 2^31 - 1 的情况下出现加法 overflow
