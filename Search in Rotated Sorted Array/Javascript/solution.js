@@ -11,7 +11,7 @@ function search(nums, target) {
 
   let is_in_right = nums[min] <= target && target <= nums[nums_len - 1];
   let left = is_in_right ? min : 0;
-  let right = is_in_right ? nums_len - 1 : min - 1;
+  let right = is_in_right ? nums_len - 1 : min - 1 < 0 ? min : min - 1;
   return binary_search(nums, left, right, target);
 }
 
