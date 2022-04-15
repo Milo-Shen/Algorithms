@@ -1,4 +1,7 @@
 // https://www.lintcode.com/problem/183/
+// 思考:
+//  1. 不要一开始算出所有的结果，而是二分的时候在过程中算
+//  2. 二分的要求，最重要的还是确定左右边界，所以这边最重要的是确定右边界
 
 function woodCut(L, k) {
   if (!L || !L.length) {
