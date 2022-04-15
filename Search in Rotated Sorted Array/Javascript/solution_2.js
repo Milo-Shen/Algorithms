@@ -19,10 +19,10 @@ function search(nums, target) {
         start = mid;
       }
     } else {
-      if (nums[start] <= target && target <= nums[mid]) {
-        end = mid;
-      } else {
+      if (nums[mid] <= target && target <= nums[end]) {
         start = mid;
+      } else {
+        end = mid;
       }
     }
   }
@@ -34,8 +34,10 @@ function search(nums, target) {
   if (nums[end] === target) {
     return end;
   }
+
+  return -1;
 }
 
-let nums = [3, 1];
-let target = 3;
+let nums = [1001, 10001, 10007, 1, 10, 101, 201];
+let target = 10001;
 console.log(search(nums, target));
