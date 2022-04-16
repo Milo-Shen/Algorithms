@@ -12,6 +12,7 @@ function RotateString2(str, left, right) {
     return str;
   }
 
+  // 允许使用语言的原生方法的, 比如 slice
   let str_arr = str.split('');
   let left_part = is_left ? str_arr.slice(iter) : str_arr.slice(str_len - iter);
   let right_part = is_left ? str_arr.slice(0, iter) : str_arr.slice(0, str_len - iter);
