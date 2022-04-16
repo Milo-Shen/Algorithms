@@ -68,6 +68,11 @@ function find_upper_farthest(A, left, right, target) {
  * @returns {number}
  */
 function cal_wood_count(L, length) {
+  // 除数 length 一定要校验是否为 0
+  if (length === 0) {
+    return 0;
+  }
+
   let total = 0;
   for (let i = 0, len = L.length; i < len; i++) {
     total += ~~(L[i] / length);
