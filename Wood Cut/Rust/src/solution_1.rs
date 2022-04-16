@@ -21,6 +21,11 @@ pub fn wood_cut(l: Vec<i32>, k: i32) -> i32 {
     let max_wood_count = wood_total / k as i64;
     let end: i64 = if max_val < max_wood_count { max_val } else { max_wood_count };
 
+    // 如果切割不出来，返回 0
+    if end < 1 {
+        return 0;
+    }
+
     find_upper_farthest(&l, 1, end, k)
 }
 

@@ -20,6 +20,11 @@ function woodCut(L, k) {
   let max_2 = ~~(total / k);
   let end = max_1 < max_2 ? max_1 : max_2;
 
+  // 如果切割不出来，返回 0
+  if (end < 1) {
+    return 0;
+  }
+
   return find_upper_farthest(L, 1, end, k);
 }
 
