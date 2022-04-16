@@ -1,6 +1,7 @@
 // https://www.lintcode.com/problem/587/
 
 function twoSum6(nums, target) {
+  // 先对数据进行排序
   nums = nums.sort((a, b) => a - b);
 
   let count = 0;
@@ -24,11 +25,13 @@ function twoSum6(nums, target) {
       left++;
     }
 
-    while (left < right && nums[right] === nums[right + 1]) {
+    // 以下是去重的逻辑 ( 要时刻注意数组访问的时候, 下标是否会越界 )
+    while (left < right && left > 0 && nums[right] === nums[right + 1]) {
       right--;
     }
 
-    while (left < right && nums[left] === nums[left - 1]) {
+    // 以下是去重的逻辑 ( 要时刻注意数组访问的时候, 下标是否会越界 )
+    while (left < right && right < nums.length - 1 && nums[left] === nums[left - 1]) {
       left++;
     }
   }
@@ -36,4 +39,4 @@ function twoSum6(nums, target) {
   return count;
 }
 
-console.log(twoSum6([1, 1, 2, 45, 46, 46], 47));
+console.log(twoSum6([7, 11, 11, 1, 2, 3, 4], 22));
