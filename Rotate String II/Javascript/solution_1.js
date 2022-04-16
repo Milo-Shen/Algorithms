@@ -1,5 +1,6 @@
 // https://www.lintcode.com/problem/1790/
 
+// 下面这种做法的效率比较低，会超时
 function RotateString2(str, left, right) {
   let str_len = str.length;
   let iter = Math.abs(right - left);
