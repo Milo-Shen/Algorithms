@@ -1,7 +1,7 @@
 // https://www.lintcode.com/problem/69/solution
 // https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
 
-// 使用单队列的方式
+// 使用双队列的方式
 function levelOrder(root) {
   if (!root) return [];
 
