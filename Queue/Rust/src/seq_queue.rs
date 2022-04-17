@@ -1,4 +1,4 @@
-use std::fmt::Display;
+use std::fmt::{Debug, Display};
 
 #[derive(Debug)]
 pub struct SeqQueue<T> {
@@ -38,11 +38,13 @@ impl<T> SeqQueue<T> {
     }
 }
 
-impl<T: Display> SeqQueue<T> {
+impl<T: Display + Debug> SeqQueue<T> {
     pub fn print(&self) {
+        let mut data: Vec<&T> = Vec::new();
         for i in self.head..self.tail {
             let value = &self.queue[i];
-            println!("{}", value);
+            data.push(value);
         }
+        println!("seq_queue = {:?}", data);
     }
 }
