@@ -11,14 +11,16 @@ function levelOrder(root) {
 
   while (queue.length !== 0) {
     let temp = [];
+    let next_queue = [];
     let length = queue.length;
     for (let i = 0; i < length; i++) {
       let node = queue.shift();
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
+      if (node.left) next_queue.push(node.left);
+      if (node.right) next_queue.push(node.right);
       temp.push(node.val);
     }
     result.push(temp);
+    queue = next_queue;
   }
 
   return result;
