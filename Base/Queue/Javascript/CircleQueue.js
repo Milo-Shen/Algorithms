@@ -43,3 +43,7 @@ circle_queue.enqueue(3);
 circle_queue.print();
 console.log('dequeue', circle_queue.dequeue());
 circle_queue.print();
+
+module.exports = {
+  CircleQueue,
+};
