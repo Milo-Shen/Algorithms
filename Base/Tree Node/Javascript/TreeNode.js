@@ -5,3 +5,7 @@ class TreeNode {
     this.right = right;
   }
 }
+
+module.exports = {
+  TreeNode,
+};

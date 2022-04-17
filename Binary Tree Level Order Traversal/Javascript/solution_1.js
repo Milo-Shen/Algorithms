@@ -22,3 +22,9 @@ function levelOrder(root) {
 
   return result;
 }
+
+// test cases
+const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
+let nums = [3, 9, 20, null, null, 15, 7];
+let binaryTree = buildBinaryTree(nums);
+console.log(levelOrder(binaryTree));
