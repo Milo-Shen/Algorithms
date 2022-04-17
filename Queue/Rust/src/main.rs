@@ -29,6 +29,4 @@ fn main() {
     let pop_value = my_circle_queue.dequeue().unwrap();
     println!("pop value = {}", pop_value);
     my_circle_queue.print();
-
-    //
 }
