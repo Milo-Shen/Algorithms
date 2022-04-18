@@ -1,6 +1,6 @@
 // https://leetcode-cn.com/problems/search-insert-position/
 
-function findUpperClosest(nums, target) {
+function searchInsert(nums, target) {
   let nums_len = nums.length;
   if (!nums || !nums_len) {
     return -1;
