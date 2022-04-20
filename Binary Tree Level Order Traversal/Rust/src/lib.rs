@@ -1,6 +1,6 @@
 use std::rc::Rc;
 use std::cell::RefCell;
-use std::collections::VecDeque;
+use std::vec;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode<T> {
@@ -27,25 +27,24 @@ pub fn build_binary_tree(nums: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode<i
 
     let root_node: TreeNode<i32> = TreeNode::new(nums[0].unwrap());
     let root_node_rc = Rc::new(RefCell::new(root_node));
-    let mut queue = VecDeque::from([Rc::clone(&root_node_rc)]);
+    let mut queue = vec![Rc::clone(&root_node_rc)];
 
     let mut i = 1;
     while i < nums_len {
-        if let Some(mut node) = queue.pop_front() {
-            if let Some(num) = nums[i] {
-                let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
-                (*node.borrow_mut()).left = Some(Rc::clone(&new_node));
-                queue.push_back(Rc::clone(&new_node));
-            }
+        let node = queue.remove(0);
+        if let Some(num) = nums[i] {
+            let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
+            (*node.borrow_mut()).left = Some(Rc::clone(&new_node));
+            queue.push(Rc::clone(&new_node));
+        }
 
-            if let Some(num) = nums[i + 1] {
-                let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
-                (*node.borrow_mut()).right = Some(Rc::clone(&new_node));
-                queue.push_back(Rc::clone(&new_node));
-            }
+        if let Some(num) = nums[i + 1] {
+            let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
+            (*node.borrow_mut()).right = Some(Rc::clone(&new_node));
+            queue.push(Rc::clone(&new_node));
         }
         i = i + 2;
     }
 
-    Some(root_node_rc)
+    Some(Rc::clone(&root_node_rc))
 }
