@@ -29,7 +29,7 @@ pub fn build_binary_tree(nums: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode<i
     let root_node_rc = Rc::new(RefCell::new(root_node));
     let mut queue = VecDeque::from([Rc::clone(&root_node_rc)]);
 
-    let i = 1;
+    let mut i = 1;
     while i < nums_len {
         if let Some(mut node) = queue.pop_front() {
             if let Some(num) = nums[i] {
@@ -44,6 +44,7 @@ pub fn build_binary_tree(nums: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode<i
                 queue.push_back(Rc::clone(&new_node));
             }
         }
+        i = i + 2;
     }
 
     Some(root_node_rc)
