@@ -10,10 +10,7 @@ fn main() {
         Some(13), Some(4), Some(7), Some(2), None,
         None, None, Some(1),
     ];
-    let nums = vec![
-        Some(1), Some(2), Some(3),
-    ];
     let root_node = build_binary_tree(nums);
-    let answer = solution_1::binary_tree_path_sum(root_node, 5);
+    let answer = solution_1::binary_tree_path_sum(root_node, 22);
     println!("answer = {:?}", answer);
 }

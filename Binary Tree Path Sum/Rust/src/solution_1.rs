@@ -17,11 +17,11 @@ pub fn binary_tree_path_sum(root: Option<Rc<RefCell<TreeNode<i32>>>>, target_sum
 
     let root = root.unwrap();
 
-    if root.borrow().left.is_none() && root.borrow().right.is_none() {
+    if root.borrow().left.is_none() && root.borrow().right.is_none() && root.borrow().val == target_sum {
         result.push(vec![root.borrow().val]);
         return result;
     }
-    
+
     if let Some(left_node) = &root.borrow().left {
         let mut left_path = binary_tree_path_sum(Some(Rc::clone(left_node)), target_sum - root.borrow().val);
         for i in 0..left_path.len() {
