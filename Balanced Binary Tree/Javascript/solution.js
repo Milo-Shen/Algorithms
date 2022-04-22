@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/93/
+// https://leetcode-cn.com/problems/balanced-binary-tree/submissions/
+
 function isBalanced(root) {
   let { isBalanced, height } = divideConquer(root);
   return isBalanced;
