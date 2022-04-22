@@ -1,3 +1,6 @@
+// https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/submissions/
+// https://www.lintcode.com/problem/97/
+
 function max_depth(root) {
   if (!root) {
     return 0;
