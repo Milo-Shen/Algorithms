@@ -24,6 +24,7 @@ BSTIterator.prototype.next = function () {
       node = this.stack.pop();
     }
   } else {
+    // 如果当前节点有右子树节点
     node = node.right;
     while (node) {
       this.stack.push(node);
@@ -31,9 +32,7 @@ BSTIterator.prototype.next = function () {
     }
   }
 
-  // 如果当前节点有右子树节点
-
-  return cur_node;
+  return cur_node.val;
 };
 
 BSTIterator.prototype.hasNext = function () {
