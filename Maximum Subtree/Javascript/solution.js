@@ -1,7 +1,7 @@
 // https://www.lintcode.com/problem/628/
 
 let max_node = null;
-let max_value = Number.MIN_VALUE;
+let max_value = -Infinity;
 
 function findSubtree(root) {
   if (!root) {
