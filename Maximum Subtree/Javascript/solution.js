@@ -1,6 +1,7 @@
 // https://www.lintcode.com/problem/628/
 
 let max_node = null;
+let max_value = Number.MIN_VALUE;
 
 function findSubtree(root) {
   if (!root) {
@@ -19,7 +20,8 @@ function divideConquer(root) {
   let left_sum = divideConquer(root.left);
   let right_sum = divideConquer(root.right);
   let total = root.val + left_sum + right_sum;
-  if (!max_node || total > max_node.val) {
+  if (!max_node || total > max_value) {
+    max_value = total;
     max_node = root;
   }
 
