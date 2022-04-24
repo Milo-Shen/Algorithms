@@ -1,5 +1,3 @@
-const { dataAdapter } = require('./helper');
-
 class UndirectedGraphNode {
   constructor(label) {
     this.label = label;
@@ -10,5 +8,3 @@ class UndirectedGraphNode {
 module.exports = {
   UndirectedGraphNode,
 };
-
-
