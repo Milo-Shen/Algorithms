@@ -52,12 +52,12 @@ module.exports = {
   dataAdapter,
 };
 
-console.log(
-  dataAdapter([
-    [2, 4],
-    [1, 3],
-    [2, 4],
-    [1, 3],
-  ]),
-);
-console.log(dataAdapter([1, 2, '4#2', 1, '4#4', 1, 2]));
+// console.log(
+//   dataAdapter([
+//     [2, 4],
+//     [1, 3],
+//     [2, 4],
+//     [1, 3],
+//   ]),
+// );
+// console.log(dataAdapter([1, 2, '4#2', 1, '4#4', 1, 2]));
