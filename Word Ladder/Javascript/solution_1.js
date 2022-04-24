@@ -1,5 +1,4 @@
 // https://leetcode-cn.com/problems/word-ladder/
-// https://www.lintcode.com/problem/120/
 
 function ladderLength(beginWord, endWord, wordList) {
   // 对异常进行处理
@@ -7,23 +6,23 @@ function ladderLength(beginWord, endWord, wordList) {
     return 0;
   }
 
-  // 将 end word 加入 word list 中, 假如不存在的话
-  if (wordList.indexOf(endWord) === -1) {
-    wordList.push(endWord);
-  }
-
-  let count = 1;
+  let count = 0;
   let queue = [beginWord];
   let set = new Set([beginWord]);
 
   while (queue.length) {
-    // 到下一层, 不是当前层的长度
+    // 记录了当前层的长度
     count++;
 
     // 当前层有 queue_len 个元素
     let queue_len = queue.length;
     for (let i = 0; i < queue_len; i++) {
       let word = queue.shift();
+
+      // 如果当前层的值，正好是结尾词
+      if (word === endWord) {
+        return count;
+      }
 
       // 获得下一层的单词
       let next_words_list = get_next_words(wordList, word);
@@ -33,18 +32,14 @@ function ladderLength(beginWord, endWord, wordList) {
           continue;
         }
 
-        // 如果下一层的词是尾词, 直接返回当前到下一层的长度
-        if (next_word === endWord) {
-          return count;
-        }
-
         queue.push(next_word);
         set.add(next_word);
       }
     }
   }
 
-  return count;
+  // 不能实现首尾接龙则返回 0
+  return 0;
 }
 
 function get_next_words(wordList, word) {
@@ -73,5 +68,7 @@ function get_next_words(wordList, word) {
 // test data
 let beginWord = 'hit';
 let endWord = 'cog';
-let wordList = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'];
-console.log(ladderLength(beginWord, endWord, wordList));
+let wordList_1 = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'];
+let wordList_2 = ['hot', 'dot', 'dog', 'lot', 'log'];
+console.log(ladderLength(beginWord, endWord, wordList_1));
+console.log(ladderLength(beginWord, endWord, wordList_2));
