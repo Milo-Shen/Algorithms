@@ -1,4 +1,4 @@
-const { TreeNode } = require('../../Tree Node/Javascript/TreeNode');
+const { TreeNode } = require('../../TreeNode/Javascript/TreeNode');
 
 function buildBinaryTree(nums) {
   let nums_len = nums.length;

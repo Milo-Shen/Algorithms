@@ -12,6 +12,7 @@ function buildUndirectedGraph(data) {
     return null;
   }
 
+  data = dataAdapter(data);
   let map = new Map();
 
   // create the root
@@ -48,16 +49,18 @@ function buildNodeFromNeighbors(root, list, map) {
 
 module.exports = {
   UndirectedGraphNode,
+  buildUndirectedGraph,
 };
 
-console.log(buildUndirectedGraph(dataAdapter([1, 2, '4#2', 1, '4#4', 1, 2])));
-console.log(
-  buildUndirectedGraph(
-    dataAdapter([
-      [2, 4],
-      [1, 3],
-      [2, 4],
-      [1, 3],
-    ]),
-  ),
-);
+// test cases
+// console.log(buildUndirectedGraph(dataAdapter([1, 2, '4#2', 1, '4#4', 1, 2])));
+// console.log(
+//   buildUndirectedGraph(
+//     dataAdapter([
+//       [2, 4],
+//       [1, 3],
+//       [2, 4],
+//       [1, 3],
+//     ]),
+//   ),
+// );
