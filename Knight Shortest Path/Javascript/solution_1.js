@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/611/
+// lint code 上这题输入的 grid 是 boolean 数组, source 和 destination 是 Point 实例, 这个需要注意
 
 // 对于点的定义
 class Point {
