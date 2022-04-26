@@ -1,5 +1,13 @@
 // https://www.lintcode.com/problem/611/
 
+// 对于点的定义
+class Point {
+  constructor(x = 0, y = 0) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
 // 国际象棋的 8 个方向
 const directions = [
   // 往下走
@@ -23,7 +31,7 @@ function shortestPath(grid, source, destination) {
   let paths = -1;
 
   let queue = [source];
-  let set = new Set([source.join('')]);
+  let set = new Set([`${source.x}${source.y}`]);
 
   while (queue.length) {
     paths++;
@@ -33,20 +41,20 @@ function shortestPath(grid, source, destination) {
       let coordinate = queue.shift();
 
       // 若是找到了, 则退出
-      if (coordinate[0] === destination[0] && coordinate[1] === destination[1]) {
+      if (coordinate.x === destination.x && coordinate.y === destination.y) {
         return paths;
       }
 
       // 国际象棋的走法 ( 8 个方位进行 bfs )
       for (let j = 0; j < 8; j++) {
         let delta = directions[j];
-        let new_coordinate_x = coordinate[0] + delta.x;
-        let new_coordinate_y = coordinate[1] + delta.y;
+        let new_coordinate_x = coordinate.x + delta.x;
+        let new_coordinate_y = coordinate.y + delta.y;
         let setFlag = `${new_coordinate_x}${new_coordinate_y}`;
         if (set.has(setFlag) || !is_valid(grid, new_coordinate_x, new_coordinate_y)) {
           continue;
         }
-        queue.push([new_coordinate_x, new_coordinate_y]);
+        queue.push({ x: new_coordinate_x, y: new_coordinate_y });
         set.add(setFlag);
       }
     }
@@ -74,6 +82,6 @@ let grid = [
   [0, 0, 0],
 ];
 
-let source = [2, 0];
-let destination = [2, 2];
+let source = new Point(2, 0);
+let destination = new Point(2,2);
 console.log(shortestPath(grid, source, destination));
