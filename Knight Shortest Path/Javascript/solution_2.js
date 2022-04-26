@@ -13,6 +13,7 @@ const directions = [
   { x: -2, y: -1 },
 ];
 
+// todo: 此题用 BFS 会超时
 function shortestPath(x, y) {
   // 最短路径数
   let paths = -1;
