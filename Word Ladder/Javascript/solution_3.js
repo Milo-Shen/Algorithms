@@ -18,6 +18,7 @@ function ladderLength(beginWord, endWord, wordList) {
 
       // 如果当前层的值，正好是结尾词
       if (word === endWord) {
+        // 因为最终要统计所有节点的数量，所以要把首节点也加进来，所以 + 1
         return map.get(word) + 1;
       }
 
