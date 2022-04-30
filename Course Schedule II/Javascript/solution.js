@@ -54,11 +54,12 @@ function findOrder(numCourses, prerequisites) {
 }
 
 // test cases
-let numCourses = 4;
-let prerequisites = [
-  [1, 0],
-  [2, 0],
-  [3, 1],
-  [3, 2],
-];
+console.log(
+  findOrder(4, [
+    [1, 0],
+    [2, 0],
+    [3, 1],
+    [3, 2],
+  ]),
+);
 console.log(findOrder(2, [[0, 1]]));
