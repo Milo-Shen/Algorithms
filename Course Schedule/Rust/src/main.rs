@@ -6,6 +6,6 @@ fn main() {
         vec![1, 0], vec![2, 0],
         vec![3, 1], vec![3, 2],
     ];
-    let answer = solution::find_order(nums_course, prerequisites);
+    let answer = solution::can_finish(nums_course, prerequisites);
     println!("answer = {:?}", answer);
 }

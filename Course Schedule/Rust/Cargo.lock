@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "Course_Schedule_II"
+name = "Course_Schedule"
 version = "1.0.0"

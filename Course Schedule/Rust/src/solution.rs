@@ -1,15 +1,11 @@
 // https://leetcode.cn/problems/course-schedule-ii/
 // https://www.lintcode.com/problem/616/
 
-pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
+pub fn can_finish(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> bool {
     let prerequisites_len = prerequisites.len();
     let num_courses_usize = num_courses as usize;
     if prerequisites_len == 0 {
-        let mut result = vec![];
-        for i in 0..num_courses_usize {
-            result.push(i as i32);
-        }
-        return result;
+        return num_courses == 0;
     }
 
     // 构建图, 代表先修课 -> 后修课
@@ -32,13 +28,11 @@ pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
     }
 
     // 先修课的列表 与 已修课的数量
-    let mut top_course = vec![];
     let mut num_count = 0;
 
     // 开始对课程进行拓扑排序
     while queue.len() > 0 {
         let course = queue.remove(0);
-        top_course.push(course);
         num_count = num_count + 1;
 
         // BFS 已经修过的课程下一层节点, 并把他们的入度数 - 1
@@ -52,6 +46,5 @@ pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
             }
         }
     }
-
-    if num_count == num_courses { top_course } else { vec![] }
+    return num_count == num_courses;
 }
