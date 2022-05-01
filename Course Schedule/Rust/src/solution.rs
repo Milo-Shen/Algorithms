@@ -5,7 +5,7 @@ pub fn can_finish(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> bool {
     let prerequisites_len = prerequisites.len();
     let num_courses_usize = num_courses as usize;
     if prerequisites_len == 0 {
-        return num_courses == 0;
+        return num_courses != 0;
     }
 
     // 构建图, 代表先修课 -> 后修课
