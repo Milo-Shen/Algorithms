@@ -109,7 +109,7 @@ function getTopOrder(inDegree, graph) {
     }
   }
 
-  return graph.size === topOrder.length ? topOrder : null;
+  return graph.size === travelCount ? topOrder : null;
 }
 
 // test data
