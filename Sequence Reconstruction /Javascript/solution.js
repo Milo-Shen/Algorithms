@@ -113,10 +113,10 @@ function getTopOrder(inDegree, graph) {
 }
 
 // test data
-let nums = [1, 2, 3];
+let nums = [4, 1, 5, 2, 6, 3];
 let sequences = [
-  [1, 2],
-  [1, 3],
+  [5, 2, 6, 3],
+  [4, 1, 5, 2],
 ];
 
 console.log(sequenceReconstruction(nums, sequences));
