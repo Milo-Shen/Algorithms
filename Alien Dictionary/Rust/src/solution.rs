@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/892/
+// https://leetcode.cn/problems/Jf1JuT/
+
 use std::cmp::min;
 use std::collections::{HashMap, HashSet, BinaryHeap};
 
@@ -40,6 +43,7 @@ fn build_graph(words: &Vec<String>) -> Option<HashMap<char, HashSet<char>>> {
         let mut index = 0;
         while index < word_vec[i].len() && index < word_vec[i + 1].len() {
             if word_vec[i][index] != word_vec[i + 1][index] {
+                graph.get_mut(&word_vec[i][index]).unwrap().insert(word_vec[i + 1][index]);
                 break;
             }
             index = index + 1;
@@ -56,8 +60,28 @@ fn build_graph(words: &Vec<String>) -> Option<HashMap<char, HashSet<char>>> {
     Some(graph)
 }
 
-fn get_in_degree(graph: &HashMap<char, HashSet<char>>) {}
+fn get_in_degree(graph: &HashMap<char, HashSet<char>>) {
+    // 存储每个节点的入度数
+    let mut in_degree: HashMap<char, usize> = HashMap::new();
+
+    // 初始化每个节点的入度数
+    for (&node, _) in graph {
+        in_degree.insert(node, 0);
+    }
+
+    // 计算每个节点的入度数
+    for neighbors in graph.values() {
+        for &neighbor in neighbors {
+            in_degree.insert(neighbor, *in_degree.get(&neighbor).unwrap() + 1);
+        }
+    }
+
+    println!("{:?}", in_degree);
+}
 
 fn get_topological_sorting(graph: &HashMap<char, HashSet<char>>) -> String {
+    // 计算入度
+    get_in_degree(graph);
+
     String::new()
 }

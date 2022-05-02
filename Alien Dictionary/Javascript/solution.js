@@ -56,6 +56,7 @@ function getInDegree(graph) {
     inDegree.set(neighbors, 0);
   }
 
+  // 计算每个节点的入度数
   for (let neighbors of graph.values()) {
     for (let neighbor of neighbors) {
       inDegree.set(neighbor, inDegree.get(neighbor) + 1);
