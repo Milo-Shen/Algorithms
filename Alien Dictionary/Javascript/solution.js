@@ -111,5 +111,5 @@ function getMinimum(array) {
   return array.splice(min, 1)[0];
 }
 
-let words = ['wrt', 'wrf', 'er', 'ett', 'rftt'];
-console.log(alienOrder(words));
+console.log(alienOrder(['wrt', 'wrf', 'er', 'ett', 'rftt']));
+console.log(alienOrder(['z', 'x', 'z']));
