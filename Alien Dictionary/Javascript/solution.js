@@ -94,7 +94,9 @@ function getTopologicalSorting(graph) {
       inDegree.set(neighbor, neighborDegree);
 
       // 如果发现有新的入度为 0 的节点, 则推入栈中
-      queue.push(neighbor);
+      if (neighborDegree === 0) {
+        queue.push(neighbor);
+      }
     }
   }
 
