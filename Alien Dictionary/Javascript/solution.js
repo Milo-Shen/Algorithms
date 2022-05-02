@@ -83,7 +83,7 @@ function getTopologicalSorting(graph) {
 
   // BFS 图
   while (queue.length) {
-    let node = queue.shift();
+    let node = getMinimum(queue);
     travelPath.push(node);
     travelCount++;
 
@@ -111,5 +111,4 @@ function getMinimum(array) {
   return array.splice(min, 1)[0];
 }
 
-console.log(alienOrder(['wrt', 'wrf', 'er', 'ett', 'rftt']));
-console.log(alienOrder(['z', 'x', 'z']));
+console.log(alienOrder(['ac', 'ab', 'b']));
