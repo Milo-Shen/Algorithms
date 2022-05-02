@@ -4,7 +4,12 @@
 function alienOrder(words) {
   // 生成 graph
   let graph = buildGraph(words);
-  console.log(graph);
+
+  // 计算入度
+  let inDegree = getInDegree(graph);
+
+  // 获得拓扑排序
+  let order = getTopologicalSorting(inDegree, graph);
 }
 
 function buildGraph(words) {
@@ -41,5 +46,49 @@ function buildGraph(words) {
   return graph;
 }
 
+function getInDegree(graph) {
+  // 存储每个节点的入度数
+  let inDegree = new Map();
+
+  // 初始化每个节点的入度数
+  for (let neighbors of graph.keys()) {
+    inDegree.set(neighbors, 0);
+  }
+
+  for (let neighbors of graph.values()) {
+    for (let neighbor of neighbors) {
+      inDegree.set(neighbor, inDegree.get(neighbor) + 1);
+    }
+  }
+
+  return inDegree;
+}
+
+function getTopologicalSorting(inDegree, graph) {
+  let queue = [];
+
+  // 遍历过的节点数量 与 遍历过的路径
+  let travelCount = 0;
+  let travelPath = [];
+
+  // 把所有入度为 0 的压入栈中
+  for (let [node, degree] of inDegree) {
+    if (degree !== 0) continue;
+    queue.push(node);
+  }
+
+  // BFS 图
+  while (queue.length) {}
+}
+
+function getMinimum(array) {
+  let min = 0;
+  for (let i = 1, len = array.length; i < len; i++) {
+    if (array[i] >= array[min]) continue;
+    min = i;
+  }
+}
+
 let words = ['wrt', 'wrf', 'er', 'ett', 'rftt'];
-console.log(alienOrder(words));
+// console.log(alienOrder(words));
+console.log(getMinimum(['a', 'b']));
