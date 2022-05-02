@@ -81,13 +81,13 @@ function getTopOrder(inDegree, graph) {
   // 遍历过的节点数量
   let travelCount = 0;
 
-  // 把入度数为 0 的节点放到
+  // 把入度数为 0 的节点放到栈中
   for (let [node, degree] of inDegree) {
     if (degree !== 0) continue;
     queue.push(node);
   }
 
-  // BFS 节点
+  // BFS 图
   while (queue.length) {
     if (queue.length > 1) {
       return null;
