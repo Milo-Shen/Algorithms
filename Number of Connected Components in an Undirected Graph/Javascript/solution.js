@@ -8,6 +8,9 @@ function countComponents(n, edges) {
 
   // 构建图
   let graph = buildGraph(n, edges);
+
+  // BFS 图
+  return BFS(n, graph);
 }
 
 function buildGraph(n, edges) {
@@ -28,6 +31,34 @@ function buildGraph(n, edges) {
   return graph;
 }
 
+function BFS(n, graph) {
+  let a = Array(n)
+    .fill(0)
+    .map((_, index) => ({ node: index + 1, visited: false }));
+  console.log(a);
+
+  let queue = [0];
+  let travel = [];
+  let set = new Set([0]);
+
+  while (queue.length) {
+    let node = queue.shift();
+    travel.push(node);
+
+    // 遍历 node 的 neighbor
+    let neighbors = graph.get(node);
+    for (let neighbor of neighbors) {
+      if (set.has(neighbor)) {
+        continue;
+      }
+      queue.push(neighbor);
+      set.add(neighbor);
+    }
+  }
+
+  return travel.length === n;
+}
+
 // test data
 let n = 5;
 let edges = [
@@ -35,4 +66,4 @@ let edges = [
   [1, 2],
   [3, 4],
 ];
-console.log(n, edges);
+console.log(countComponents(n, edges));
