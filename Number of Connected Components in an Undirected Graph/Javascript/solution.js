@@ -9,8 +9,24 @@ function countComponents(n, edges) {
   // 构建图
   let graph = buildGraph(n, edges);
 
-  // BFS 图
-  return BFS(n, graph);
+  // 访问过的节点
+  let visited = Array(n).fill(false);
+
+  // 连通分量的数目
+  let count = 0;
+
+  // 开始遍历每一个节点, 看看是否被访问过了
+  for (let i = 0, len_i = edges.length; i < len_i; i++) {
+    for (let j = 0, len_j = edges[i].length; j < len_j; j++) {
+      let node = edges[i][j];
+      if (!visited[node]) {
+        BFS(graph, node, edges, visited);
+        count++;
+      }
+    }
+  }
+
+  return count;
 }
 
 function buildGraph(n, edges) {
@@ -31,32 +47,22 @@ function buildGraph(n, edges) {
   return graph;
 }
 
-function BFS(n, graph) {
-  let a = Array(n)
-    .fill(0)
-    .map((_, index) => ({ node: index + 1, visited: false }));
-  console.log(a);
-
-  let queue = [0];
-  let travel = [];
-  let set = new Set([0]);
+function BFS(graph, node, edges, visited) {
+  let queue = [node];
+  visited[node] = true;
 
   while (queue.length) {
     let node = queue.shift();
-    travel.push(node);
-
     // 遍历 node 的 neighbor
     let neighbors = graph.get(node);
     for (let neighbor of neighbors) {
-      if (set.has(neighbor)) {
+      if (visited[neighbor]) {
         continue;
       }
       queue.push(neighbor);
-      set.add(neighbor);
+      visited[neighbor] = true;
     }
   }
-
-  return travel.length === n;
 }
 
 // test data
