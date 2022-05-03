@@ -26,6 +26,9 @@ function countComponents(n, edges) {
     }
   }
 
+  // 加入剩余未被遍历到的点
+  count = count + visited.filter((x) => x === false).length;
+
   return count;
 }
 
@@ -66,10 +69,10 @@ function BFS(graph, node, edges, visited) {
 }
 
 // test data
-let n = 5;
+let n = 4;
 let edges = [
-  [0, 1],
+  [2, 3],
   [1, 2],
-  [3, 4],
+  [1, 3],
 ];
 console.log(countComponents(n, edges));
