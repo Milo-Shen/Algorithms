@@ -50,6 +50,7 @@ function buildNodeFromNeighbors(root, list, map) {
 module.exports = {
   UndirectedGraphNode,
   buildUndirectedGraph,
+  dataAdapter
 };
 
 // test cases
