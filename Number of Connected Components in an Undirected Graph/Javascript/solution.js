@@ -16,18 +16,12 @@ function countComponents(n, edges) {
   let count = 0;
 
   // 开始遍历每一个节点, 看看是否被访问过了
-  for (let i = 0, len_i = edges.length; i < len_i; i++) {
-    for (let j = 0, len_j = edges[i].length; j < len_j; j++) {
-      let node = edges[i][j];
-      if (!visited[node]) {
-        BFS(graph, node, edges, visited);
-        count++;
-      }
+  for (let i = 0; i < n; i++) {
+    if (!visited[i]) {
+      BFS(graph, i, edges, visited);
+      count++;
     }
   }
-
-  // 加入剩余未被遍历到的点
-  count = count + visited.filter((x) => x === false).length;
 
   return count;
 }
