@@ -48,6 +48,7 @@ function init_visited(row, col) {
   return visited;
 }
 
+// BFS 的时候需要记录路径
 function bfs(grid, x, y) {
   let row = grid.length;
   let col = grid[0].length;
