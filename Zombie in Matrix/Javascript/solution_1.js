@@ -64,6 +64,9 @@ function bfs(grid, row, col) {
     }
   }
 
+  // 这个解法, 不好的地方是没有很直观的去判断当前剩余人类是不是 0
+  // 而是选择 bfs 结束之后, 再去判断当前有没有剩余的人类, 则很不直观
+  // 最直接的影响就是要处理很多的特殊情况
   let steps = -1;
   while (queue.length) {
     let queue_len = queue.length;
