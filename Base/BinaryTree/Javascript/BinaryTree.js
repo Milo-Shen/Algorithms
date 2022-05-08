@@ -17,11 +17,13 @@ function buildBinaryTree(nums) {
     if (isValid(nums[i]) && nums[i] !== '#') {
       let newNode = new TreeNode(nums[i]);
       node.left = newNode;
+      newNode.parent = node;
       queue.push(newNode);
     }
     if (isValid(nums[i + 1]) && nums[i + 1] !== '#') {
       let newNode = new TreeNode(nums[i + 1]);
       node.right = newNode;
+      newNode.parent = node;
       queue.push(newNode);
     }
   }
