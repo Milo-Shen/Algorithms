@@ -92,3 +92,7 @@ let nums = [
 ];
 let binaryTree = buildBinaryTree(nums);
 console.log(serialize(deserialize(serialize(binaryTree))));
+
+module.exports = {
+  serialize,
+};
