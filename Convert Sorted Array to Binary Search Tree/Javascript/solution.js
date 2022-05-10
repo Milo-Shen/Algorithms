@@ -1,5 +1,6 @@
 // https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
 // https://www.lintcode.com/problem/1359
+
 const { TreeNode } = require('../../Base/TreeNode/Javascript/TreeNode');
 const { serialize } = require('../../Serialize binary trees/Javascript/solution');
 
