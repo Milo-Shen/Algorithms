@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/5
+// https://leetcode.cn/problems/xx4gT2/
 // todo: 需要理解 quick select 的思想
 
 function solution_number(k, nums) {
