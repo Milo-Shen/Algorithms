@@ -91,7 +91,7 @@ let nums = [
   -2,
 ];
 let binaryTree = buildBinaryTree(nums);
-console.log(serialize(deserialize(serialize(binaryTree))));
+// console.log(serialize(deserialize(serialize(binaryTree))));
 
 module.exports = {
   serialize,
