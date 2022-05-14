@@ -12,14 +12,10 @@ function isBST(root) {
   let { isBST: is_left_bst, max: left_max, min: left_min } = isBST(root.left);
   let { isBST: is_right_bst, max: right_max, min: right_min } = isBST(root.right);
 
-  let isCurBsT = is_left_bst && is_right_bst;
-  let left_valid = root.left ? root.left.val < root.val : true;
-  let right_valid = root.right ? root.right.val > root.val : true;
-
   let left_max_valid = left_max < root.val;
   let right_min_valid = right_min > root.val;
 
-  isCurBsT = isCurBsT && left_max_valid && right_min_valid && left_valid && right_valid;
+  let isCurBsT = is_left_bst && is_right_bst && left_max_valid && right_min_valid;
 
   let max = Math.max(left_max, right_max, root.val);
   let min = Math.min(left_min, right_min, root.val);
