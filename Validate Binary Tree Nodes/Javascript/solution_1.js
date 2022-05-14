@@ -1,5 +1,7 @@
 // https://leetcode.cn/problems/validate-binary-tree-nodes/
 
+// 这个方法是暴力求解，以为没有事先去找到二叉树的根节点，等于是去尝试了所有的节点都是根节点的可能性
+// 时间复杂度太高
 function validateBinaryTreeNodes(n, leftChild, rightChild) {
   let treeCount = 0;
   for (let i = 0; i < n; i++) {
