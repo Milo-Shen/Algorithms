@@ -1,4 +1,6 @@
 // https://leetcode.cn/problems/binary-tree-preorder-traversal/
+// https://www.lintcode.com/problem/66/
+
 function preorderTraversal(root) {
   let result = [];
   travel(root, result);
