@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/search-in-a-binary-search-tree/
+// https://www.lintcode.com/problem/1524
 
 function searchBST(root, val) {
   let queue = [root];
