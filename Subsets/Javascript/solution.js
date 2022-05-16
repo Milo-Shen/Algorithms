@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/17/
+// https://leetcode.cn/problems/subsets/submissions/
 
 function subsets(nums) {
   let result = [];
