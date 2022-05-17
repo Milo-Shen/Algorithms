@@ -14,21 +14,14 @@ function subsets(nums) {
 }
 
 // 1. 递归的定义
-function dfs(nums, index, subset, result) {
-  // 3. 递归的出口
-  if (index === nums.length) {
-    result.push([...subset]);
-    return;
+function dfs(nums, start_index, subset, result) {
+  result.push([...subset]);
+
+  for (let i = start_index; i < nums.length; i++) {
+    subset.push(nums[i]);
+    dfs(nums, i + 1, subset, result);
+    subset.pop();
   }
-
-  // 2. 递归的拆解
-  // 选 nums[index]
-  subset.push(nums[index]);
-  dfs(nums, index + 1, subset, result);
-
-  // 不选 nums[index]
-  subset.pop();
-  dfs(nums, index + 1, subset, result);
 }
 
 // test cases
