@@ -4,7 +4,7 @@
 function subsetsWithDup(nums) {
   let result = [];
   if (!nums) {
-    return result;
+    return [[]];
   }
 
   let visited = new Set();

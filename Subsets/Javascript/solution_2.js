@@ -4,7 +4,7 @@
 function subsets(nums) {
   let result = [];
   if (!nums) {
-    return result;
+    return [[]];
   }
 
   nums = nums.sort((a, b) => a - b);
