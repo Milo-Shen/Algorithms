@@ -5,7 +5,7 @@ function permute(nums) {
   let nums_len = nums.length;
   let result = [];
   if (!nums || !nums_len) {
-    return result;
+    return [[]];
   }
 
   let visited = Array(nums_len).fill(false);
