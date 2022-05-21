@@ -2,26 +2,42 @@
 
 function minCost(n, roads) {
   // 构建图
-  let graph = build_graph(roads, n);
+  let graph = build_graph(roads);
   let result = { min: Infinity };
+  dfs(1, n, new Set(["1"]), 0, graph, result);
+  return result.min;
 }
 
-function build_graph(roads, n) {
-  let graph = [];
-
-  // 使用邻接矩阵的方式构建图
-  for (let i = 0; i <= n; i++) {
-    let temp = [];
-    for (let j = 0; j <= n; j++) {
-      temp[j] = Infinity;
-    }
-    graph.push(temp);
+function dfs(city, n, visited, cost, graph, result) {
+  if (visited.size === n) {
+    result.min = Math.min(result.min, cost);
+    return;
   }
+
+  for (let next_city in graph[city]) {
+    if (!graph[city].hasOwnProperty(next_city) || visited.has(next_city)) {
+      continue;
+    }
+
+    visited.add(next_city);
+    dfs(next_city, n, visited, cost + graph[city][next_city], graph, result);
+    visited.delete(next_city);
+  }
+}
+
+function build_graph(roads) {
+  let graph = {};
 
   // 开始构建图
   for (let [a, b, c] of roads) {
+    graph[a] = graph[a] || {};
+    graph[a][b] = graph[a][b] || Infinity;
+
+    graph[b] = graph[b] || {};
+    graph[b][a] = graph[b][a] || Infinity;
+
     graph[a][b] = Math.min(graph[a][b], c);
-    graph[a][b] = Math.min(graph[b][a], c);
+    graph[b][a] = Math.min(graph[b][a], c);
   }
 
   return graph;
