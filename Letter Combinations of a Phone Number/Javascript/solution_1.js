@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/425
+// https://leetcode.cn/problems/letter-combinations-of-a-phone-number/submissions/
 
 let digital_phone = {
   2: ['a', 'b', 'c'],
