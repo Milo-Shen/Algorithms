@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/Milo-Shen/Algorithms#readme",
   "devDependencies": {
-    "prettier": "^2.6.0"
+    "prettier": "^2.6.2"
   }
 }
