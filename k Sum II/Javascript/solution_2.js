@@ -24,7 +24,7 @@ function dfs(A, k, target, index, temp, result) {
 
   for (let i = index, len = A.length; i < len; i++) {
     temp.push(A[i]);
-    dfs(A, k - 1, target - A[i], index + 1, temp, result);
+    dfs(A, k - 1, target - A[i], i + 1, temp, result);
     temp.pop();
   }
 }
