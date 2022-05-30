@@ -34,6 +34,7 @@ function dfs(nums, index, target, subset, result) {
     // 递归到下一层去选定下一个数字
     // 这里传入 1 而不是 i + 1, 下一层 dfs 可以重复使用位置的数字
     dfs(nums, i, target - nums[i], subset, result);
+    // 此处是回溯的操作
     subset.pop();
   }
 }
