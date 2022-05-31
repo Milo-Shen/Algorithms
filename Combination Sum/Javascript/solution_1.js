@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/combination-sum/
+// https://www.lintcode.com/problem/135/
 
 function combinationSum(candidates, target) {
   let result = [];
