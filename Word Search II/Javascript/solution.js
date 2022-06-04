@@ -38,7 +38,7 @@ function findWords(board, words) {
 // dfs 找到单词 ( 第一步: 递归的定义 )
 function dfs(prefixes, board, words, max_len, x, y, str, visited, result) {
   // 第三步, 递归的退出条件
-  if (str.length > max_len || !prefixes.has(str)) {
+  if (str.length >= max_len || !prefixes.has(str)) {
     return;
   }
 
@@ -102,6 +102,6 @@ function init_visited(row, col) {
 }
 
 // test cases
-let board = ['abce', 'sfes', 'adee'];
-let words = ['abceseeefs', 'abceseedasfe'];
+let board = ['doaf', 'agai', 'dcan'];
+let words = ['dog', 'dad', 'dgdg', 'can', 'again'];
 console.log(findWords(board, words));
