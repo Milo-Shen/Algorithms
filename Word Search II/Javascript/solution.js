@@ -14,6 +14,15 @@ const directions = [
 ];
 
 function findWords(board, words) {
+  // 异常检测
+  if (!board || !board.length) {
+    return [];
+  }
+
+  if (!board[0] || !board[0].length) {
+    return [];
+  }
+
   // 存储单词的结果
   let result = new Set();
 
@@ -24,11 +33,15 @@ function findWords(board, words) {
   let row = board.length;
   let col = board[0].length;
 
+  // 是否已经访问过
+  let visited = init_visited(row, col);
+
   // DFS 遍历寻找是否 word list 里的单词能否被找到
   for (let i = 0, len = board.length; i < len; i++) {
     for (let j = 0, len_j = board[i].length; j < len_j; j++) {
-      let visited = init_visited(row, col);
+      visited[i][j] = true;
       dfs(prefixes, board, words, max_len, i, j, board[i][j], visited, result);
+      visited[i][j] = false;
     }
   }
 
@@ -38,9 +51,13 @@ function findWords(board, words) {
 // dfs 找到单词 ( 第一步: 递归的定义 )
 function dfs(prefixes, board, words, max_len, x, y, str, visited, result) {
   // 第三步, 递归的退出条件
-  if (str.length >= max_len || !prefixes.has(str)) {
+  if (!prefixes.has(str)) {
     return;
   }
+
+  // if (str.length > max_len) {
+  //   return;
+  // }
 
   if (words.find((x) => x === str)) {
     result.add(str);
@@ -58,6 +75,7 @@ function dfs(prefixes, board, words, max_len, x, y, str, visited, result) {
 
     visited[pos_x][pos_y] = true;
     dfs(prefixes, board, words, max_len, pos_x, pos_y, str + board[pos_x][pos_y], visited, result);
+    visited[pos_x][pos_y] = false;
   }
 }
 
