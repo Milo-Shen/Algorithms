@@ -51,13 +51,9 @@ function findWords(board, words) {
 // dfs 找到单词 ( 第一步: 递归的定义 )
 function dfs(prefixes, board, words, max_len, x, y, str, visited, result) {
   // 第三步, 递归的退出条件
-  if (!prefixes.has(str)) {
+  if (!prefixes.has(str) || str.length > max_len) {
     return;
   }
-
-  // if (str.length > max_len) {
-  //   return;
-  // }
 
   if (words.find((x) => x === str)) {
     result.add(str);
