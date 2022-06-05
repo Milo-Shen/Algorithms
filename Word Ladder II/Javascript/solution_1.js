@@ -36,7 +36,7 @@ function dfs(word, endWord, start_index, wordList, visited, path, min_path, resu
   for (let i = 0, len = next_words_list.length; i < len; i++) {
     let cur_word = next_words_list[i];
 
-    if (visited.has(cur_word)) {
+    if (visited.has(cur_word) || start_index + 1 > min_path.min) {
       continue;
     }
 
