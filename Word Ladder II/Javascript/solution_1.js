@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/120/
+// https://leetcode.cn/problems/word-ladder-ii/
 
 function findLadders(beginWord, endWord, wordList) {
   // 对异常进行处理
