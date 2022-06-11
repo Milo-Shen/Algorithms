@@ -1,33 +1,59 @@
 // https://www.lintcode.com/problem/404/
 
 function subarraySumII(a, start, end) {
+  let nums_len = a.length;
+
   // 异常处理
-  if (!a || !a.length || start > end) {
+  if (!a || !nums_len || start > end) {
     return [];
   }
 
-  let result = { total: 0 };
+  // 获取前缀和
+  let prefix_sum_arr = prefix_sum(a);
 
-  dfs(a, 0, [], result, start, end);
+  let count = 0;
 
-  return result.total;
-}
+  for (let i = 0; i < nums_len; ++i) {
+    let min_j = i;
+    let max_j = i;
 
-function dfs(A, start_index, sub_array, result, start, end) {
-  let total = sub_array.reduce((total, val) => total + A[val], 0);
-  if (sub_array.length && start <= total && total <= end) {
-    result.total++;
-  }
-
-  for (let i = start_index, len = A.length; i < len; i++) {
-    if (sub_array.length && sub_array[sub_array.length - 1] + 1 !== i) {
-      continue;
+    // 退出循环的时候, min_j 正好是符合要求的最小的 right 值
+    while (prefix_sum_arr[min_j + 1] - prefix_sum_arr[i] < start) {
+      min_j++;
     }
 
-    sub_array.push(i);
-    dfs(A, i + 1, sub_array, result, start, end);
-    sub_array.pop();
+    // 退出循环的时候, max_j 比符合要求的最大的 right 值大 1
+    while (prefix_sum_arr[max_j + 1] - prefix_sum_arr[i] <= end) {
+      max_j++;
+    }
+
+    // 所以方案的数量为 max_j - min_j
+    count += max_j - min_j;
   }
+
+  return count;
+}
+
+// 计算数组的前缀和
+function prefix_sum(nums) {
+  // 前缀和的定义
+  //   - 构造一个长度为 n + 1 的数组 prefix_sum_arr
+  //   - prefix_sum_arr[i] 代表前 i 个数字的和, prefix_sum_arr[0] = 0
+  // 构造前缀和
+  //   - 当前前缀和 = 之前前缀和 + 当前元素
+  //   - prefix_sum_arr[i] = prefix_sum_arr[i - 1] + arr[i - 1]
+  // 前缀和的应用
+  //   - 使用前缀和数组在 O(1) 的时间复杂度内计算子数组的和
+  //   - from i to j = prefix_sum_arr[j + 1] - prefix_sum_arr[i]
+
+  let prefix_sum_arr = [];
+  prefix_sum_arr[0] = 0;
+
+  for (let i = 0, len = nums.length; i < len; i++) {
+    prefix_sum_arr[i + 1] = prefix_sum_arr[i] + nums[i];
+  }
+
+  return prefix_sum_arr;
 }
 
 // test cases
