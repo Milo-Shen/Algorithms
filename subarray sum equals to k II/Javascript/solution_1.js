@@ -5,7 +5,7 @@ function subarraySumEqualsKII(nums, k) {
 
   // 异常处理
   if (!nums || !nums_len) {
-    return 0;
+    return -1;
   }
 
   // 获取前缀和
