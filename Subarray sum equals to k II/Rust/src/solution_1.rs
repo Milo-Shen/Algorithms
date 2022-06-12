@@ -17,7 +17,7 @@ pub fn subarray_sum_equals_k_i_i(nums: Vec<i32>, k: i32) -> i32 {
         }
     }
 
-    min_len
+    if min_len == i32::MAX { -1 } else { min_len }
 }
 
 fn prefix_sum(nums: &Vec<i32>) -> Vec<i32> {

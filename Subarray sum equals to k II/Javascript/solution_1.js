@@ -27,7 +27,7 @@ function subarraySumEqualsKII(nums, k) {
     }
   }
 
-  return min_len;
+  return min_len === Infinity ? -1 : min_len;
 }
 
 function prefix_sum(nums) {

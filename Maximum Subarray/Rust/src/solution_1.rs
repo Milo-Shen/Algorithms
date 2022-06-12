@@ -12,7 +12,7 @@ pub fn max_sub_array(nums: Vec<i32>) -> i32 {
         }
     }
 
-    max
+    if max == i32::MIN { -1 } else { max }
 }
 
 fn prefix_sum(nums: &Vec<i32>) -> Vec<i32> {
