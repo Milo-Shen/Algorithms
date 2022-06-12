@@ -6,7 +6,7 @@ function findMaxLength(nums) {
 
   // 异常处理
   if (!nums || !nums_len) {
-    return -1;
+    return 0;
   }
 
   // 将所有的 0 变成 -1
