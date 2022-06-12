@@ -1,6 +1,6 @@
 // https://www.lintcode.com/problem/1844/
 
-function subarraySum(nums, k) {
+function subarraySumEqualsKII(nums, k) {
   let nums_len = nums.length;
 
   // 异常处理
