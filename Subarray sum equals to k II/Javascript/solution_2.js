@@ -34,9 +34,6 @@ function subarraySumEqualsKII(nums, k) {
 }
 
 // test cases
-let A = [
-  -4, -1, -6, 16, 13, 2, -1, -4, 6, 6, -9, 13, 3, -6, -6, 16, 8, -10, 2, 1, 0, 8, 6, 16, 11, 0, 10,
-  -6, -5, 16,
-];
+let A = [3, 1, -1, 5, 7];
 let k = 12;
 console.log(subarraySumEqualsKII(A, k));
