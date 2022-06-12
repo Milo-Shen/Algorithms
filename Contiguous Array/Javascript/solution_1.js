@@ -31,9 +31,7 @@ function findMaxLength(nums) {
       let j = sum_to_index.get(prefix_sum);
       let len = i - j + 1;
       max_len = max_len < len ? len : max_len;
-    }
-
-    if (!sum_to_index.has(prefix_sum)) {
+    } else {
       sum_to_index.set(prefix_sum, i + 1);
     }
   }
