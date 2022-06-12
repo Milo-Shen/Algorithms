@@ -1,5 +1,4 @@
 // https://leetcode.cn/problems/subarray-sum-equals-k/
-// https://www.lintcode.com/problem/1844/
 
 function subarraySum(nums, k) {
   let nums_len = nums.length;
