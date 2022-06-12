@@ -25,7 +25,9 @@ function maxSubArrayLen(nums, k) {
       let j = sum_to_index.get(prefix_sum - k);
       let len = i - j + 1;
       max = max < len ? len : max;
-    } else {
+    }
+
+    if (!sum_to_index.has(prefix_sum)) {
       sum_to_index.set(prefix_sum, i + 1);
     }
   }
