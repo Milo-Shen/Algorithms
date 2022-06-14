@@ -37,14 +37,14 @@ function minSubArrayLen(target, nums) {
     return end;
   }
 
-  return -1;
+  return 0;
 }
 
 // 判断是否存在一个子数组, 满足: ( 子数组之和 >= target ) and 子数组长度 <= length
 function isValid(prefix_sum, target, length) {
   // todo: 暂时没有最小堆的 JS 实现, 暂时用原始的方式代替
   for (let i = 0, len = prefix_sum.length; i < len; i++) {
-    for (let j = 0; j < length; j++) {
+    for (let j = 1; j <= length; j++) {
       let pos = i - j;
       if (pos < 0) continue;
       if (prefix_sum[i] - prefix_sum[pos] >= target) {
