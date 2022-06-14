@@ -13,7 +13,7 @@ function minSubArrayLen(target, nums) {
   // 获取前缀和
   let prefix_sum_arr = prefix_sum(nums);
 
-  // 在结果集上进行二分
+  // 在结果集上进行二分, 子数组长度最短为 1, 最长是原始数组的长度
   let start = 1;
   let end = nums_len;
 
@@ -42,7 +42,18 @@ function minSubArrayLen(target, nums) {
 
 // 判断是否存在一个子数组, 满足: ( 子数组之和 >= target ) and 子数组长度 <= length
 function isValid(prefix_sum, target, length) {
-  // todo: finish it
+  // todo: 暂时没有最小堆的 JS 实现, 暂时用原始的方式代替
+  for (let i = 0, len = prefix_sum.length; i < len; i++) {
+    for (let j = 0; j < length; j++) {
+      let pos = i - j;
+      if (pos < 0) continue;
+      if (prefix_sum[i] - prefix_sum[pos] >= target) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 // 构建前缀和
