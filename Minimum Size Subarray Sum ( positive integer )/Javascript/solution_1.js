@@ -9,7 +9,7 @@ function minSubArrayLen(target, nums) {
     return 0;
   }
 
-  // 方案的数量
+  // 最小方案的数组宽度
   let min_len = Infinity;
 
   for (let i = 0; i < nums_len; i++) {

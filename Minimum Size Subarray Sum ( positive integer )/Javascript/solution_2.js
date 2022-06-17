@@ -12,7 +12,7 @@ function minSubArrayLen(target, nums) {
   // 获取前缀和
   let prefix_sum_arr = prefix_sum(nums);
 
-  // 方案的数量
+  // 最小方案的数组宽度
   let min_len = Infinity;
 
   for (let i = 0; i < nums_len; i++) {
