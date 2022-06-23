@@ -34,12 +34,10 @@ function buildGraph(n, edges) {
 
 function BFS(n, graph) {
   let queue = [0];
-  let travel = [];
   let set = new Set([0]);
 
   while (queue.length) {
     let node = queue.shift();
-    travel.push(node);
 
     // 遍历 node 的 neighbor
     let neighbors = graph.get(node);
@@ -52,7 +50,7 @@ function BFS(n, graph) {
     }
   }
 
-  return travel.length === n;
+  return set.size === n;
 }
 
 // test cases
