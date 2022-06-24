@@ -9,7 +9,7 @@ function lengthOfLongestSubstring(s) {
   }
 
   let left = 0;
-  let right = s_len - 1;
+  let right = s_len;
 
   while (left + 1 < right) {
     let mid = left + Math.floor((right - left) / 2);
@@ -58,5 +58,5 @@ function is_valid(s, num) {
 }
 
 // test cases
-let s = ' ';
+let s = 'au';
 console.log(lengthOfLongestSubstring(s));
