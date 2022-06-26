@@ -8,6 +8,7 @@ function lengthOfLongestSubstring(s) {
   let result = 0;
   let heap = {};
 
+  // 采用同向双指针的方式
   let j = 0;
   for (let i = 0; i < s_len; i++) {
     heap[s[i]] = (heap[s[i]] || 0) + 1;
