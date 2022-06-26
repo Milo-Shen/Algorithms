@@ -2,6 +2,7 @@
 
 const { UnionFind } = require('../../Base/UnionFind/Javascript/UnionFind');
 
+// 使用并查集处理此题
 function countComponents(n, edges) {
   // 特殊处理
   if (!edges || !edges.length) {
