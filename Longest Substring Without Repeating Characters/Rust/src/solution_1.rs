@@ -40,9 +40,10 @@ pub fn length_of_longest_substring(s: String) -> i32 {
 fn is_valid(arr: &Vec<char>, num: usize, arr_len: usize) -> bool {
     let mut left = 0;
     let mut right = num - 1;
+    let mut visited: HashSet<char> = HashSet::new();
 
     while right < arr_len {
-        let mut visited: HashSet<char> = HashSet::new();
+        visited.clear();
 
         for i in left..(right + 1) {
             let value = arr[i];
