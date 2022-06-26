@@ -107,3 +107,7 @@ class UnionFind {
     return this.size_of_set.get(root);
   }
 }
+
+module.exports = {
+  UnionFind,
+};
