@@ -1,6 +1,5 @@
 // https://leetcode.cn/problems/longest-substring-without-repeating-characters/
 
-// 使用二分法进行求解
 function lengthOfLongestSubstring(s) {
   // 异常检测
   let s_len = s.length;
