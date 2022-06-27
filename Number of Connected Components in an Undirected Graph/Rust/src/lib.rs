@@ -23,7 +23,7 @@ impl UnionFind {
             return false;
         }
 
-        // 初始化点的父亲为空对象 null
+        // 初始化点的父亲为空对象 null ( 这里因为 rust 支持 Option，所以省略初始化 )
         // 初始化该节点所在集合大小为 1
         // 集合数量 + 1
         self.size_of_set.insert(x, 1);
