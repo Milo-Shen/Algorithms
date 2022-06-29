@@ -34,6 +34,7 @@ class Trie {
 
   /**
    * 往字典树里插入节点
+   * 时间复杂度: O(L)
    * @param word
    */
   insert(word) {
