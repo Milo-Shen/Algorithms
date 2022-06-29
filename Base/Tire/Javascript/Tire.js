@@ -56,3 +56,8 @@ class Trie {
     node.word = word;
   }
 }
+
+module.exports = {
+  TrieNode,
+  Trie,
+};
