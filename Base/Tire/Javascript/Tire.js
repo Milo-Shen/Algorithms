@@ -87,17 +87,15 @@ class Trie {
     let node = this.root;
 
     // 便利 prefix 中的字符
-    for (let i = 0, len = word.length; i < len; i++) {
-      let letter = word[i];
+    for (let i = 0, len = prefix.length; i < len; i++) {
+      let letter = prefix[i];
       if (!node.children.has(letter)) {
         return false;
       }
       node = node.children.get(letter);
     }
 
-    // 循环结束后，只能说明 word 是一个前缀
-    // 故而通过 is_word 变量判断 word 是不是一个单词
-    return node.is_word;
+    return true;
   }
 }
 
