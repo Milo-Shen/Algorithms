@@ -55,6 +55,50 @@ class Trie {
     node.is_word = true;
     node.word = word;
   }
+
+  /**
+   * 判断单词 word 是不是在字典树中
+   * @param word
+   * @returns {boolean}
+   */
+  has_word(word) {
+    let node = this.root;
+
+    // 便利 prefix 中的字符
+    for (let i = 0, len = word.length; i < len; i++) {
+      let letter = word[i];
+      if (!node.children.has(letter)) {
+        return false;
+      }
+      node = node.children.get(letter);
+    }
+
+    // 循环结束后，只能说明 word 是一个前缀
+    // 故而通过 is_word 变量判断 word 是不是一个单词
+    return node.is_word;
+  }
+
+  /**
+   * function: 判断前缀 prefix 是不是在字典树中
+   * @param prefix
+   * @returns {boolean}
+   */
+  has_prefix(prefix) {
+    let node = this.root;
+
+    // 便利 prefix 中的字符
+    for (let i = 0, len = word.length; i < len; i++) {
+      let letter = word[i];
+      if (!node.children.has(letter)) {
+        return false;
+      }
+      node = node.children.get(letter);
+    }
+
+    // 循环结束后，只能说明 word 是一个前缀
+    // 故而通过 is_word 变量判断 word 是不是一个单词
+    return node.is_word;
+  }
 }
 
 module.exports = {
