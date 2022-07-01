@@ -1,6 +1,6 @@
 // https://www.lintcode.com/problem/594
 
-// O(N^2) 的算法
+// O(N) 的算法
 function solution(source, target) {
   if (source === undefined || source === null || target === undefined || target === null) {
     return -1;
