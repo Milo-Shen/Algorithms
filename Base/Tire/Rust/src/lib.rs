@@ -77,8 +77,8 @@ impl Trie {
         let mut node = &mut self.root;
 
         // 遍历 prefix 中的字符
-        let word_arr: Vec<char> = word.chars().collect();
-        for letter in word_arr {
+        let prefix_arr: Vec<char> = prefix.chars().collect();
+        for letter in prefix_arr {
             if !node.children.contains_key(&letter) {
                 return false;
             }
