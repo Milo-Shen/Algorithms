@@ -54,7 +54,7 @@ Trie.prototype.insert = function (word) {
 Trie.prototype.search = function (word) {
   let node = this.root;
 
-  // 便利 prefix 中的字符
+  // 遍历 prefix 中的字符
   for (let i = 0, len = word.length; i < len; i++) {
     let letter = word[i];
     if (!node.children.has(letter)) {

@@ -1,3 +1,7 @@
+use Rust::{TrieNode, Trie};
+
 fn main() {
-    println!("Hello, world!");
+    // test cases
+    let mut trie = Trie::new();
+    trie.insert(String::from("example"));
 }
