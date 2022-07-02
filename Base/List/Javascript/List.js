@@ -23,7 +23,20 @@ function build_list(arr) {
   return root;
 }
 
+function print_list(root) {
+  let result = [];
+  let node = root;
+
+  while (node) {
+    result.push(node.val);
+    node = node.next;
+  }
+
+  console.log(result);
+}
+
 module.exports = {
   ListNode,
   build_list,
+  print_list,
 };
