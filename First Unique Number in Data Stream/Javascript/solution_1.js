@@ -8,18 +8,16 @@ function firstUniqueNumber(nums, number) {
   }
 
   let map = new Map();
-  let find_number = false;
 
   for (let i = 0; i < nums_len; i++) {
     let num = nums[i];
     map.set(num, (map.get(num) || 0) + 1);
     if (num === number) {
-      find_number = true;
       break;
     }
   }
 
-  if (!find_number) {
+  if (!map.has(number)) {
     return -1;
   }
 
