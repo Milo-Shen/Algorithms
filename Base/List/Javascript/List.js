@@ -5,6 +5,14 @@ class ListNode {
   }
 }
 
+class DoubleLinkedListNode {
+  constructor(val = 0, prev = null, next = null) {
+    this.val = val;
+    this.prev = prev;
+    this.next = next;
+  }
+}
+
 function build_list(arr) {
   // 异常检测
   let arr_len = arr.length;
@@ -39,4 +47,5 @@ module.exports = {
   ListNode,
   build_list,
   print_list,
+  DoubleLinkedListNode,
 };
