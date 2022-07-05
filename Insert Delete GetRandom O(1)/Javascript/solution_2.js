@@ -42,6 +42,7 @@ RandomizedSet.prototype.remove = function (val) {
   if (delete_index < nums_len - 1) {
     // 用最后一个元素覆盖被删除的元素
     let last_num = this.nums[nums_len - 1];
+    this.nums[delete_index] = last_num;
     // 把最后一个元素的指针指向新的 index
     this.nums_to_index_map.set(last_num, delete_index);
   }
