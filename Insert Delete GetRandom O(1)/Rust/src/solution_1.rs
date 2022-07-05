@@ -15,7 +15,6 @@ pub struct RandomizedSet {
     nums_to_index_map: HashMap<i32, usize>,
 }
 
-
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
@@ -66,7 +65,7 @@ impl RandomizedSet {
     }
 
     pub fn get_random(&self) -> i32 {
-        let max = self.nums.len() - 1;
+        let max = self.nums.len();
         let rnd = rand::thread_rng().gen_range(0, max);
         return self.nums[rnd];
     }
