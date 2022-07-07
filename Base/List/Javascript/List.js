@@ -5,6 +5,14 @@ class ListNode {
   }
 }
 
+class LinkedNode {
+  constructor(key = null, val = 0, next = null) {
+    this.key = key;
+    this.val = val;
+    this.next = next;
+  }
+}
+
 class DoubleLinkedListNode {
   constructor(val = 0, prev = null, next = null) {
     this.val = val;
@@ -45,6 +53,7 @@ function print_list(root) {
 
 module.exports = {
   ListNode,
+  LinkedNode,
   build_list,
   print_list,
   DoubleLinkedListNode,
