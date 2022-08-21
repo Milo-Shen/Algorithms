@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/second-minimum-node-in-a-binary-tree/
+
 function findSecondMinimumValue(root) {
   let min = root.val;
 
