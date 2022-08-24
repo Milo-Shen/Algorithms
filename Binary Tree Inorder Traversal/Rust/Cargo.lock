@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "BinaryTree"
+name = "binary_tree"
 version = "1.0.0"

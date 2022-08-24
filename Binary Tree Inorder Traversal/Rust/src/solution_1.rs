@@ -1,8 +1,8 @@
 // https://leetcode.cn/problems/binary-tree-inorder-traversal/
 
+use binary_tree::TreeNode;
 use std::cell::RefCell;
 use std::rc::Rc;
-use BinaryTree::TreeNode;
 
 pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode<i32>>>>) -> Vec<i32> {
     let mut result = vec![];
@@ -22,9 +22,16 @@ pub fn inorder_traversal(root: Option<Rc<RefCell<TreeNode<i32>>>>) -> Vec<i32> {
     }
 
     while !queue.is_empty() {
-        let mut cur_node = queue.pop().unwrap();
+        let cur_node = queue.pop().unwrap();
         result.push(cur_node.borrow().val);
-        cur_node = Rc::clone(cur_node.borrow().left.as_ref().unwrap());
+
+        let mut cur_node = cur_node.borrow_mut().right.take();
+        while cur_node.is_some() {
+            if let Some(node) = cur_node {
+                cur_node = node.borrow_mut().left.take();
+                queue.push(node);
+            }
+        }
     }
 
     result
