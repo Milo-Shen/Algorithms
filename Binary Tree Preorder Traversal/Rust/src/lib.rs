@@ -32,17 +32,22 @@ pub fn build_binary_tree(nums: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode<i
     let mut i = 1;
     while i < nums_len {
         let node = queue.remove(0);
+
         if let Some(num) = nums[i] {
             let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
             (*node.borrow_mut()).left = Some(Rc::clone(&new_node));
             queue.push(Rc::clone(&new_node));
         }
 
-        if let Some(num) = nums[i + 1] {
-            let new_node: Rc<RefCell<TreeNode<i32>>> = Rc::new(RefCell::new(TreeNode::new(num)));
-            (*node.borrow_mut()).right = Some(Rc::clone(&new_node));
-            queue.push(Rc::clone(&new_node));
+        if i + 1 < nums_len {
+            if let Some(num) = nums[i + 1] {
+                let new_node: Rc<RefCell<TreeNode<i32>>> =
+                    Rc::new(RefCell::new(TreeNode::new(num)));
+                (*node.borrow_mut()).right = Some(Rc::clone(&new_node));
+                queue.push(Rc::clone(&new_node));
+            }
         }
+
         i = i + 2;
     }
 
