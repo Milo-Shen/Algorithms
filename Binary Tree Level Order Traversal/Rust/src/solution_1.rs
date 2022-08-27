@@ -1,5 +1,5 @@
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 use BinaryTree::TreeNode;
 
 pub fn level_order(root: Option<Rc<RefCell<TreeNode<i32>>>>) -> Vec<Vec<i32>> {
@@ -22,12 +22,12 @@ pub fn level_order(root: Option<Rc<RefCell<TreeNode<i32>>>>) -> Vec<Vec<i32>> {
                     if node.borrow().right.is_some() {
                         queue.push(node.borrow_mut().right.take().unwrap());
                     }
-                };
+                }
                 result.push(temp);
             }
 
             return result;
         }
-        _ => result
+        _ => result,
     }
 }
