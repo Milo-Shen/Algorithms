@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/17/
+// https://leetcode.cn/problems/subsets/submissions/
+
 pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
     let mut result: Vec<Vec<i32>> = Vec::new();
 
