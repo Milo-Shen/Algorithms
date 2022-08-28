@@ -25,5 +25,5 @@ function dfs(nums, start_index, subset, result) {
 }
 
 // test cases
-let nums = [];
+let nums = [1, 2, 3];
 console.log(subsets(nums));
