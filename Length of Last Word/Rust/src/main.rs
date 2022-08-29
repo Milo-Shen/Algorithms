@@ -1,3 +1,9 @@
+// https://leetcode.cn/problems/length-of-last-word/
+
+mod solution_1;
+
 fn main() {
-    println!("Hello, world!");
+    let s = String::from("a");
+    let answer = solution_1::length_of_last_word(s);
+    println!("answer = {}", answer);
 }
