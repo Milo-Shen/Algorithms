@@ -1,5 +1,4 @@
 // https://leetcode.cn/problems/plus-one/
-// 下面的算法会有精度溢出的问题
 
 function plusOne(digits) {
   let coefficient = digits.length - 1;
