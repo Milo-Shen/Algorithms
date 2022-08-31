@@ -16,15 +16,9 @@ function dfs(n, k, depth, start_index, visited, subset, result) {
   }
 
   for (let i = start_index; i <= n; i++) {
-    if (visited[i - 1]) {
-      continue;
-    }
-
-    visited[i - 1] = true;
     subset.push(i);
     dfs(n, k, depth + 1, i + 1, visited, subset, result);
     subset.pop();
-    visited[i - 1] = false;
   }
 }
 
