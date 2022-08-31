@@ -25,6 +25,6 @@ function inorderTraversal(root) {
 
 // test cases
 const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
-let nums = [1, null, 2, 3];
+let nums = [236, 104, 701, null, 227, null, 911];
 let binaryTreeRoot = buildBinaryTree(nums);
 console.log(inorderTraversal(binaryTreeRoot));
