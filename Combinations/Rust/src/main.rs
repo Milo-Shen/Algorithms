@@ -1,5 +1,8 @@
+// https://leetcode.cn/problems/combinations/
+
 mod solution;
 
 fn main() {
-    println!("Hello, world!");
+    let answer = solution::combine(4, 2);
+    println!("answer = {:?}", answer);
 }
