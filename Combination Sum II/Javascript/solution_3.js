@@ -22,8 +22,7 @@ function dfs(candidates, target, start_index, subset, result) {
   }
 
   for (let i = start_index, len = candidates.length; i <= len; i++) {
-    // todo: 理解此处去重逻辑的含义
-    if (i !== start_index && candidates[i] === candidates[i - 1]) {
+    if (i !== 0 && candidates[i] === candidates[i - 1] && i !== start_index) {
       continue;
     }
 
