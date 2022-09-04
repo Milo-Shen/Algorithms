@@ -21,7 +21,7 @@ function dfs(candidates, target, start_index, subset, result) {
     return;
   }
 
-  for (let i = start_index, len = candidates.length; i <= len; i++) {
+  for (let i = start_index, len = candidates.length; i < len; i++) {
     if (i !== 0 && candidates[i] === candidates[i - 1] && i !== start_index) {
       continue;
     }
