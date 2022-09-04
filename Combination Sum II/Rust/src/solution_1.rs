@@ -35,7 +35,7 @@ fn dfs(candidates: &Vec<i32>, len: usize, start_index: usize, target: i32, subse
         }
 
         subsets.push(candidates[i]);
-        dfs(candidates, len, start_index + 1, target - candidates[i], subsets, result);
+        dfs(candidates, len, i + 1, target - candidates[i], subsets, result);
         subsets.pop();
     }
 }
