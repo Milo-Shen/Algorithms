@@ -11,14 +11,13 @@ function combinationSum4(nums, target) {
 
   // 对数据进行去重排序
   nums = [...new Set(nums)].sort((a, b) => a - b);
-  let visited = Array(nums_len).fill(false);
 
-  dfs(nums, target, [], result, visited);
+  dfs(nums, target, [], result);
 
   return result.length;
 }
 
-function dfs(nums, target, subset, result, visited) {
+function dfs(nums, target, subset, result) {
   if (target === 0) {
     result.push([...subset]);
     return;
@@ -30,11 +29,11 @@ function dfs(nums, target, subset, result, visited) {
     }
 
     subset.push(nums[i]);
-    dfs(nums, target - nums[i], subset, result, visited);
+    dfs(nums, target - nums[i], subset, result);
     subset.pop();
   }
 }
 
 // test cases
 let nums = [4, 2, 1];
-console.log(combinationSum(nums, 32));
+console.log(combinationSum4(nums, 7));
