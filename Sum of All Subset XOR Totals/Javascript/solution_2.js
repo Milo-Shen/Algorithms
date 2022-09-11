@@ -1,5 +1,4 @@
-// https://www.lintcode.com/problem/17/
-// https://leetcode.cn/problems/subsets/submissions/
+// https://leetcode.cn/problems/sum-of-all-subset-xor-totals/
 
 function subsetXORSum(nums) {
   let result = { sum: 0 };
