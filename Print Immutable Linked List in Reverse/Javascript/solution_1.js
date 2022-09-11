@@ -2,5 +2,12 @@
 
 function printLinkedListInReverse(head) {
   let arr = [];
-  while (head) {}
+  while (head) {
+    arr.push(head);
+    head = head.getNext();
+  }
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    arr[i].printValue();
+  }
 }
