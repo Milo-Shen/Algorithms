@@ -48,7 +48,7 @@ function print_list(root) {
     node = node.next;
   }
 
-  console.log(result);
+  console.log(result.join(' -> '));
 }
 
 module.exports = {
