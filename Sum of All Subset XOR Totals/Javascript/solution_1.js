@@ -3,7 +3,7 @@
 function subsetXORSum(nums) {
   let result = { sum: 0 };
   if (!nums) {
-    return [[]];
+    return result.sum;
   }
 
   dfs(nums, 0, [], result);
