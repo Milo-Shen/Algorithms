@@ -3,10 +3,14 @@
 
 // 搜索的四个方向
 const directions = [
-  [0, 1],
-  [0, -1],
-  [1, 0],
-  [-1, 0],
+  // 向上移动
+  { x: -1, y: 0 },
+  // 向右移动
+  { x: 0, y: 1 },
+  // 向下移动
+  { x: 1, y: 0 },
+  // 向左移动
+  { x: 0, y: -1 },
 ];
 
 function exist(board, word) {
@@ -29,41 +33,60 @@ function exist(board, word) {
     visited[i] = new Array(col).fill(false);
   }
 
-  const check = (i, j, s, k) => {
-    if (board[i][j] !== s.charAt(k)) {
-      return false;
-    } else if (k === s.length - 1) {
-      return true;
-    }
-    visited[i][j] = true;
-    let result = false;
-    for (const [dx, dy] of directions) {
-      let new_i = i + dx,
-        new_j = j + dy;
-      if (new_i >= 0 && new_i < row && new_j >= 0 && new_j < col) {
-        if (!visited[new_i][new_j]) {
-          const flag = check(new_i, new_j, s, k + 1);
-          if (flag) {
-            result = true;
-            break;
-          }
-        }
-      }
-    }
-    visited[i][j] = false;
-    return result;
-  };
-
   for (let i = 0; i < row; i++) {
     for (let j = 0; j < col; j++) {
-      const flag = check(i, j, word, 0);
+      visited[i][j] = true;
+      const flag = check(board, row, col, visited, i, j, word, 0);
+      visited[i][j] = false;
+
       if (flag) {
         return true;
       }
     }
   }
+
   return false;
 }
+
+function is_valid(x, y, board, visited) {
+  let row = board.length;
+  let col = board[0].length;
+
+  if (x < 0 || x >= row || y < 0 || y >= col) {
+    return false;
+  }
+
+  return !visited[x][y];
+}
+
+const check = (board, row, col, visited, x, y, s, k) => {
+  if (board[x][y] !== s.charAt(k)) {
+    return false;
+  } else if (k === s.length - 1) {
+    return true;
+  }
+
+  // 第二步, 递归的拆解
+  for (let i = 0; i < directions.length; i++) {
+    let delta = directions[i];
+    let pos_x = x + delta.x;
+    let pos_y = y + delta.y;
+
+    if (!is_valid(pos_x, pos_y, board, visited)) {
+      continue;
+    }
+
+    visited[pos_x][pos_y] = true;
+    const flag = check(board, row, col, visited, pos_x, pos_y, s, k + 1);
+    visited[pos_x][pos_y] = false;
+
+    if (flag) {
+      return true;
+    }
+  }
+
+  return false;
+};
 
 // test cases
 let board = [
@@ -71,5 +94,6 @@ let board = [
   ['S', 'F', 'C', 'S'],
   ['A', 'D', 'E', 'E'],
 ];
+
 let word = 'ABCCED';
 console.log(exist(board, word));
