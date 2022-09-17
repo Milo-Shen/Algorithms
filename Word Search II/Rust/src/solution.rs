@@ -88,7 +88,7 @@ fn dfs(
     }
 
     if words.contains(&str) {
-        result.insert(str);
+        result.insert(str.clone());
     }
 
     // 第二步, 递归的拆解
