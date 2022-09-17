@@ -12,6 +12,9 @@ pub fn find_words(board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String> {
         (0, -1),
     ];
 
+    // 存储单词的结果
+    let mut results: HashSet<String> = HashSet::new();
+
     // 异常检测
     let row = board.len();
     if row == 0 {
@@ -22,9 +25,6 @@ pub fn find_words(board: Vec<Vec<char>>, words: Vec<String>) -> Vec<String> {
     if col == 0 {
         return vec![];
     }
-
-    // 存储单词的结果
-    let mut results: HashSet<String> = HashSet::new();
 
     // 是否已经访问过
     let mut visited = vec![vec![false; col]; row];
@@ -88,7 +88,7 @@ fn dfs(
     }
 
     if words.contains(&str) {
-        result.insert(str.clone());
+        result.insert(str);
     }
 
     // 第二步, 递归的拆解
