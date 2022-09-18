@@ -1,5 +1,5 @@
 // https://www.lintcode.com/problem/132
-// https://leetcode.cn/problems/word-search-ii/
+// https://leetcode.cn/problems/word-search/
 
 // 搜索的四个方向
 const directions = [
@@ -13,21 +13,21 @@ const directions = [
   { x: 0, y: -1 },
 ];
 
-function findWords(board, words) {
+function exist(board, word) {
   // 异常检测
   if (!board || !board.length) {
-    return [];
+    return false;
   }
 
   if (!board[0] || !board[0].length) {
-    return [];
+    return false;
   }
 
   // 存储单词的结果
   let result = new Set();
 
   // 先找到所有单词的前缀
-  let { prefixes, max_len } = find_prefixes_maxLen(words);
+  let { prefixes, max_len } = find_prefixes_maxLen([word]);
 
   // 计算字母矩阵的行数和列数
   let row = board.length;
@@ -40,12 +40,12 @@ function findWords(board, words) {
   for (let i = 0, len = board.length; i < len; i++) {
     for (let j = 0, len_j = board[i].length; j < len_j; j++) {
       visited[i][j] = true;
-      dfs(prefixes, board, words, max_len, i, j, board[i][j], visited, result);
+      dfs(prefixes, board, [word], max_len, i, j, board[i][j], visited, result);
       visited[i][j] = false;
     }
   }
 
-  return [...result];
+  return !!result.size;
 }
 
 // dfs 找到单词 ( 第一步: 递归的定义 )
@@ -116,6 +116,10 @@ function init_visited(row, col) {
 }
 
 // test cases
-let board = ['doaf', 'agai', 'dcan'];
-let words = ['dog', 'dad', 'dgdg', 'can', 'again'];
-console.log(findWords(board, words));
+let board = [
+  ['A', 'B', 'C', 'E'],
+  ['S', 'F', 'C', 'S'],
+  ['A', 'D', 'E', 'E'],
+];
+let word = 'ABCCED';
+console.log(exist(board, word));
