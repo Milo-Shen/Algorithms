@@ -37,7 +37,10 @@ function findWords(board, words) {
   for (let i = 0, len = board.length; i < len; i++) {
     for (let j = 0, len_j = board[i].length; j < len_j; j++) {
       // 是否已经访问过
-      let visited = init_visited(row, col);
+      const visited = new Array(row);
+      for (let i = 0; i < row; i++) {
+        visited[i] = new Array(col).fill(false);
+      }
       visited[i][j] = true;
       dfs(prefixes, board, words, max_len, i, j, board[i][j], visited, result);
     }
@@ -97,20 +100,6 @@ function find_prefixes_maxLen(words) {
   }
 
   return { prefixes, max_len };
-}
-
-function init_visited(row, col) {
-  let visited = [];
-
-  for (let i = 0; i < row; i++) {
-    let row_arr = [];
-    for (let j = 0; j < col; j++) {
-      row_arr.push(false);
-    }
-    visited.push(row_arr);
-  }
-
-  return visited;
 }
 
 // test cases
