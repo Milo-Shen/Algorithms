@@ -66,7 +66,6 @@ const check = (board, row, col, visited, x, y, s, k) => {
     return true;
   }
 
-  // 第二步, 递归的拆解
   for (let i = 0; i < directions.length; i++) {
     let delta = directions[i];
     let pos_x = x + delta.x;
