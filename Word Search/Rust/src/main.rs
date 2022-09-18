@@ -10,7 +10,7 @@ fn main() {
         vec!['A', 'D', 'E', 'E'],
     ];
 
-    let word = String::from("ACCEDED");
+    let word = String::from("ABCCED");
     let answer = solution_1::exist(board, word);
     println!("answer = {}", answer);
 }
