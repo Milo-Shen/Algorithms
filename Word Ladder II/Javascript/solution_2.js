@@ -114,6 +114,4 @@ function get_next_words(word_dict, word) {
 let beginWord = 'hit';
 let endWord = 'cog';
 let wordList_1 = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'];
-let start = performance.now();
 console.log(findLadders(beginWord, endWord, wordList_1));
-console.log(performance.now() - start);
