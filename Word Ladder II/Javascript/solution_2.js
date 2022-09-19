@@ -12,6 +12,12 @@ function findLadders(beginWord, endWord, wordList) {
     wordList.push(beginWord);
   }
 
+  // 将 list 转换成 dict
+  let dict = new Set();
+  for (let i = 0, len = wordList.length; i < len; i++) {
+    dict.add(wordList[i]);
+  }
+
   // 记录从起点开始, 到达某个词的最短路径长度
   let distance = new Map();
 
@@ -23,7 +29,7 @@ function findLadders(beginWord, endWord, wordList) {
     fromToMap.set(wordList[i], []);
   }
 
-  bfs(fromToMap, distance, beginWord, endWord, wordList);
+  bfs(fromToMap, distance, beginWord, endWord, dict);
 
   // 是否已经访问过
   let result = [];
@@ -83,24 +89,22 @@ function bfs(fromToMap, distance, start, end, dict) {
   }
 }
 
-function get_next_words(wordList, word) {
+function replace(str, index, char) {
+  return str.substring(0, index) + char + str.substring(index + 1);
+}
+
+function get_next_words(word_dict, word) {
   let result = [];
-  for (let i = 0, len = wordList.length; i < len; i++) {
-    let cur_word = wordList[i];
-    if (cur_word.length !== word.length) {
-      continue;
-    }
-    let different = 0;
-    for (let j = 0, j_len = word.length; j < j_len; j++) {
-      if (word.charAt(j) !== cur_word.charAt(j)) {
-        different++;
-        if (different > 1) {
-          break;
-        }
+  for (let i = 0; i < 26; i++) {
+    let c = String.fromCharCode(97 + i);
+    for (let j = 0, len = word.length; j < len; j++) {
+      if (c === word.charAt(j)) {
+        continue;
       }
-    }
-    if (different === 1) {
-      result.push(cur_word);
+      let next_word = replace(word, j, c);
+      if (word_dict.has(next_word)) {
+        result.push(next_word);
+      }
     }
   }
   return result;
@@ -110,4 +114,6 @@ function get_next_words(wordList, word) {
 let beginWord = 'hit';
 let endWord = 'cog';
 let wordList_1 = ['hot', 'dot', 'dog', 'lot', 'log', 'cog'];
+let start = performance.now();
 console.log(findLadders(beginWord, endWord, wordList_1));
+console.log(performance.now() - start);
