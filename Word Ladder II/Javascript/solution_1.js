@@ -37,6 +37,7 @@ function dfs(word, endWord, start_index, wordList, visited, path, min_path, resu
   for (let i = 0, len = next_words_list.length; i < len; i++) {
     let cur_word = next_words_list[i];
 
+    // DFS 也要防止闭环的情况，可以通过 visited 防止重复访问访问过的节点
     if (visited.has(cur_word) || start_index + 1 > min_path.min) {
       continue;
     }
