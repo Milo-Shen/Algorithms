@@ -5,4 +5,5 @@ mod solution_1;
 
 fn main() {
     println!("Hello, world!");
+    let s = String::from("aaa");
 }
