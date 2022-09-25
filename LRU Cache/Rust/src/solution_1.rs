@@ -9,15 +9,26 @@ struct LinkedNode {
     next: Option<Box<LinkedNode>>,
 }
 
-pub struct LRUCache {}
+pub struct LRUCache<'a> {
+    // Cache 的最大容量, 超过容量就需要淘汰数据
+    capacity: i32,
+    // 单链表 dummy 头
+    dummy: LinkedNode,
+    // 单链表的尾节点
+    tail: &'a Option<Box<LinkedNode>>,
+}
 
 /**
  * `&self` means the method takes an immutable reference.
  * If you need a mutable reference, change it to `&mut self` instead.
  */
-impl LRUCache {
+impl<'a> LRUCache<'a> {
     pub fn new(capacity: i32) -> Self {
-        LRUCache {}
+        LRUCache {
+            capacity,
+            dummy: todo!(),
+            tail: todo!(),
+        }
     }
 
     pub fn get(&self, key: i32) -> i32 {
