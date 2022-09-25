@@ -10,7 +10,7 @@ use std::rc::Rc;
 struct LinkedNode {
     key: i32,
     val: i32,
-    next: Option<Box<LinkedNode>>,
+    next: Option<Rc<RefCell<LinkedNode>>>,
 }
 
 impl LinkedNode {
@@ -39,8 +39,6 @@ pub struct LRUCache {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl LRUCache {
-    fn kick(&self, key: i32) {}
-
     pub fn new(capacity: i32) -> Self {
         let node = LinkedNode::new(-1, -1, None);
         let dummy = Rc::new(RefCell::new(node));
@@ -68,4 +66,16 @@ impl LRUCache {
     }
 
     pub fn put(&self, key: i32, value: i32) {}
+
+    fn kick(&self, key: i32) {}
+
+    fn push_back(&mut self, node: Rc<RefCell<LinkedNode>>) {
+        // 当前的 tail 成为 node 的前一个节点
+        self.key_to_prev
+            .insert(node.borrow().key, Rc::clone(&self.tail));
+        self.tail.borrow_mut().next = Some(node);
+
+        let next = self.tail.borrow_mut().next.take().unwrap();
+        self.tail = next;
+    }
 }
