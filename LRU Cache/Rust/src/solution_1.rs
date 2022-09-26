@@ -78,4 +78,26 @@ impl LRUCache {
         let next = self.tail.borrow_mut().next.take().unwrap();
         self.tail = next;
     }
+
+    fn pop_front(&mut self) {
+        // 需要被删除的头部节点
+        let head = &self.dummy.borrow().next;
+        let head_key = head.as_ref().unwrap().borrow_mut().key;
+
+        // 把删除节点的映射关系从 key_to_prev 中删除
+        self.key_to_prev.remove(&head_key);
+        // dummy 后移, 新的 dummy 的 next 指向新的头节点
+        self.dummy.borrow_mut().next = self.dummy.borrow_mut().next.take();
+        // 在 key_to_prev 中更新新的头节点的映射关系
+        let next_key = head
+            .as_ref()
+            .unwrap()
+            .borrow()
+            .next
+            .as_ref()
+            .unwrap()
+            .borrow()
+            .key;
+        self.key_to_prev.insert(next_key, Rc::clone(&self.dummy));
+    }
 }
