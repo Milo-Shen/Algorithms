@@ -26,10 +26,13 @@ impl LinkedNode {
 pub struct LRUCache {
     // Cache 的最大容量, 超过容量就需要淘汰数据
     capacity: i32,
+
     // 单链表 dummy 头
     dummy: Rc<RefCell<LinkedNode>>,
+
     // 单链表的尾节点
     tail: Rc<RefCell<LinkedNode>>,
+
     // 存储映射关系: key => key 所对应数据节点之前的节点
     key_to_prev: HashMap<i32, Rc<RefCell<LinkedNode>>>,
 }
@@ -52,7 +55,7 @@ impl LRUCache {
         }
     }
 
-    pub fn get(&self, key: i32) -> i32 {
+    pub fn get(&mut self, key: i32) -> i32 {
         // 如果这个 key 根本不存在于缓存, 返回 -1
         if self.key_to_prev.contains_key(&key) {
             return -1;
@@ -66,8 +69,6 @@ impl LRUCache {
     }
 
     pub fn put(&self, key: i32, value: i32) {}
-
-    fn kick(&self, key: i32) {}
 
     fn push_back(&mut self, node: Rc<RefCell<LinkedNode>>) {
         // 当前的 tail 成为 node 的前一个节点
@@ -86,8 +87,10 @@ impl LRUCache {
 
         // 把删除节点的映射关系从 key_to_prev 中删除
         self.key_to_prev.remove(&head_key);
+
         // dummy 后移, 新的 dummy 的 next 指向新的头节点
         self.dummy.borrow_mut().next = self.dummy.borrow_mut().next.take();
+
         // 在 key_to_prev 中更新新的头节点的映射关系
         let next_key = head
             .as_ref()
@@ -99,5 +102,29 @@ impl LRUCache {
             .borrow()
             .key;
         self.key_to_prev.insert(next_key, Rc::clone(&self.dummy));
+    }
+
+    fn kick(&mut self, key: i32) {
+        // key 节点前面的节点
+        let prev = self.key_to_prev.get(&key).unwrap();
+        // 包含 key 的节点
+        let key_node = prev.borrow_mut().next.take().unwrap();
+
+        // 如果 key 所对应的点已经在链表尾, 则无需移动
+        if key_node.borrow().key == self.tail.borrow().key {
+            return;
+        }
+
+        // 从链表中删除 key 节点, 一共有 3 步 :
+        // 1. key node 前面的节点指向 key node 的下一个节点 ( 跳过 key node )
+        let next_key = key_node.borrow().next.as_ref().unwrap().borrow().key;
+        prev.borrow_mut().next = key_node.borrow_mut().next.take();
+        // 2. 更新 key node 的下一个节点所对应的前导点为 prev
+        self.key_to_prev.insert(next_key, Rc::clone(prev));
+        // 3. 断开 key node 指向 key node 的下一个节点的链接
+        key_node.borrow_mut().next = None;
+
+        // todo: 将 key 节点放到队尾
+        // self.push_back(Rc::clone(prev))
     }
 }

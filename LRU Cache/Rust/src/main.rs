@@ -6,7 +6,7 @@
 mod solution_1;
 
 fn main() {
-    let cache = solution_1::LRUCache::new(10);
+    let mut cache = solution_1::LRUCache::new(10);
     cache.put(1, 10086);
     let val = cache.get(1);
     println!("val = {}", val);

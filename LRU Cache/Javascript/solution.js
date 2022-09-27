@@ -88,7 +88,7 @@ LRUCache.prototype.kick = function (key) {
   }
 
   // 从链表中删除 key 节点, 一共有 3 步 :
-  // 1. key node 前面的节点指向 ket node 的下一个节点 ( 跳过 key node )
+  // 1. key node 前面的节点指向 key node 的下一个节点 ( 跳过 key node )
   prev.next = key_node.next;
   // 2. 更新 key node 的下一个节点所对应的前导点为 prev
   this.key_to_prev.set(key_node.next.key, prev);
