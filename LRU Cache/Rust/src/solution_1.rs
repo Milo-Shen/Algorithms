@@ -57,7 +57,7 @@ impl LRUCache {
 
     pub fn get(&mut self, key: i32) -> i32 {
         // 如果这个 key 根本不存在于缓存, 返回 -1
-        if self.key_to_prev.contains_key(&key) {
+        if !self.key_to_prev.contains_key(&key) {
             return -1;
         }
 
