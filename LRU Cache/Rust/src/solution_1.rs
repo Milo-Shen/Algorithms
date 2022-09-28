@@ -14,7 +14,7 @@ struct LinkedNode {
 }
 
 impl LinkedNode {
-    fn new(key: i32, val: i32, next: Option<Box<LinkedNode>>) -> Self {
+    fn new(key: i32, val: i32) -> Self {
         Self {
             key,
             val,
@@ -43,7 +43,7 @@ pub struct LRUCache {
  */
 impl LRUCache {
     pub fn new(capacity: i32) -> Self {
-        let node = LinkedNode::new(-1, -1, None);
+        let node = LinkedNode::new(-1, -1);
         let dummy = Rc::new(RefCell::new(node));
         let tail = Rc::clone(&dummy);
 
@@ -80,7 +80,7 @@ impl LRUCache {
         }
 
         // 如果 key 不存在, 则在链表尾部存入节点
-        let node = LinkedNode::new(key, value, None);
+        let node = LinkedNode::new(key, value);
         self.push_back(Rc::new(RefCell::new(node)));
 
         // 如果 cache 超出上限, 淘汰表头, key_to_prev 的 length 就是链表长度
