@@ -125,6 +125,6 @@ impl LRUCache {
         key_node.borrow_mut().next = None;
 
         // todo: 将 key 节点放到队尾
-        // self.push_back(Rc::clone(prev))
+        self.push_back(key_node)
     }
 }
