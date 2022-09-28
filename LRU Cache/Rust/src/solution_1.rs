@@ -68,7 +68,26 @@ impl LRUCache {
         self.tail.borrow().val
     }
 
-    pub fn put(&self, key: i32, value: i32) {}
+    pub fn put(&mut self, key: i32, value: i32) {
+        // 如果 key 已经存在, 更新 key node 的 value
+        if self.key_to_prev.contains_key(&key) {
+            // 把该节点放到链表尾部
+            self.kick(key);
+
+            // 更新 key 节点 ( key 节点移动到了尾部, 就是 tail 节点的值 )
+            self.tail.borrow_mut().val = value;
+            return;
+        }
+
+        // 如果 key 不存在, 则在链表尾部存入节点
+        let node = LinkedNode::new(key, value, None);
+        self.push_back(Rc::new(RefCell::new(node)));
+
+        // 如果 cache 超出上限, 淘汰表头, key_to_prev 的 length 就是链表长度
+        if self.key_to_prev.capacity() as i32 > self.capacity {
+            self.pop_front();
+        }
+    }
 
     fn push_back(&mut self, node: Rc<RefCell<LinkedNode>>) {
         // 当前的 tail 成为 node 的前一个节点
