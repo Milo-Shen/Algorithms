@@ -26,23 +26,34 @@ pub fn heapify(arr: Vec<i32>) -> Vec<i32> {
     let a_len = arr.len();
     let mut arr = arr;
 
-    for i in 0..a_len {
-        siftup(&mut arr, i);
+    let top_pos = (a_len - 1) / 2;
+    for i in (0..top_pos + 1).rev() {
+        siftdown(&mut arr, i, a_len);
     }
 
     return arr;
 }
 
-fn siftup(arr: &mut Vec<i32>, mut k: usize) {
-    while k != 0 {
-        let father = (k - 1) / 2;
-        if arr[k] > arr[father] {
+fn siftdown(arr: &mut Vec<i32>, mut k: usize, len: usize) {
+    while k * 2 + 1 < len {
+        // 左儿子下标
+        let left_son = k * 2 + 1;
+        // 右儿子下标
+        let right_son = k * 2 + 2;
+        // 将要和 arr[i] 发生交换的叶子节点
+        let mut son = left_son;
+
+        if right_son < len && arr[left_son] > arr[right_son] {
+            son = right_son;
+        }
+
+        if arr[son] > arr[k] {
             break;
         }
 
-        let temp = arr[k];
-        arr[k] = arr[father];
-        arr[father] = temp;
-        k = father;
+        let temp = arr[son];
+        arr[son] = arr[k];
+        arr[k] = temp;
+        k = son;
     }
 }
