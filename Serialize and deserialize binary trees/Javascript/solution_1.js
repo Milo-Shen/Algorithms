@@ -5,59 +5,42 @@ function isValid(data) {
   return data !== null && data !== undefined;
 }
 
-/**
- * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
- * }
- */
 function TreeNode(val) {
   this.val = val;
   this.left = this.right = null;
 }
 
-/**
- * Encodes a tree to a single string.
- *
- * @param {TreeNode} root
- * @return {string}
- */
 const serialize = function (root) {
   if (!root) {
     return '';
   }
 
-  let output = '';
+  let output = [];
   let queue = [root];
 
   while (queue.length) {
     let node = queue.shift();
 
     if (node === '#') {
-      output += node;
+      output.push(node);
       continue;
     }
 
-    output += node.val;
+    output.push(node.val);
     queue.push(node.left || '#');
     queue.push(node.right || '#');
   }
 
-  return output;
+  return output.join(',');
 };
 
-/**
- * Decodes your encoded data to tree.
- *
- * @param {string} data
- * @return {TreeNode}
- */
 const deserialize = function (data) {
   let nums_len = data.length;
   if (!data || !nums_len) {
     return null;
   }
+
+  data = data.split(',');
 
   let root = new TreeNode(data[0]);
   let queue = [root];
@@ -78,13 +61,8 @@ const deserialize = function (data) {
   return root;
 };
 
-/**
- * Your functions will be called as such:
- * deserialize(serialize(root));
- */
-
 // test cases
 const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
-let nums = [-1, 0, 1];
+let nums = [];
 let root = buildBinaryTree(nums);
 console.log(serialize(deserialize(serialize(root))));
