@@ -22,38 +22,27 @@
 //
 // 因此得到 `T(n) = 2 * T(n) - T(n) = O(n)`
 
-function heapify(A) {
-  for (let i = ~~((A.length - 1) / 2); i >= 0; i--) {
-    siftdown(A, i);
-  }
-}
+pub fn heapify(arr: Vec<i32>) -> Vec<i32> {
+    let a_len = arr.len();
+    let mut arr = arr;
 
-function siftdown(A, k) {
-  let len = A.length;
-  while (k * 2 + 1 < len) {
-    // A[i] 的左儿子下标
-    let left_son = k * 2 + 1;
-    // A[i] 的右儿子下标
-    let right_son = k * 2 + 2;
-    // 将要和 A[i] 发生交换的叶子节点
-    let son = left_son;
-
-    if (right_son < len && A[left_son] > A[right_son]) {
-      son = right_son;
+    for i in 0..a_len {
+        siftup(&mut arr, i);
     }
 
-    if (A[son] > A[k]) {
-      break;
-    }
-
-    let temp = A[son];
-    A[son] = A[k];
-    A[k] = temp;
-    k = son;
-  }
+    return arr;
 }
 
-// test cases
-let data = [3, 2, 1, 4, 5];
-heapify(data);
-console.log(data);
+fn siftup(arr: &mut Vec<i32>, mut k: usize) {
+    while k != 0 {
+        let father = (k - 1) / 2;
+        if arr[k] > arr[father] {
+            break;
+        }
+
+        let temp = arr[k];
+        arr[k] = arr[father];
+        arr[father] = temp;
+        k = father;
+    }
+}
