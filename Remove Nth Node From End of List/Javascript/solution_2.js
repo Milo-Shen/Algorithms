@@ -3,25 +3,28 @@
 const { build_list, print_list } = require('../../Base/List/Javascript/List');
 
 function removeNthFromEnd(head, n) {
-  let list = [];
-
-  let node = head;
-
-  while (node) {
-    list.push(node);
-    node = node.next;
+  // 异常检测
+  if (!head || !head.next) {
+    return null;
   }
 
-  let max = list.length;
-  let pre = max - n - 1;
-  let cur = max - n;
+  let fast = head;
+  let slow = head;
 
-  if (cur === 0) {
-    head = head.next;
-    return head;
+  for (let i = 0; i < n; i++) {
+    fast = fast.next;
   }
 
-  list[pre].next = list[cur].next;
+  if (!fast) {
+    return head.next;
+  }
+
+  while (fast.next) {
+    fast = fast.next;
+    slow = slow.next;
+  }
+
+  slow.next = slow.next.next;
 
   return head;
 }
