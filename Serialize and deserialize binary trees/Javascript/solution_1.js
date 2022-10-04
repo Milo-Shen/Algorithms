@@ -85,37 +85,6 @@ const deserialize = function (data) {
 
 // test cases
 const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
-let nums = [
-  4,
-  -7,
-  -3,
-  null,
-  null,
-  -9,
-  -3,
-  9,
-  -7,
-  -4,
-  null,
-  6,
-  null,
-  -6,
-  -6,
-  null,
-  null,
-  0,
-  6,
-  5,
-  null,
-  9,
-  null,
-  null,
-  -1,
-  -4,
-  null,
-  null,
-  null,
-  -2,
-];
+let nums = [-1, 0, 1];
 let root = buildBinaryTree(nums);
 console.log(serialize(deserialize(serialize(root))));
