@@ -7,6 +7,10 @@ use std::cell::RefCell;
 use std::collections::HashMap;
 use std::rc::Rc;
 
+// todo: 需要改进的点:
+//  1. 内存占用大
+//  2. option clone 用的太多，如何精简
+
 struct LinkedNode {
     key: i32,
     val: i32,
