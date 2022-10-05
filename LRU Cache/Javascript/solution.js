@@ -119,3 +119,6 @@ LRUCache.prototype.pop_front = function () {
  * var param_1 = obj.get(key)
  * obj.put(key,value)
  */
+let lru = new LRUCache(10);
+lru.put(1, 1);
+console.log(lru.get(1));
