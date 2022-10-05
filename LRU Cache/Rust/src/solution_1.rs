@@ -143,7 +143,6 @@ impl LRUCache {
         // 3. 断开 key node 指向 key node 的下一个节点的链接
         key_node.borrow_mut().next = None;
 
-        // todo: 将 key 节点放到队尾
         self.push_back(key_node)
     }
 }
