@@ -66,3 +66,5 @@ class MinHeap {
     return first;
   }
 }
+
+module.exports = { MinHeap };
