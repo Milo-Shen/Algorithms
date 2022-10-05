@@ -95,7 +95,8 @@ impl LRUCache {
             .insert(node.borrow().key, Rc::clone(&self.tail));
         self.tail.borrow_mut().next = Some(node);
 
-        let next = self.tail.borrow_mut().next.take().unwrap();
+        // todo: 此处如何去除 clone ?
+        let next = self.tail.borrow_mut().next.clone().unwrap();
         self.tail = next;
     }
 
