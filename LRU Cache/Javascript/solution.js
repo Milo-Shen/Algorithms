@@ -100,7 +100,7 @@ LRUCache.prototype.kick = function (key) {
 };
 
 /**
- * function: 删除头部 least recently used 节点
+ * function: 删除头部 last recently used 节点
  */
 LRUCache.prototype.pop_front = function () {
   // 需要被删除的头部节点
