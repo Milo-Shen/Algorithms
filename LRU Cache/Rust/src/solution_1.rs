@@ -84,7 +84,7 @@ impl LRUCache {
         self.push_back(Rc::new(RefCell::new(node)));
 
         // 如果 cache 超出上限, 淘汰表头, key_to_prev 的 length 就是链表长度
-        if self.key_to_prev.capacity() as i32 > self.capacity {
+        if self.key_to_prev.len() as i32 > self.capacity {
             self.pop_front();
         }
     }
@@ -102,9 +102,9 @@ impl LRUCache {
 
     fn pop_front(&mut self) {
         // 需要被删除的头部节点
-        let head = &self.dummy.borrow().next;
-        let head_key = head.as_ref().unwrap().borrow().key;
-        let head_next = head.as_ref().unwrap().borrow().next.clone();
+        let head = self.dummy.borrow().next.clone().unwrap();
+        let head_key = head.borrow().key;
+        let head_next = head.borrow().next.clone();
 
         // 把删除节点的映射关系从 key_to_prev 中删除
         self.key_to_prev.remove(&head_key);
@@ -113,15 +113,7 @@ impl LRUCache {
         self.dummy.borrow_mut().next = head_next;
 
         // 在 key_to_prev 中更新新的头节点的映射关系
-        let next_key = head
-            .as_ref()
-            .unwrap()
-            .borrow()
-            .next
-            .as_ref()
-            .unwrap()
-            .borrow()
-            .key;
+        let next_key = head.borrow().next.clone().unwrap().borrow().key;
         self.key_to_prev.insert(next_key, Rc::clone(&self.dummy));
     }
 
