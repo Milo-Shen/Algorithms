@@ -109,7 +109,7 @@ impl LRUCache {
         self.key_to_prev.remove(&head_key);
 
         // dummy 后移, 新的 dummy 的 next 指向新的头节点
-        self.dummy.borrow_mut().next = self.dummy.borrow_mut().next.take();
+        self.dummy.borrow_mut().next = self.dummy.borrow_mut().next.clone();
 
         // 在 key_to_prev 中更新新的头节点的映射关系
         let next_key = head
@@ -128,7 +128,7 @@ impl LRUCache {
         // key 节点前面的节点
         let prev = self.key_to_prev.get(&key).unwrap();
         // 包含 key 的节点
-        let key_node = prev.borrow_mut().next.take().unwrap();
+        let key_node = prev.borrow_mut().next.clone().unwrap();
 
         // 如果 key 所对应的点已经在链表尾, 则无需移动
         if key_node.borrow().key == self.tail.borrow().key {
@@ -138,7 +138,7 @@ impl LRUCache {
         // 从链表中删除 key 节点, 一共有 3 步 :
         // 1. key node 前面的节点指向 key node 的下一个节点 ( 跳过 key node )
         let next_key = key_node.borrow().next.as_ref().unwrap().borrow().key;
-        prev.borrow_mut().next = key_node.borrow_mut().next.take();
+        prev.borrow_mut().next = key_node.borrow_mut().next.clone();
         // 2. 更新 key node 的下一个节点所对应的前导点为 prev
         self.key_to_prev.insert(next_key, Rc::clone(prev));
         // 3. 断开 key node 指向 key node 的下一个节点的链接
