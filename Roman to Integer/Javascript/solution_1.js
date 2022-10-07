@@ -16,7 +16,7 @@ const romanToInt = function (s) {
   };
   let res = 0;
   for (let i = 0; i < s.length; i++) {
-    if (map[s[i]] < map[s[i + 1]]) {
+    if (i < s.length - 1 && map[s[i]] < map[s[i + 1]]) {
       res -= map[s[i]];
     } else {
       res += map[s[i]];
