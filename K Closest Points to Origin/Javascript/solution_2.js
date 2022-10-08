@@ -5,17 +5,18 @@ const { MinHeap } = require('../../Base/MinHeap/Javascript/MinHeap');
 
 const kClosest = function (points, k) {
   let output = [];
-  let map = new Map();
-  let heap = new MinHeap();
+  let heap = new MinHeap((a, b) => {
+    let pow1 = Math.pow(a[0], 2) + Math.pow(a[1], 2);
+    let pow2 = Math.pow(b[0], 2) + Math.pow(b[1], 2);
+    return pow1 - pow2;
+  });
 
   for (let i = 0; i < points.length; i++) {
-    let distance = Math.pow(points[i][0], 2) + Math.pow(points[i][1], 2);
-    heap.push(distance);
-    map.set(distance, points[i]);
+    heap.push(points[i]);
   }
 
   for (let i = 0; i < k; i++) {
-    output.push(map.get(heap.pop()));
+    output.push(heap.pop());
   }
 
   return output;
