@@ -70,6 +70,10 @@ class MinHeap {
   size() {
     return this.array.length;
   }
+
+  isEmpty() {
+    return this.array.length <= 0;
+  }
 }
 
 module.exports = { MinHeap };
