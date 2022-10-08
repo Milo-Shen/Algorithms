@@ -1,12 +1,13 @@
 class MaxHeap {
-  constructor() {
+  constructor(compare = null) {
     this.array = [];
+    this.compare = compare || ((a, b) => a - b);
   }
 
   siftup(k) {
     while (k !== 0) {
       let father = ~~((k - 1) / 2);
-      if (this.array[k] < this.array[father]) {
+      if (this.compare(this.array[k], this.array[father]) < 0) {
         break;
       }
       let temp = this.array[k];
@@ -26,11 +27,11 @@ class MaxHeap {
       // 将要和 this.array[i] 发生交换的叶子节点
       let son = left_son;
 
-      if (right_son < len && this.array[left_son] < this.array[right_son]) {
+      if (right_son < len && this.compare(this.array[left_son], this.array[right_son]) < 0) {
         son = right_son;
       }
 
-      if (this.array[son] < this.array[k]) {
+      if (this.compare(this.array[son], this.array[k]) < 0) {
         break;
       }
 
