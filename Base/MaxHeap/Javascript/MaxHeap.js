@@ -66,6 +66,10 @@ class MaxHeap {
 
     return first;
   }
+
+  size() {
+    return this.array.length;
+  }
 }
 
 module.exports = { MaxHeap };

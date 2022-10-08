@@ -66,6 +66,10 @@ class PriorityQueue {
 
     return first;
   }
+
+  size() {
+    return this.array.length;
+  }
 }
 
 module.exports = { PriorityQueue };

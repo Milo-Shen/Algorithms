@@ -66,6 +66,10 @@ class MinHeap {
 
     return first;
   }
+
+  size() {
+    return this.array.length;
+  }
 }
 
 module.exports = { MinHeap };
