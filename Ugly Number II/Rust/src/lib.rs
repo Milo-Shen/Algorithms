@@ -1,5 +1,5 @@
 pub struct MinHeap {
-    pub array: Vec<i32>,
+    pub array: Vec<i64>,
 }
 
 impl MinHeap {
@@ -46,13 +46,13 @@ impl MinHeap {
         }
     }
 
-    pub fn push(&mut self, value: i32) {
+    pub fn push(&mut self, value: i64) {
         let index = self.array.len();
         self.array.push(value);
         self.siftup(index);
     }
 
-    pub fn peek(&self) -> Option<i32> {
+    pub fn peek(&self) -> Option<i64> {
         if self.array.len() == 0 {
             None
         } else {
@@ -60,7 +60,7 @@ impl MinHeap {
         }
     }
 
-    pub fn pop(&mut self) -> Option<i32> {
+    pub fn pop(&mut self) -> Option<i64> {
         if self.array.len() == 0 {
             return None;
         }
