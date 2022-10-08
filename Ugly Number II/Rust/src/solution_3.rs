@@ -3,7 +3,7 @@
 use std::collections::{HashSet};
 use rust::MinHeap;
 
-pub fn nth_ugly_number(n: i64) -> i64 {
+pub fn nth_ugly_number(n: i64) -> i32 {
     let mut heap = MinHeap::new();
     let mut set = HashSet::new();
     let factors: [i64; 3] = [2, 3, 5];
@@ -26,5 +26,5 @@ pub fn nth_ugly_number(n: i64) -> i64 {
         }
     }
 
-    cur_ugly as i64
+    cur_ugly as i32
 }
