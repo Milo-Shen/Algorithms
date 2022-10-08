@@ -2,11 +2,15 @@
 
 mod solution_1;
 mod solution_2;
+mod solution_3;
 
 fn main() {
     let answer = solution_1::nth_ugly_number(10);
     println!("answer = {}", answer);
 
     let answer = solution_2::nth_ugly_number(10);
+    println!("answer = {}", answer);
+
+    let answer = solution_3::nth_ugly_number(10);
     println!("answer = {}", answer);
 }
