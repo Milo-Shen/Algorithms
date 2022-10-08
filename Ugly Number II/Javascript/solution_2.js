@@ -1,7 +1,5 @@
 // https://leetcode.cn/problems/ugly-number-ii/
 
-const { MinHeap } = require('../../Base/MinHeap/Javascript/MinHeap');
-
 const nthUglyNumber = function (n) {
   // 特殊情况处理
   if (n < 0) {
