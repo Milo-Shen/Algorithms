@@ -1,12 +1,12 @@
-pub struct MinHeap {
-    pub array: Vec<i32>,
+use std::clone::Clone;
+
+pub struct MinHeap<T> {
+    pub array: Vec<T>,
 }
 
-impl MinHeap {
+impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
     pub fn new() -> Self {
-        Self {
-            array: Vec::new()
-        }
+        Self { array: Vec::new() }
     }
 
     pub fn siftup(&mut self, mut k: usize) {
@@ -46,13 +46,13 @@ impl MinHeap {
         }
     }
 
-    pub fn push(&mut self, value: i32) {
+    pub fn push(&mut self, value: T) {
         let index = self.array.len();
         self.array.push(value);
         self.siftup(index);
     }
 
-    pub fn peek(&self) -> Option<i32> {
+    pub fn peek(&self) -> Option<T> {
         if self.array.len() == 0 {
             None
         } else {
@@ -60,7 +60,7 @@ impl MinHeap {
         }
     }
 
-    pub fn pop(&mut self) -> Option<i32> {
+    pub fn pop(&mut self) -> Option<T> {
         if self.array.len() == 0 {
             return None;
         }
