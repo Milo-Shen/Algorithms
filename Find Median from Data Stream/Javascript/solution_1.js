@@ -1,5 +1,6 @@
 // https://leetcode.cn/problems/find-median-from-data-stream/
 
+// 下面的解法会超时
 const MedianFinder = function () {
   this.array = [];
 };
