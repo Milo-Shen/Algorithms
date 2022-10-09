@@ -1,10 +1,13 @@
+// https://leetcode.cn/problems/fibonacci-number/
+// Recursion with memory
+
 use std::collections::HashMap;
 
 // 1. 递归的定义: 函数接受什么样的参数，返回什么样的值，代表什么样的意思
 pub fn fibonacci_memory(hash: &mut HashMap<usize, usize>, n: usize) -> usize {
     // 3. 递归的出口
-    if n <= 2 {
-        return n - 1;
+    if n < 2 {
+        return n;
     }
 
     if let Some(value) = hash.get(&n) {
