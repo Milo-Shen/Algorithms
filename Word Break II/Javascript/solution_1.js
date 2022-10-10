@@ -113,4 +113,5 @@ function get_max_word_len(wordDict) {
   return { max_word_len, word_dict };
 }
 
+// test cases
 console.log(wordBreak('catsanddog', ['cat', 'cats', 'and', 'sand', 'dog']));
