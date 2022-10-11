@@ -20,8 +20,8 @@ function dfs(s, index, max_word_len, word_dict, memo) {
   let sub_str = s.substring(index);
 
   // 如果 s 之前被计算过, 直接返回结果
-  if (memo.has(sub_str)) {
-    return memo.get(sub_str);
+  if (memo.has(index)) {
+    return memo.get(index);
   }
 
   // 递归要素之三: 递归的出口
@@ -61,7 +61,7 @@ function dfs(s, index, max_word_len, word_dict, memo) {
     partitions.push(sub_str);
   }
 
-  memo.set(sub_str, partitions);
+  memo.set(index, partitions);
   return partitions;
 }
 
