@@ -1,3 +1,6 @@
+mod solution_1;
+
 fn main() {
-    println!("Hello, world!");
+    let answer = solution_1::hammingWeight(11);
+    println!("answer = {}", answer);
 }
