@@ -1,3 +1,5 @@
+// https://leetcode.cn/problems/number-of-1-bits/
+
 pub fn hammingWeight(mut n: u32) -> i32 {
     let mut ret = 0;
     while n != 0 {
