@@ -7,12 +7,18 @@ const maximumPopulation = function (logs) {
     const [birth, death] = logs[i];
 
     if (!map.has(birth)) {
-      map.set(birth, 1);
-      continue;
+      map.set(birth, 0);
     }
 
-    map.set(birth, map.get(birth) + 1);
+    for (let [_birth, _] of map) {
+      if (birth >= _birth && _birth < death) {
+        let population = map.get(_birth) + 1;
+        map.set(_birth, population);
+      }
+    }
   }
+
+  return map;
 };
 
 const logs = [
