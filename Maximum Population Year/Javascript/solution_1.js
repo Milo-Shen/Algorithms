@@ -1,24 +1,19 @@
 // https://leetcode.cn/problems/maximum-population-year/
 
 const maximumPopulation = function (logs) {
-  const map = new Map();
+  let year = Array(101).fill(0);
 
-  for (let i = 0; i < logs.length; i++) {
-    const [birth, death] = logs[i];
-
-    if (!map.has(birth)) {
-      map.set(birth, 0);
-    }
-
-    for (let [_birth, _] of map) {
-      if (birth >= _birth && _birth < death) {
-        let population = map.get(_birth) + 1;
-        map.set(_birth, population);
-      }
+  for (let [birth, death] of logs) {
+    for (let i = birth; i < death; i++) {
+      year[i - 1950]++;
     }
   }
 
-  return map;
+  return year
+    .map((x, index) => [index + 1950, x])
+    .sort((x, y) => {
+      return y[1] - x[1] || x[0] - y[0];
+    })[0][0];
 };
 
 const logs = [
