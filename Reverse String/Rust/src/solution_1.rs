@@ -1,3 +1,5 @@
+// https://leetcode.cn/problems/reverse-string/
+
 pub fn reverse_string(s: &mut Vec<char>) {
     let len = s.len();
     let mut tmp;
