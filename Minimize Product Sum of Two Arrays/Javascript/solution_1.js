@@ -1,8 +1,8 @@
 // https://leetcode.cn/problems/minimize-product-sum-of-two-arrays/
 
 const minProductSum = function (nums1, nums2) {
-  nums1 = nums1.sort();
-  nums2 = nums2.sort();
+  nums1 = nums1.sort((a, b) => a - b);
+  nums2 = nums2.sort((a, b) => a - b);
 
   let answer = 0;
   let length = nums1.length;
