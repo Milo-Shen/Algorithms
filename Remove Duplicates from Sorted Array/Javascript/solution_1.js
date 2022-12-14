@@ -2,7 +2,7 @@
 // https://www.lintcode.com/problem/521/description
 
 const removeDuplicates = function (nums) {
-  let i = 0;
+  let i;
   let j = 1;
   let nums_len = nums.length;
 
