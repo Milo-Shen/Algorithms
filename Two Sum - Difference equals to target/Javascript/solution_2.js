@@ -10,6 +10,8 @@ function twoSum7(nums, target) {
       }
     }
   }
+
+  return [];
 }
 
 let nums = [0, 5, 7];
