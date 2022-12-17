@@ -2,6 +2,7 @@
 
 mod solution_1;
 mod solution_2;
+mod solution_3;
 
 fn main() {
     let nums = vec![0, 5, 7];
@@ -12,5 +13,10 @@ fn main() {
     let nums = vec![0, 5, 7];
     let target = -2;
     let answer = solution_2::two_sum7(nums, target);
+    println!("answer = {:?}", answer);
+
+    let nums = vec![0, 5, 7];
+    let target = -2;
+    let answer = solution_3::two_sum7(nums, target);
     println!("answer = {:?}", answer);
 }
