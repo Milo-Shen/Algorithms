@@ -2,10 +2,11 @@
 
 use std::cmp::max;
 
+static MOD: usize = 1000000007;
+
 pub fn num_sub(s: String) -> i32 {
     let char_arr = s.chars().collect::<Vec<char>>();
     let str_len = char_arr.len();
-    let MOD = 1000000007;
 
     let mut j = 1;
     let mut answer = 0;
