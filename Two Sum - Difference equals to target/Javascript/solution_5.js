@@ -9,6 +9,7 @@ function twoSum7(nums, target) {
 
   for (let i = 0; i < len; i++) {
     j = Math.max(j, i + 1);
+
     while (nums[j] - nums[i] < target) {
       j++;
     }
