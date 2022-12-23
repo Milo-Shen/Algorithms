@@ -1,12 +1,11 @@
 // https://leetcode.cn/problems/subarray-product-less-than-k/submissions/
 
 const numSubarrayProductLessThanK = function (nums, k) {
-  let j = 1;
-  let nums_len = nums.length;
   let total = 0;
+  let nums_len = nums.length;
 
   for (let i = 0; i < nums_len; i++) {
-    j = Math.max(i + 1);
+    let j = i + 1;
     let sum = nums[i];
 
     if (sum >= k) {
