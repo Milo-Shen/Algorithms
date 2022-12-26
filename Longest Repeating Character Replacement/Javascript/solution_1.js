@@ -29,7 +29,7 @@ function characterReplacement(s, k) {
     }
 
     counter.set(s[i], counter.get(s[i]) - 1);
-    max_freq = Math.max(...[...counter.values()]);
+    max_freq = Math.max(...counter.values());
   }
 
   return answer;
