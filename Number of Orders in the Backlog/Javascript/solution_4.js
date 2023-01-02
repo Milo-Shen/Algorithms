@@ -17,21 +17,15 @@ const getNumberOfBacklogOrders = function (orders) {
     let [order_price, order_amount, order_type] = orders[i];
 
     if (order_type === OrderType.BUY) {
-      let min_price_sell = null;
+      while (order_amount > 0 && !min_heap.isEmpty() && min_heap.peek().price <= order_price) {
+        let min_price_sell = min_heap.pop();
+        order_amount -= min_price_sell.amount;
 
-      do {
-        min_price_sell = min_heap.peek();
-
-        if (min_price_sell && min_price_sell.price <= order_price) {
-          min_heap.pop();
-          order_amount -= min_price_sell.amount;
-
-          if (order_amount < 0) {
-            min_price_sell.amount = Math.abs(order_amount);
-            min_heap.push(min_price_sell);
-          }
+        if (order_amount < 0) {
+          min_price_sell.amount = Math.abs(order_amount);
+          min_heap.push(min_price_sell);
         }
-      } while (order_amount > 0 && !min_heap.isEmpty() && min_heap.peek().price <= order_price);
+      }
 
       if (order_amount > 0) {
         max_heap.push({ price: order_price, amount: order_amount });
@@ -39,21 +33,15 @@ const getNumberOfBacklogOrders = function (orders) {
     }
 
     if (order_type === OrderType.SELL) {
-      let max_price_buy = null;
+      while (order_amount > 0 && !max_heap.isEmpty() && max_heap.peek().price >= order_price) {
+        let max_price_buy = max_heap.pop();
+        order_amount -= max_price_buy.amount;
 
-      do {
-        max_price_buy = max_heap.peek();
-
-        if (max_price_buy && max_price_buy.price >= order_price) {
-          max_heap.pop();
-          order_amount -= max_price_buy.amount;
-
-          if (order_amount < 0) {
-            max_price_buy.amount = Math.abs(order_amount);
-            max_heap.push(max_price_buy);
-          }
+        if (order_amount < 0) {
+          max_price_buy.amount = Math.abs(order_amount);
+          max_heap.push(max_price_buy);
         }
-      } while (order_amount > 0 && !max_heap.isEmpty() && max_heap.peek().price >= order_price);
+      }
 
       if (order_amount > 0) {
         min_heap.push({ price: order_price, amount: order_amount });
