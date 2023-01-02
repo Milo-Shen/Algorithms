@@ -4,7 +4,7 @@ class MaxHeap {
     this.comparator = comparator || ((a, b) => a - b);
   }
 
-  siftup(k) {
+  sift_up(k) {
     while (k !== 0) {
       let father = ~~((k - 1) / 2);
       if (this.comparator(this.array[k], this.array[father]) < 0) {
@@ -17,7 +17,7 @@ class MaxHeap {
     }
   }
 
-  siftdown(k) {
+  sift_down(k) {
     let len = this.array.length;
     while (k * 2 + 1 < len) {
       // this.array[i] 的左儿子下标
@@ -45,7 +45,7 @@ class MaxHeap {
   push(value) {
     const index = this.array.length;
     this.array.push(value);
-    this.siftup(index);
+    this.sift_up(index);
   }
 
   peek() {
@@ -59,9 +59,10 @@ class MaxHeap {
 
     const first = this.array[0];
     const last = this.array.pop();
+
     if (first !== last) {
       this.array[0] = last;
-      this.siftdown(0);
+      this.sift_down(0);
     }
 
     return first;
