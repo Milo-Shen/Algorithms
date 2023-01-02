@@ -1,3 +1,6 @@
+// https://www.lintcode.com/problem/93/
+// https://leetcode-cn.com/problems/balanced-binary-tree/submissions/
+
 use std::rc::Rc;
 use std::cell::RefCell;
 use Balanced_Binary_Tree::{TreeNode, build_binary_tree};
