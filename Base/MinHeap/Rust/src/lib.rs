@@ -9,7 +9,7 @@ impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
         Self { array: Vec::new() }
     }
 
-    pub fn siftup(&mut self, mut k: usize) {
+    pub fn sift_up(&mut self, mut k: usize) {
         while k != 0 {
             let father = (k - 1) / 2;
             if self.array[k] > self.array[father] {
@@ -23,7 +23,7 @@ impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
         }
     }
 
-    pub fn siftdown(&mut self, mut k: usize) {
+    pub fn sift_down(&mut self, mut k: usize) {
         let arr_len = self.array.len();
 
         while k * 2 + 1 < arr_len {
@@ -49,7 +49,7 @@ impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
     pub fn push(&mut self, value: T) {
         let index = self.array.len();
         self.array.push(value);
-        self.siftup(index);
+        self.sift_up(index);
     }
 
     pub fn peek(&self) -> Option<T> {
@@ -70,7 +70,7 @@ impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
 
         if first != last {
             self.array[0] = last;
-            self.siftdown(0);
+            self.sift_down(0);
         }
 
         Some(first)
