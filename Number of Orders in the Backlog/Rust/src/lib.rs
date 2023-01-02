@@ -75,6 +75,10 @@ impl<T: PartialOrd + Clone + Copy> MinHeap<T> {
 
         Some(first)
     }
+
+    pub fn size(&self) -> usize {
+        self.array.len()
+    }
 }
 
 pub struct MaxHeap<T> {
@@ -151,5 +155,9 @@ impl<T: PartialOrd + Clone + Copy> MaxHeap<T> {
         }
 
         Some(first)
+    }
+
+    pub fn size(&self) -> usize {
+        self.array.len()
     }
 }
