@@ -41,6 +41,6 @@ const findKth = function (A, startOfA, B, startOfB, k) {
   return findKth(A, startOfA, B, startOfB + half, k - half);
 };
 
-const nums1 = [1, 2, 3, 4, 5, 6];
-const nums2 = [2, 3, 4, 5];
+const nums1 = [1, 3];
+const nums2 = [2, 4];
 console.log(findMedianSortedArrays(nums1, nums2));
