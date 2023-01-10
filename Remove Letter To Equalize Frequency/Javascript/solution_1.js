@@ -1,24 +1,41 @@
 // https://leetcode.cn/problems/remove-letter-to-equalize-frequency/
 
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
 const equalFrequency = function (word) {
-  let map = new Map();
+  const map = new Map();
 
-  for (let i = 0; i < word.length; i++) {
-    let ch = word[i];
-    map.set(ch, (map.get(ch) || 0) + 1);
+  for (const c of word) {
+    map.set(c, (map.get(c) || 0) + 1);
   }
 
-  let count_arr = [];
-  for (let [_, count] of map) {
-    count_arr.push(count);
+  const arr = [];
+
+  for (const [_, v] of map) {
+    arr.push(v);
   }
 
-  count_arr.sort((a, b) => b - a);
-  console.log(count_arr);
+  if (arr.length === 1) {
+    return true;
+  }
 
-  return count_arr[0] - count_arr[count_arr.length - 1] <= 1;
+  arr.sort((a, b) => b - a);
 
-  // 4 2 1,   2 2 1 todo
+  if (arr.length === 2) {
+    return arr[0] - arr[1] === 1 || arr[1] === 1;
+  }
+
+  if (arr[0] === arr[arr.length - 1] && arr[0] === 1) {
+    return true;
+  }
+
+  if (arr[0] - arr[1] === 1 && arr[1] === arr[arr.length - 1]) {
+    return true;
+  }
+
+  return arr[arr.length - 1] === 1 && arr[0] === arr[arr.length - 2];
 };
 
-console.log(equalFrequency('babbdd'));
+console.log(equalFrequency('abcc'));
