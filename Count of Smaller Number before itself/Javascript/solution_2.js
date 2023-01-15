@@ -18,24 +18,25 @@ function countOfSmallerNumberII(a) {
 }
 
 class Block {
-  constructor() {
+  constructor(block_size) {
     this.total = 0;
-    this.counter = new Map();
+    this.counter = Array(block_size).fill(0);
   }
 }
 
 class BlockArray {
-  constructor(max_value) {
-    let block_len = ~~(max_value / 100) + 1;
+  constructor(capacity) {
     this.blocks = [];
+    this.block_size = ~~Math.sqrt(capacity);
+    let block_len = ~~(capacity / this.block_size) + 1;
     for (let i = 0; i < block_len; i++) {
-      this.blocks.push(new Block());
+      this.blocks.push(new Block(this.block_size));
     }
   }
 
   count_smaller(value) {
     let count = 0;
-    let block_index = ~~(value / 100);
+    let block_index = ~~(value / this.block_size);
 
     // 统计当前分区，之前的所有分区的总数
     for (let i = 0; i < block_index; i++) {
@@ -43,21 +44,17 @@ class BlockArray {
     }
 
     // 统计当前分区的总数
-    let counter = this.blocks[block_index].counter;
-    for (let [num, cnt] of counter) {
-      if (num < value) {
-        count += cnt;
-      }
+    for (let i = 0; i + block_index * this.block_size < value; i++) {
+      count += this.blocks[block_index].counter[i];
     }
 
     return count;
   }
 
   insert(value) {
-    let block_index = ~~(value / 100);
-    let block = this.blocks[block_index];
-    block.total += 1;
-    block.counter.set(value, (block.counter.get(value) || 0) + 1);
+    let block_index = ~~(value / this.block_size);
+    this.blocks[block_index].total++;
+    this.blocks[block_index].counter[value - block_index * this.block_size]++;
   }
 }
 
