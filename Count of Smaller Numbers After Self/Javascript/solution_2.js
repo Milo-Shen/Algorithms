@@ -8,12 +8,13 @@ const countSmaller = function (nums) {
     return [];
   }
 
-  let block_array = new BlockArray(10000);
+  let block_array = new BlockArray(20000);
   let result = Array(nums_len).fill(0);
 
   for (let i = nums_len - 1; i >= 0; i--) {
-    result[i] = block_array.count_smaller(nums[i]);
-    block_array.insert(nums[i]);
+    let num = nums[i] + 10000;
+    result[i] = block_array.count_smaller(num);
+    block_array.insert(num);
   }
 
   return result;
@@ -63,4 +64,4 @@ class BlockArray {
   }
 }
 
-console.log(countSmaller([-1, -3]));
+console.log(countSmaller([5, 2, 6, 1]));
