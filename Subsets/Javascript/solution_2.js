@@ -7,6 +7,7 @@ function subsets(nums) {
     return [[]];
   }
 
+  // 如果不要求从小到大顺序的话, 这行可以省略
   nums = nums.sort((a, b) => a - b);
   dfs(nums, 0, [], result);
 
