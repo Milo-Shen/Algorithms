@@ -1,3 +1,5 @@
+// https://leetcode.cn/problems/difference-between-element-sum-and-digit-sum-of-an-array/
+
 pub fn difference_of_sum(nums: Vec<i32>) -> i32 {
     let mut num_sum = 0;
     let mut ele_sum = 0;
