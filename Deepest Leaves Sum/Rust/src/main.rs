@@ -1,6 +1,7 @@
 // https://leetcode.cn/problems/deepest-leaves-sum/
 
 mod solution_1;
+mod solution_2;
 
 use rust::build_binary_tree;
 
@@ -13,7 +14,11 @@ fn main() {
         Some(8),
     ];
 
-    let root = build_binary_tree(nums);
+    let root = build_binary_tree(nums.clone());
     let answer = solution_1::deepest_leaves_sum(root);
+    println!("answer = {}", answer);
+
+    let root = build_binary_tree(nums.clone());
+    let answer = solution_2::deepest_leaves_sum(root);
     println!("answer = {}", answer);
 }
