@@ -1,7 +1,7 @@
 // https://www.lintcode.com/problem/611/
 // lint code 上这题输入的 grid 是 boolean 数组, source 和 destination 是 Point 实例, 这个需要注意
 
-// 对于点的定义 todo
+// 对于点的定义
 class Point {
   constructor(x = 0, y = 0) {
     this.x = x;
@@ -84,7 +84,7 @@ function extend_queue(grid, queue, visited, opposite_set) {
         return true;
       }
 
-      queue.push({ x: new_coordinate_x, y: new_coordinate_y });
+      queue.push(new Point(new_coordinate_x, new_coordinate_y));
       visited.add(flag);
     }
   }
@@ -108,7 +108,7 @@ function is_valid(grid, visited, x, y, flag) {
 
 // test cases
 let grid = [
-  [0, 0, 0],
+  [0, 1, 0],
   [0, 0, 0],
   [0, 0, 0],
 ];
