@@ -2,33 +2,24 @@
 // https://leetcode.cn/problems/subsets/submissions/
 
 pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {
-    let mut result: Vec<Vec<i32>> = Vec::new();
+    let mut nums = nums;
 
     if nums.is_empty() {
-        return result;
+        return Vec::new();
     }
 
-    let mut nums = nums;
+    let mut queue: Vec<Vec<i32>> = vec![vec![]];
     nums.sort();
 
-    dfs(&nums, nums.len(), 0, &mut result, &mut Vec::new());
+    for num in nums {
+        let size = queue.len();
 
-    result
-}
-
-// 1. 递归的定义
-fn dfs(
-    nums: &Vec<i32>,
-    len: usize,
-    index: usize,
-    result: &mut Vec<Vec<i32>>,
-    subsets: &mut Vec<i32>,
-) {
-    result.push(subsets.clone());
-
-    for i in index..len {
-        subsets.push(nums[i]);
-        dfs(&nums, len, i + 1, result, subsets);
-        subsets.pop();
+        for i in 0..size {
+            let mut subsets = queue[i].clone();
+            subsets.push(num);
+            queue.push(subsets);
+        }
     }
+
+    queue
 }
