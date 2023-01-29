@@ -1,5 +1,6 @@
 // https://www.lintcode.com/problem/611/
 // lint code 上这题输入的 grid 是 boolean 数组, source 和 destination 是 Point 实例, 这个需要注意
+// 另外一个则是 grid 是 boolean 数组，而非 0, 1 数组，和题目介绍不一样
 
 // 对于点的定义
 class Point {
@@ -99,7 +100,7 @@ function is_valid(grid, visited, x, y, flag) {
     return false;
   }
 
-  if (grid[x][y] === 1) {
+  if (grid[x][y]) {
     return false;
   }
 
