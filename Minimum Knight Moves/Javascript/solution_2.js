@@ -22,6 +22,7 @@ const DIVIDE = '-';
 const minKnightMoves = function (x, y) {
   // 异常检测
   if (x === 0 && y === 0) {
+    return 0;
   }
 
   // 最短路径数
@@ -53,25 +54,29 @@ const minKnightMoves = function (x, y) {
 };
 
 function extend_queue(queue, visited, opposite_visited) {
-  let coordinate = queue.shift();
+  let len = queue.length;
 
-  // 国际象棋的走法 ( 8 个方位进行 bfs )
-  for (let j = 0; j < 8; j++) {
-    let delta = directions[j];
-    let new_coordinate_x = coordinate[0] + delta.x;
-    let new_coordinate_y = coordinate[1] + delta.y;
-    let flag = [new_coordinate_x, new_coordinate_y].join(DIVIDE);
+  for (let i = 0; i < len; i++) {
+    let coordinate = queue.shift();
 
-    if (visited.has(flag)) {
-      continue;
+    // 国际象棋的走法 ( 8 个方位进行 bfs )
+    for (let j = 0; j < 8; j++) {
+      let delta = directions[j];
+      let new_coordinate_x = coordinate[0] + delta.x;
+      let new_coordinate_y = coordinate[1] + delta.y;
+      let flag = [new_coordinate_x, new_coordinate_y].join(DIVIDE);
+
+      if (visited.has(flag)) {
+        continue;
+      }
+
+      if (opposite_visited.has(flag)) {
+        return true;
+      }
+
+      queue.push([new_coordinate_x, new_coordinate_y]);
+      visited.add(flag);
     }
-
-    if (opposite_visited.has(flag)) {
-      return true;
-    }
-
-    queue.push([new_coordinate_x, new_coordinate_y]);
-    visited.add(flag);
   }
 
   return false;
