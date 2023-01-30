@@ -1,7 +1,7 @@
 // https://leetcode-cn.com/problems/word-ladder/
 //  beginWord 不需要在 wordList 中, 这个和 lint-code 上的不一样
 
-use std::collections::{HashMap, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 
 pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String>) -> i32 {
     // 对异常进行处理
@@ -22,9 +22,11 @@ pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String
 
     // 最短路径 & 缓存
     let mut distance = 1;
-    let mut next_word_cache = HashMap::new();
+    let mut next_word_cache: HashMap<String, String> = HashMap::new();
 
     // 双向宽度优先搜索
+    let forward_queue = VecDeque::from([begin_word]);
+    let forward_set = HashSet::from([begin_word.clone()]);
 
     0
 }
