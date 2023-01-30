@@ -1,16 +1,30 @@
+// https://leetcode-cn.com/problems/word-ladder/
+//  beginWord 不需要在 wordList 中, 这个和 lint-code 上的不一样
+
 use std::collections::{HashMap, HashSet};
 
 pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String>) -> i32 {
     // 对异常进行处理
     let list_len = word_list.len();
-    let hash: HashMap<String, Vec<char>> = HashMap::new();
+    if list_len == 0 {
+        return 0;
+    }
 
-    // 记录层的深度, 初始值为 0
-    let count = 0;
-    let queue = vec![&begin_word];
-    let set = HashSet::from([&begin_word]);
-    let a = set.get(&begin_word).unwrap();
-    println!("{:?}", a == String::from("@"));
+    if begin_word == end_word {
+        return 1;
+    }
+
+    // 将 word list 转换成 word dict
+    let word_dict: HashSet<String> = HashSet::from_iter(word_list);
+    if !word_dict.contains(&end_word) {
+        return 0;
+    }
+
+    // 最短路径 & 缓存
+    let mut distance = 1;
+    let mut next_word_cache = HashMap::new();
+
+    // 双向宽度优先搜索
 
     0
 }
