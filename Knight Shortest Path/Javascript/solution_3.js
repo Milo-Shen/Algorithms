@@ -89,6 +89,8 @@ function extend_queue(grid, queue, visited, opposite_set) {
       visited.add(flag);
     }
   }
+
+  return false;
 }
 
 function is_valid(grid, visited, x, y, flag) {
