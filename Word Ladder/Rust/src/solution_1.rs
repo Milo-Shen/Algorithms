@@ -74,8 +74,7 @@ fn extend_queue(
             visited.insert(next_word);
         }
     }
-
-
+    
     false
 }
 
