@@ -15,7 +15,8 @@ pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String
     }
 
     // 将 word list 转换成 word dict
-    let word_dict: HashSet<String> = HashSet::from_iter(word_list);
+    // let word_dict: HashSet<String> = HashSet::from_iter(word_list);
+    let word_dict: HashSet<String> = word_list.iter().cloned().collect();
     if !word_dict.contains(&end_word) {
         return 0;
     }
