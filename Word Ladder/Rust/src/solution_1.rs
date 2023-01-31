@@ -33,12 +33,12 @@ pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String
 
     while !forward_queue.is_empty() && !backward_queue.is_empty() {
         distance += 1;
-        if extend_queue(&mut forward_queue, &mut forward_set, &backward_set, &word_dict, &next_word_cache) {
+        if extend_queue(&mut forward_queue, &mut forward_set, &backward_set, &word_dict, &mut next_word_cache) {
             return distance;
         }
 
         distance += 1;
-        if extend_queue(&mut backward_queue, &mut backward_set, &forward_set, &word_dict, &next_word_cache) {
+        if extend_queue(&mut backward_queue, &mut backward_set, &forward_set, &word_dict, &mut next_word_cache) {
             return distance;
         }
     }
@@ -51,7 +51,7 @@ fn extend_queue(
     visited: &mut HashSet<String>,
     opposite_visited: &HashSet<String>,
     word_dict: &HashSet<String>,
-    cache: &HashMap<String, Vec<String>>,
+    cache: &mut HashMap<String, Vec<String>>,
 ) -> bool {
     let len = queue.len();
 
@@ -79,7 +79,7 @@ fn extend_queue(
     false
 }
 
-fn get_next_words(word_dict: &HashSet<String>, word: &String, cache: &HashMap<String, Vec<String>>) -> Vec<String> {
+fn get_next_words(word_dict: &HashSet<String>, word: &String, cache: &mut HashMap<String, Vec<String>>) -> Vec<String> {
     if cache.contains_key(word) {
         return cache.get(word).unwrap().clone();
     }
@@ -99,6 +99,8 @@ fn get_next_words(word_dict: &HashSet<String>, word: &String, cache: &HashMap<St
             }
         }
     }
+
+    cache.insert(word.clone(), next_words.clone());
 
     next_words
 }
