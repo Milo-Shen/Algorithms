@@ -33,12 +33,24 @@ pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String
 
     while !forward_queue.is_empty() && !backward_queue.is_empty() {
         distance += 1;
-        if extend_queue(&mut forward_queue, &mut forward_set, &backward_set, &word_dict, &mut next_word_cache) {
+        if extend_queue(
+            &mut forward_queue,
+            &mut forward_set,
+            &backward_set,
+            &word_dict,
+            &mut next_word_cache,
+        ) {
             return distance;
         }
 
         distance += 1;
-        if extend_queue(&mut backward_queue, &mut backward_set, &forward_set, &word_dict, &mut next_word_cache) {
+        if extend_queue(
+            &mut backward_queue,
+            &mut backward_set,
+            &forward_set,
+            &word_dict,
+            &mut next_word_cache,
+        ) {
             return distance;
         }
     }
@@ -59,28 +71,32 @@ fn extend_queue(
         let word = queue.pop_front().unwrap();
 
         // 对下一层单词进行 BFS
-        let next_words = get_next_words(word_dict, &word, cache);
+        let next_words = get_next_words(word_dict, word, cache);
 
         for next_word in next_words {
-            if visited.contains(&next_word) {
+            if visited.contains(next_word) {
                 continue;
             }
 
-            if opposite_visited.contains(&next_word) {
+            if opposite_visited.contains(next_word) {
                 return true;
             }
 
-            queue.push_back(next_word.clone());
-            visited.insert(next_word);
+            queue.push_back(next_word.to_owned());
+            visited.insert(next_word.to_owned());
         }
     }
-    
+
     false
 }
 
-fn get_next_words(word_dict: &HashSet<String>, word: &String, cache: &mut HashMap<String, Vec<String>>) -> Vec<String> {
-    if cache.contains_key(word) {
-        return cache.get(word).unwrap().clone();
+fn get_next_words<'a>(
+    word_dict: &HashSet<String>,
+    word: String,
+    cache: &'a mut HashMap<String, Vec<String>>,
+) -> &'a Vec<String> {
+    if cache.contains_key(&word) {
+        return cache.get(&word).unwrap();
     }
 
     let word_char_arr: Vec<char> = word.chars().collect();
@@ -99,7 +115,7 @@ fn get_next_words(word_dict: &HashSet<String>, word: &String, cache: &mut HashMa
         }
     }
 
-    cache.insert(word.clone(), next_words.clone());
+    cache.insert(word.clone(), next_words);
 
-    next_words
+    cache.get(&word).unwrap()
 }
