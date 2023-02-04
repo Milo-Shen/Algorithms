@@ -9,28 +9,45 @@ const solveNQueens = function (n) {
 
   let results = [];
 
-  search(results, [], n);
+  // 有没有被访问过
+  let visited = {
+    col: new Set(),
+    // 副对角线: 方向二的斜线为从右上到左下方向，同一条斜线上的每个位置满足行下标与列下标之和相等
+    sum: new Set(),
+    // 正对角线: 方向一的斜线为从左上到右下方向，同一条斜线上的每个位置满足行下标与列下标之差相等
+    diff: new Set(),
+  };
+
+  search(results, [], n, visited);
 
   return results;
 };
 
 // search 函数为搜索函数, n 表示已经放置了 n 个皇后, cols 表示每个皇后所在的列
-function search(results, cols, n) {
+function search(results, cols, n, visited) {
   // 若已经放置了 n 个皇后, 表示出现了一种解法, 绘制后加入答案 result
   if (cols.length === n) {
     results.push(draw(cols));
     return;
   }
 
+  let row = cols.length;
+
   // 若已经放置了 n 个皇后表示出现了一种解法, 绘制后加入答案 result
   for (let col_index = 0; col_index < n; col_index++) {
-    if (!is_valid(cols, col_index)) {
+    if (!is_valid(cols, col_index, visited)) {
       continue;
     }
 
     // 若合法则递归枚举下一行的皇后
     cols.push(col_index);
-    search(results, cols, n);
+    visited.col.add(col_index);
+    visited.sum.add(row + col_index);
+    visited.diff.add(row - col_index);
+    search(results, cols, n, visited);
+    visited.col.delete(col_index);
+    visited.sum.delete(row + col_index);
+    visited.diff.delete(row - col_index);
     cols.pop();
   }
 }
@@ -50,21 +67,19 @@ function draw(cols) {
   return result;
 }
 
-function is_valid(cols, col) {
+function is_valid(cols, col, visited) {
   let row = cols.length;
-  for (let row_index = 0; row_index < cols.length; row_index++) {
-    // 如果有其他皇后在同一列或同一对角线上则不合法
-    if (cols[row_index] === col) {
-      return false;
-    }
 
-    if (row + col === row_index + cols[row_index]) {
-      return false;
-    }
+  if (visited.col.has(col)) {
+    return false;
+  }
 
-    if (row - col === row_index - cols[row_index]) {
-      return false;
-    }
+  if (visited.sum.has(row + col)) {
+    return false;
+  }
+
+  if (visited.diff.has(row - col)) {
+    return false;
   }
 
   return true;
