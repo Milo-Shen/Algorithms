@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/sudoku-solver/
+// https://leetcode.cn/problems/valid-sudoku/submissions/
 
 const isValidSudoku = function (board) {
   // 每一行是否出现当前数字
