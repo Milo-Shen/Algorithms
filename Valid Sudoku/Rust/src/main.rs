@@ -1,6 +1,7 @@
 // https://leetcode.cn/problems/valid-sudoku/submissions/
 
 mod solution_1;
+mod solution_2;
 
 fn main() {
     let board = vec![
@@ -14,6 +15,9 @@ fn main() {
         vec!['.', '.', '.', '4', '1', '9', '.', '.', '5'],
         vec!['.', '.', '.', '.', '8', '.', '.', '7', '9'],
     ];
-    let answer = solution_1::is_valid_sudoku(board);
+    let answer = solution_1::is_valid_sudoku(board.clone());
+    println!("answer = {}", answer);
+
+    let answer = solution_2::is_valid_sudoku(board);
     println!("answer = {}", answer);
 }
