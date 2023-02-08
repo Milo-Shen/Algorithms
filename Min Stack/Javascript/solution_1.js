@@ -22,3 +22,9 @@ MinStack.prototype.top = function () {
 MinStack.prototype.getMin = function () {
   return this.min_stack[this.min_stack.length - 1];
 };
+
+let minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+console.log(minStack.getMin());
