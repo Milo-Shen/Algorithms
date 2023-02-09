@@ -1,6 +1,7 @@
 // https://leetcode.cn/problems/IlPe0q/
 // https://www.lintcode.com/problem/109/
 
+// 不用记忆化搜索的时间复杂度, 时间复杂度为 2^n
 const minimumTotal = function (triangle) {
   let min = { val: Infinity };
   traverse(triangle, 0, 0, 0, min);
