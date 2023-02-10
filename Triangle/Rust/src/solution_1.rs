@@ -1,18 +1,18 @@
 // https://leetcode.cn/problems/IlPe0q/
 // https://www.lintcode.com/problem/109/
 
+use std::cmp::min;
+
 pub fn minimum_total(triangle: Vec<Vec<i32>>) -> i32 {
-    let mut min = i32::MAX;
-    traverse(&triangle, 0, 0, 0, &mut min);
-    min
+    divide_conquer(&triangle, 0, 0)
 }
 
-fn traverse(triangle: &Vec<Vec<i32>>, x: usize, y: usize, path_sum: i32, min: &mut i32) {
+fn divide_conquer(triangle: &Vec<Vec<i32>>, x: usize, y: usize) -> i32 {
     if x == triangle.len() {
-        *min = if *min > path_sum { path_sum } else { *min };
-        return;
+        return 0;
     }
 
-    traverse(triangle, x + 1, y, path_sum + triangle[x][y], min);
-    traverse(triangle, x + 1, y + 1, path_sum + triangle[x][y], min);
+    let left = divide_conquer(triangle, x + 1, y);
+    let right = divide_conquer(triangle, x + 1, y + 1);
+    return min(left, right) + triangle[x][y];
 }
