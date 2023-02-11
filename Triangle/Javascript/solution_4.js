@@ -18,7 +18,7 @@ const minimumTotal = function (triangle) {
 
   // dp 从下往上推导, 计算每个坐标到哪去
   for (let i = n - 2; i >= 0; i--) {
-    for (let j = 0; j < i + 1; j++) {
+    for (let j = 0; j < triangle[i].length; j++) {
       dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle[i][j];
     }
   }
