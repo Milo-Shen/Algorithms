@@ -1,6 +1,12 @@
 // https://leetcode.cn/problems/IlPe0q/
 // https://www.lintcode.com/problem/109/
 
+// 动态规划的四要素
+// 1. 状态
+// 2. 方程
+// 3. 初始化
+// 4. 答案
+
 // 自顶向下 dp
 const minimumTotal = function (triangle) {
   let n = triangle.length;
