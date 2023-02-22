@@ -1,6 +1,5 @@
 // https://leetcode.cn/problems/unique-paths-ii/
 
-// todo
 const uniquePathsWithObstacles = function (obstacleGrid) {
   if (!obstacleGrid || !obstacleGrid.length || !obstacleGrid[0] || !obstacleGrid[0].length) {
     return 0;
@@ -19,22 +18,24 @@ const uniquePathsWithObstacles = function (obstacleGrid) {
     dp.push(Array(n).fill(0));
   }
 
-  for (let i = 0; i < n; i++) {
+  dp[0][0] = 1;
+
+  for (let i = 1; i < n; i++) {
     if (obstacleGrid[0][i] === 1) {
       dp[0][i] = 0;
       continue;
     }
 
-    dp[0][i] = 1;
+    dp[0][i] = dp[0][i - 1] === 0 ? 0 : 1;
   }
 
-  for (let i = 0; i < m; i++) {
+  for (let i = 1; i < m; i++) {
     if (obstacleGrid[i][0] === 1) {
       dp[i][0] = 0;
       continue;
     }
 
-    dp[i][0] = 1;
+    dp[i][0] = dp[i - 1][0] === 0 ? 0 : 1;
   }
 
   for (let i = 1; i < m; i++) {
