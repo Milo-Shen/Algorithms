@@ -70,7 +70,7 @@ function extend_queue(grid, queue, visited, opposite_set, directions) {
   for (let i = 0; i < length; i++) {
     let coordinate = queue.shift();
 
-    // 国际象棋的走法 ( 8 个方位进行 bfs )
+    // 国际象棋的走法 ( 4 个方位进行 bfs )
     for (let j = 0; j < 4; j++) {
       let delta = directions[j];
       let new_coordinate_x = coordinate[0] + delta.x;
