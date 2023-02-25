@@ -26,6 +26,26 @@ function shortestPath2(grid) {
     dp.push(Array(cols).fill(Infinity));
   }
 
+  dp[0][0] = 0;
+
+  for (let j = 0; j < cols; j++) {
+    for (let i = 0; i < rows; i++) {
+      if (grid[i][j]) {
+        continue;
+      }
+
+      // 遍历到达 dp[i][j] 这个点的可能的 4 个方向
+      for (let delta of backward_directions) {
+        let come_x = i + delta.x;
+        let come_y = j + delta.y;
+
+        if (0 <= come_x && come_x < rows && 0 <= come_y && come_y < cols) {
+          dp[i][j] = Math.min(dp[i][j], dp[come_x][come_y] + 1);
+        }
+      }
+    }
+  }
+
   if (dp[rows - 1][cols - 1] === Infinity) {
     return -1;
   }
