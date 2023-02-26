@@ -39,7 +39,6 @@ const uniquePathsWithObstacles = function (obstacleGrid) {
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
       if (obstacleGrid[i][j] === 1) {
-        dp[i][j] = 0;
         continue;
       }
 
