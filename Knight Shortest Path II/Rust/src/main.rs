@@ -4,6 +4,7 @@
 
 
 mod solution_1;
+mod solution_2;
 
 fn main() {
     let grid = vec![
@@ -11,6 +12,9 @@ fn main() {
         vec![false, false, false, false],
         vec![false, false, false, false],
     ];
-    let answer = solution_1::shortest_path2(grid);
+    let answer = solution_1::shortest_path2(grid.clone());
+    println!("answer = {}", answer);
+
+    let answer = solution_2::shortest_path2(grid.clone());
     println!("answer = {}", answer);
 }

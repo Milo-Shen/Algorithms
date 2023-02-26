@@ -28,6 +28,7 @@ function shortestPath2(grid) {
 
   dp[0][0] = 0;
 
+  // 重点: 因为之前 4 个位置的点都在当前点的左侧，所以要按照列来遍历
   for (let j = 0; j < cols; j++) {
     for (let i = 0; i < rows; i++) {
       if (grid[i][j]) {
