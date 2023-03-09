@@ -1,4 +1,4 @@
-// https://leetcode.cn/problems/jump-game-iv/ todo
+// https://leetcode.cn/problems/jump-game-iv/
 
 const minJumps = function (arr) {
   // 异常检测
@@ -10,8 +10,18 @@ const minJumps = function (arr) {
     return 0;
   }
 
+  let map = new Map();
+  for (let i = 0; i < arr.length; i++) {
+    let val = arr[i];
+    if (map.has(val)) {
+      map.get(val).push(i);
+      continue;
+    }
+
+    map.set(val, [i]);
+  }
+
   let min_step = -1;
-  let cache = new Map();
   let queue = [0];
   let visited = new Set([0]);
 
@@ -27,7 +37,7 @@ const minJumps = function (arr) {
         return min_step;
       }
 
-      let next_pos_set = get_next_position(arr, cur_pos, cache);
+      let next_pos_set = get_next_position(arr, cur_pos, visited, map);
 
       for (let next_pos of next_pos_set) {
         if (visited.has(next_pos)) {
@@ -43,25 +53,28 @@ const minJumps = function (arr) {
   return -1;
 };
 
-function get_next_position(arr, pos) {
+function get_next_position(arr, pos, visited, map) {
   let result = [];
 
   let left_pos = pos - 1;
   let right_pos = pos + 1;
 
-  if (0 <= left_pos && left_pos < arr.length) {
+  if (0 <= left_pos) {
     result.push(left_pos);
   }
 
-  if (0 <= right_pos && right_pos < arr.length) {
+  if (right_pos < arr.length) {
     result.push(right_pos);
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    if (i !== pos && arr[pos] === arr[i]) {
-      result.push(i);
+  let pos_arr = map.get(arr[pos]);
+  for (let i = 0; i < pos_arr.length; i++) {
+    let index = pos_arr[i];
+    if (!visited.has(index) && index !== left_pos && index !== right_pos) {
+      result.push(index);
     }
   }
+  map.set(arr[pos], []);
 
   return result;
 }

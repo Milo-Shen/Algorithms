@@ -11,7 +11,6 @@ const minJumps = function (arr) {
   }
 
   let min_step = -1;
-  let cache = new Map();
   let queue = [0];
   let visited = new Set([0]);
 
@@ -27,7 +26,7 @@ const minJumps = function (arr) {
         return min_step;
       }
 
-      let next_pos_set = get_next_position(arr, cur_pos, cache);
+      let next_pos_set = get_next_position(arr, cur_pos);
 
       for (let next_pos of next_pos_set) {
         if (visited.has(next_pos)) {
