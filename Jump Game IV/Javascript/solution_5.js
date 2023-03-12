@@ -1,6 +1,6 @@
 // https://leetcode.cn/problems/jump-game-iv/
 
-
+// 这里需要注意的点: js queue 的 shift 性能也特别差
 const minJumps = function (arr) {
   let len = arr.length;
 
