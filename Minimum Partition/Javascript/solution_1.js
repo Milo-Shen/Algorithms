@@ -1,7 +1,6 @@
 // https://www.lintcode.com/problem/724/
-// https://leetcode.cn/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
 
-// 题型变换 todo
+// 题型变换
 // 设整个数组所有数之和为 SUM, 其中一个较小的数组之和为 X
 // 问题变为求 |SUM - X - X| = |SUM - 2X| 的最小值
 // 即求使得 X 尽可能接近 SUM/2 的最大值
