@@ -18,5 +18,30 @@
 // 1. 使得 dp[n][v], 0 <= v <= m 为 true 的最大 v
 
 pub fn back_pack(m: i32, A: Vec<i32>) -> i32 {
-    0
+    let n = A.len();
+
+    // state: dp[i][j] 表示前 i 个数里是否能挑出和为 j
+    let mut dp = vec![vec![false; (m + 1) as usize]; n + 1];
+
+    // initialize: 前 0 个数里挑和为 0 是 true，其他都是 false
+    dp[0][0] = true;
+
+    for i in 1..=n {
+        dp[i][0] = true;
+        for j in 0..=m {
+            if j >= A[i - 1] {
+                dp[i][j as usize] = dp[i - 1][j as usize] || dp[i - 1][(j - A[i - 1]) as usize];
+            } else {
+                dp[i][j as usize] = dp[i - 1][j as usize];
+            }
+        }
+    }
+
+    for v in (0..=m).rev() {
+        if dp[n][v as usize] {
+            return v;
+        }
+    }
+
+    -1
 }
