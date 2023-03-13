@@ -1,4 +1,5 @@
 // https://www.lintcode.com/problem/724/
+// https://leetcode.cn/problems/last-stone-weight-ii/
 
 // 题型变换
 // 设整个数组所有数之和为 SUM, 其中一个较小的数组之和为 X
