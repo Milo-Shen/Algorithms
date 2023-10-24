@@ -23,7 +23,7 @@ const longestContinuousIncreasingSubsequence2 = function (matrix) {
   let points = [];
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      points.push(matrix[i][j], i, j);
+      points.push([matrix[i][j], i, j]);
     }
   }
 
@@ -37,11 +37,24 @@ const longestContinuousIncreasingSubsequence2 = function (matrix) {
       let new_x = pos_x + x;
       let new_y = pos_y + y;
 
-      if (new_x < 0 || new_x > rows || new_y < 0 || new_y > cols) {
+      if (new_x < 0 || new_x >= rows || new_y < 0 || new_y >= cols) {
         continue;
+      }
+
+      if (matrix[pos_x][pos_y] > matrix[new_x][new_y]) {
+        dp[pos_x][pos_y] = Math.max(dp[pos_x][pos_y], dp[new_x][new_y] + 1);
       }
     }
   }
+
+  let max = 1;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      max = Math.max(max, dp[i][j]);
+    }
+  }
+
+  return max;
 };
 
 console.log(
