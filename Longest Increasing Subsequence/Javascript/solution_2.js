@@ -12,8 +12,8 @@ const lengthOfLIS = function (nums) {
 
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < i; j++) {
-      if (nums[i] > nums[j]) {
-        dp[i] = Math.max(dp[i], dp[j] + 1);
+      if (nums[i] > nums[j] && dp[i] < dp[j] + 1) {
+        dp[i] = dp[j] + 1;
         prev[i] = j;
       }
     }
