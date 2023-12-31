@@ -27,13 +27,14 @@ pub fn trap(height: Vec<i32>) -> i32 {
         i -= 1;
     }
 
-    j = if i - 1 < 0 { 0 } else { i - 1 };
+    let mut i = i as i32;
+    let mut j = i - 1;
 
-    while j >= peak {
-        if height[j] >= height[i] {
-            let max_h = height[i].min(height[j]);
+    while j >= peak as i32 {
+        if height[j as usize] >= height[i as usize] {
+            let max_h = height[i as usize].min(height[j as usize]);
             for m in (j + 1..i).rev() {
-                total = total + max_h - height[m];
+                total = total + max_h - height[m as usize];
             }
             i = j;
         }
