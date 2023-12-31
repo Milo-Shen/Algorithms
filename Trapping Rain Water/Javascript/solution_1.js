@@ -1,15 +1,16 @@
 // https://leetcode.cn/problems/trapping-rain-water/
 const trap = function (height) {
+  let arr_len = height.length;
   let total = 0;
   let i = 0;
 
-  while (height[i] === 0) {
+  while (i < arr_len && height[i] === 0) {
     i++;
   }
 
   let j = i + 1;
 
-  while (j < height.length) {
+  while (j < arr_len) {
     if (height[j] >= height[i]) {
       let max_h = Math.min(height[i], height[j]);
       for (let m = i + 1; m < j; m++) {
@@ -21,7 +22,7 @@ const trap = function (height) {
   }
 
   let peak = i;
-  i = height.length - 1;
+  i = arr_len - 1;
 
   while (height[i] === 0) {
     i--;
