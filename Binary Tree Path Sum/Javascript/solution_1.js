@@ -1,5 +1,6 @@
 // https://www.lintcode.com/problem/376/
 // https://leetcode-cn.com/problems/path-sum/submissions/
+// https://leetcode.cn/problems/path-sum-ii/description/
 
 function binaryTreePathSum(root, target) {
   if (!root) {

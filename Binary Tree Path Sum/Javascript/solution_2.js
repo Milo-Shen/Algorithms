@@ -1,5 +1,6 @@
 // https://www.lintcode.com/problem/376/
 // https://leetcode-cn.com/problems/path-sum/submissions/
+// https://leetcode.cn/problems/path-sum-ii/description/
 
 // todo: 了解其分治法递归的实际运行结果
 function binaryTreePathSum(root, target) {
