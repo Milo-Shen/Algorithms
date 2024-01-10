@@ -13,11 +13,11 @@ const pathSum = function (root, targetSum) {
 };
 
 const rootSum = (root, targetSum) => {
-  let result = 0;
-
-  if (root == null) {
+  if (!root) {
     return 0;
   }
+
+  let result = 0;
 
   const val = root.val;
   if (val === targetSum) {
