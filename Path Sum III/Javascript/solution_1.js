@@ -2,6 +2,8 @@
 
 const pathSum = function (root, targetSum) {};
 
+const dfs = function (root, sum, targetSum) {};
+
 // test cases
 const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
 let nums = [10, 5, -3, 3, 2, null, 11, 3, -2, null, 1];

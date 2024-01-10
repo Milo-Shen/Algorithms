@@ -21,7 +21,7 @@ const dfs = function (root, sum, targetSum) {
     return true;
   }
 
-  return sum + root.val === targetSum;
+  return !root.left && !root.right && sum + root.val === targetSum;
 };
 
 // test cases
