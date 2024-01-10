@@ -45,6 +45,6 @@ const dfs = function (root, sum, path, targetSum, result) {
 
 // test cases
 const { buildBinaryTree } = require('../../Base/BinaryTree/Javascript/BinaryTree');
-let nums = [10, 5, -3, 3, 2, null, 11, 3, -2, null, 1];
+let nums = [5, 4, 8, 11, null, 13, 4, 7, 2, null, null, 5, 1];
 let binaryTree = buildBinaryTree(nums);
-console.log(pathSum(binaryTree, 8));
+console.log(pathSum(binaryTree, 22));
