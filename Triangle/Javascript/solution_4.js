@@ -30,7 +30,8 @@ const minimumTotal = function (triangle) {
   }
 
   // initialize: 初始化终点 ( 最后一层 )
-  for (let i = 0; i < n; i++) {
+  let last_row_len = triangle[n - 1].length;
+  for (let i = 0; i < last_row_len; i++) {
     dp[n - 1][i] = triangle[n - 1][i];
   }
 
