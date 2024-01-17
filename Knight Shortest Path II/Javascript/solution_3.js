@@ -29,8 +29,10 @@ function shortestPath2(grid) {
   dp[0][0] = 0;
 
   // 重点: 因为之前 4 个位置的点都在当前点的左侧，所以要按照列来遍历
-  for (let j = 1; j < cols; j++) {
+  for (let j = 0; j < cols; j++) {
     for (let i = 0; i < rows; i++) {
+      dp[i][j % 3] = Infinity;
+
       if (grid[i][j]) {
         continue;
       }
@@ -41,17 +43,17 @@ function shortestPath2(grid) {
         let come_y = j + delta.y;
 
         if (0 <= come_x && come_x < rows && 0 <= come_y && come_y < cols) {
-          dp[i][j] = Math.min(dp[i][j], dp[come_x][come_y] + 1);
+          dp[i][j % 3] = Math.min(dp[i][j % 3], dp[come_x][come_y % 3] + 1);
         }
       }
     }
   }
 
-  if (dp[rows - 1][cols - 1] === Infinity) {
+  if (dp[rows - 1][(cols - 1) % 3] === Infinity) {
     return -1;
   }
 
-  return dp[rows - 1][cols - 1];
+  return dp[rows - 1][(cols - 1) % 3];
 }
 
 // test cases
