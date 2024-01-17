@@ -23,13 +23,13 @@ function shortestPath2(grid) {
 
   let dp = [];
   for (let i = 0; i < rows; i++) {
-    dp.push(Array(cols).fill(Infinity));
+    dp.push(Array(3).fill(Infinity));
   }
 
   dp[0][0] = 0;
 
   // 重点: 因为之前 4 个位置的点都在当前点的左侧，所以要按照列来遍历
-  for (let j = 0; j < cols; j++) {
+  for (let j = 1; j < cols; j++) {
     for (let i = 0; i < rows; i++) {
       dp[i][j % 3] = Infinity;
 
