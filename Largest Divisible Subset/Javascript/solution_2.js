@@ -3,7 +3,7 @@
 
 const largestDivisibleSubset = function (nums) {
   if (!nums || !nums.length) {
-    return nums;
+    return [];
   }
 
   nums = nums.sort((a, b) => a - b);
