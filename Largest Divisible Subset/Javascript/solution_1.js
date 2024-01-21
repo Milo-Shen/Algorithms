@@ -14,7 +14,7 @@ const largestDivisibleSubset = function (nums) {
 
   for (let i = 0; i < len; i++) {
     for (let j = 0; j < i; j++) {
-      if ((nums[i] % nums[j] === 0 || nums[j] % nums[i] === 0) && dp[i] < dp[j] + 1) {
+      if (nums[i] % nums[j] === 0 && dp[i] < dp[j] + 1) {
         dp[i] = dp[j] + 1;
         prev[i] = j;
       }
