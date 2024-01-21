@@ -1,11 +1,12 @@
 // https://leetcode.cn/problems/largest-divisible-subset/
 // https://www.lintcode.com/problem/603
 
-// todo: solution has issues
 const largestDivisibleSubset = function (nums) {
   if (!nums || !nums.length) {
     return nums;
   }
+
+  nums = nums.sort((a, b) => a - b);
 
   let len = nums.length;
   let dp = Array(len).fill(1);
