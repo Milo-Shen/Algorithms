@@ -2,7 +2,7 @@
 // https://leetcode-cn.com/problems/longest-palindromic-substring/
 
 // 基于动态规划的方法
-function solution(s) {
+function longestPalindrome(s) {
   const str_len = s.length;
   if (!s || str_len === 0) return '';
 
@@ -45,3 +45,5 @@ function solution(s) {
 
   return s.substring(start, start + longest);
 }
+
+console.log(longestPalindrome('babad'));
