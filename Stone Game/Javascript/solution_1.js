@@ -34,7 +34,7 @@ const get_range_sum = function (a) {
   let range_sum = [];
 
   for (let i = 0; i < n; i++) {
-    range_sum.push(Array(n).fill(Infinity));
+    range_sum.push(Array(n).fill(0));
   }
 
   for (let i = 0; i < n; i++) {
