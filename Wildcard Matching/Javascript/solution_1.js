@@ -28,4 +28,4 @@ const isMatch = function (s, p) {
   return dp[n][m];
 };
 
-console.log(isMatch('abc', '*?c'));
+console.log(isMatch('aa', 'a'));
