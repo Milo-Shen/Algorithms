@@ -1,10 +1,6 @@
 // https://leetcode.cn/problems/wildcard-matching/description/
 
 const isMatch = function (s, p) {
-  if (!s || !p) {
-    return false;
-  }
-
   let n = s.length;
   let m = p.length;
 
@@ -24,20 +20,12 @@ const isMatch = function (s, p) {
       if (p[j - 1] === '*') {
         dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
       } else {
-        dp[i][j] = dp[i - 1][j - 1] && isMatchChar(s[i - 1], p[j - 1]);
+        dp[i][j] = dp[i - 1][j - 1] && (p[j - 1] === '?' || s[i - 1] === p[j - 1]);
       }
     }
   }
 
   return dp[n][m];
-};
-
-const isMatchChar = function (s, p) {
-  if (p === '?') {
-    return true;
-  }
-
-  return s === p;
 };
 
 console.log(isMatch('abc', '*?c'));
