@@ -1,6 +1,10 @@
 // https://leetcode.cn/problems/wildcard-matching/description/
 
 const isMatch = function (s, p) {
+  if (!s || !p) {
+    return false;
+  }
+
   let n = s.length;
   let m = p.length;
 
