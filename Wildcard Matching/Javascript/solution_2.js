@@ -17,6 +17,7 @@ const isMatch = function (s, p) {
 
   for (let i = 1; i <= n; i++) {
     dp[i % 2][0] = false;
+
     for (let j = 1; j <= m; j++) {
       if (p[j - 1] === '*') {
         dp[i % 2][j] = dp[i % 2][j - 1] || dp[(i - 1) % 2][j];
