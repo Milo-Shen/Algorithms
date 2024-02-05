@@ -12,17 +12,21 @@ const isMatch = function (s, p) {
   dp[0][0] = true;
 
   // todo: has issues
-  for (let i = 1; i <= n; i++) {
+  for (let i = 0; i <= n; i++) {
     for (let j = 1; j <= m; j++) {
       if (p[j - 1] === '*') {
-        dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
+        dp[i][j] = dp[i][j - 2];
       } else {
-        dp[i][j] = dp[i - 1][j - 1] && (p[j - 1] === '.' || s[i - 1] === p[j - 1]);
+        if (i !== 0) {
+          dp[i][j] = dp[i - 1][j - 1] && (p[j - 1] === '.' || s[i - 1] === p[j - 1]);
+        }
       }
     }
   }
 
   return dp[n][m];
 };
+
+const isMatch = function (s, p, i, j) {};
 
 console.log(isMatch('aab', 'c*a*b'));
