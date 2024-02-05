@@ -15,6 +15,7 @@ const isMatch = function (s, p) {
     dp[0][i + 1] = dp[0][i] && p[i] === '*';
   }
 
+  // todo: has understanding issue on this problem
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= m; j++) {
       if (p[j - 1] === '*') {
