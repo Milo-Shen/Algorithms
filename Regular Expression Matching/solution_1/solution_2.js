@@ -27,6 +27,6 @@ const isMatch = function (s, p) {
   return dp[n][m];
 };
 
-const isMatch = function (s, p, i, j) {};
+const matches = function (s, p, i, j) {};
 
 console.log(isMatch('aab', 'c*a*b'));
