@@ -15,9 +15,11 @@ const isMatch = function (s, p) {
   for (let i = 0; i <= n; i++) {
     for (let j = 1; j <= m; j++) {
       if (p[j - 1] === '*') {
-        dp[i][j] = dp[i][j - 2] || (dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.'));
+        dp[i][j] =
+          j >= 2 &&
+          (dp[i][j - 2] || (i >= 1 && dp[i - 1][j] && (s[i - 1] === p[j - 2] || p[j - 2] === '.')));
       } else {
-        dp[i][j] = dp[i - 1][j - 1] && (p[j - 1] === '.' || s[i - 1] === p[j - 1]);
+        dp[i][j] = i >= 1 && dp[i - 1][j - 1] && (p[j - 1] === '.' || s[i - 1] === p[j - 1]);
       }
     }
   }
