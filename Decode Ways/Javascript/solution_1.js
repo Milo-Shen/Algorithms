@@ -1,5 +1,9 @@
 // https://leetcode.cn/problems/decode-ways/description/
 const numDecodings = function (s) {
+  if (!s || !s.length) {
+    return 0;
+  }
+
   let n = s.length;
 
   let dp = Array(n + 1).fill(0);
