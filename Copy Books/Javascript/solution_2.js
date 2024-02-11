@@ -1,56 +1,38 @@
 // https://www.lintcode.com/problem/437/
 
 const copyBooks = function (pages, k) {
-  if (!pages || !pages.length) {
+  if (!pages || !pages.length || k === 0) {
     return 0;
   }
 
-  if (k === 0) {
-    return -1;
+  let n = pages.length;
+
+  let prefix_sum = Array(n + 1).fill(0);
+
+  for (let i = 1; i <= n; i++) {
+    prefix_sum[i] = prefix_sum[i - 1] + pages[i - 1];
   }
 
-  let start = Math.max(...pages);
-  let end = pages.reduce((a, b) => a + b);
+  let dp = [];
+  for (let i = 0; i <= n; i++) {
+    dp.push(Array(k + 1).fill(Infinity));
+  }
 
-  while (start + 1 < end) {
-    let mid = start + Math.floor((end - start) / 2);
-    if (get_number_of_copiers(pages, mid) <= k) {
-      end = mid;
-    } else {
-      start = mid;
+  for (let i = 0; i <= k; i++) {
+    dp[0][i] = 0;
+  }
+
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= k; j++) {
+      for (let prev = 0; prev < i; prev++) {
+        let cost = prefix_sum[i] - prefix_sum[prev];
+        dp[i][j] = Math.min(dp[i][j], Math.max(dp[prev][j - 1], cost));
+      }
     }
   }
 
-  if (get_number_of_copiers(pages, start) <= k) {
-    return start;
-  }
-
-  if (get_number_of_copiers(pages, end) <= k) {
-    return end;
-  }
-
-  return -1;
+  return dp[n][k];
 };
-
-function get_number_of_copiers(pages, limit) {
-  let copiers = 0;
-  let last_copied = limit;
-
-  for (let i = 0; i < pages.length; i++) {
-    if (pages[i] > limit) {
-      return Infinity;
-    }
-
-    if (last_copied + pages[i] > limit) {
-      copiers++;
-      last_copied = 0;
-    }
-
-    last_copied += pages[i];
-  }
-
-  return copiers;
-}
 
 const pages = [3, 2, 4];
 const k = 2;
