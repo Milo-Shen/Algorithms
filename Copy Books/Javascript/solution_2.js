@@ -9,7 +9,7 @@ const copyBooks = function (pages, k) {
     return -1;
   }
 
-  let start = Math.min(...pages);
+  let start = Math.max(...pages);
   let end = pages.reduce((a, b) => a + b);
 
   while (start + 1 < end) {
