@@ -15,7 +15,7 @@ const maxEnvelopes = function (envelopes) {
 
   let longest = 0;
   for (let i = 0; i < n; i++) {
-    let index = getGTE(lis, envelopes[i][1]);
+    let index = firstGTE(lis, envelopes[i][1]);
     lis[index] = envelopes[i][1];
     longest = Math.max(longest, index);
   }
@@ -23,7 +23,7 @@ const maxEnvelopes = function (envelopes) {
   return longest;
 };
 
-const getGTE = function (nums, target) {
+const firstGTE = function (nums, target) {
   let start = 0;
   let end = nums.length;
 
