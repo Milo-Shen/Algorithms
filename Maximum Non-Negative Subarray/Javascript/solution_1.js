@@ -1,4 +1,6 @@
 // https://www.lintcode.com/problem/265
+// https://www.lintcode.com/problem/41
+
 const maxNonNegativeSubArray = function (nums) {
   if (!nums || !nums.length) {
     return 0;
