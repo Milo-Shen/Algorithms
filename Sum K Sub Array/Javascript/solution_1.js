@@ -1,4 +1,5 @@
 // https://leetcode.cn/problems/QTMn0o/description/
+// https://leetcode.cn/problems/subarray-sum-equals-k/description/
 
 const subarraySum = function (nums, k) {
   let prefix_sum = [];
